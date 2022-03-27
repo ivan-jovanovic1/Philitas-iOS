@@ -17,40 +17,50 @@ struct WordDetailsView: View {
     
     var body: some View {
         
-        VStack {
-                List {
-                    Section(header: Text("Beseda v izvirni obliki").font(.headline)) {
-                        Text(model.singleWord.word).font(.title3)
-                    }
-                    
-                    if let translatedWord = model.singleWord.translatedWord {
-                        Section(header: Text("PREVODI").font(.headline)) {
-                            #warning("Change logic to an array with translations and languages")
-                            WordRow(word: translatedWord, language: model.singleWord.language == "sl" ? "en" : "sl")
-                        }
-                    }
-                                        
-                    ForEach(model.singleWord.dictionaryExplanations) { dict in
-                        Section(
-                            header: Text("Razlage").font(.headline),
-                            footer: dictionaryFooter(
-                                name: dict.dictionaryName,
-                                source: dict.source
-                            )
-                        ) {
-                            ForEach(dict.explanations, id: \.self) { description in
-                                Text(description)
-                            }
-                        }
-                        
+        List {
+            Section(header: Text("Beseda v izvirni obliki").font(.headline)) {
+                Text(model.singleWord.word).font(.title3)
+            }
+            
+            if let translatedWord = model.singleWord.translatedWord {
+                Section(header: Text("PREVODI").font(.headline)) {
+                    #warning("Change logic to an array with translations and languages")
+                    WordRow(word: translatedWord, language: model.singleWord.language == "sl" ? "en" : "sl")
+                }
+            }
+            
+            ForEach(model.singleWord.dictionaryExplanations) { dict in
+                Section(
+                    header: Text("Razlage").font(.headline),
+                    footer: dictionaryFooter(
+                        name: dict.dictionaryName,
+                        source: dict.source
+                    )
+                ) {
+                    ForEach(dict.explanations, id: \.self) { description in
+                        Text(description)
                     }
                 }
-
+                
+            }
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Podrobnosti")
+        .toolbar {
+            ToolbarItem(placement: .status) {
+                Button {
+                    model.presented = .translate
+                } label: {
+                    Text("Prevedi")
+                }
+            }
+        }
         .onAppear(perform: model.loadWordDetails)
-        
+        .sheet(isPresented: model.isPresented(subview: .translate)) {
+            VStack {
+                Text("Hello world")
+            }
+        }
     }
     
     @ViewBuilder
@@ -84,9 +94,6 @@ struct WordDetailsView: View {
     }
     
 }
-
-
-
 
 struct WordDetailsView_Previews: PreviewProvider {
     static var previews: some View {
