@@ -2,7 +2,7 @@
 //  PhilitasApp.swift
 //  Philitas
 //
-//  Created by Ivan Jovanović on 27/03/2022.
+//  Created by Ivan Jovanović on 26/02/2022.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct PhilitasApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DashboardView()
         }
     }
 }

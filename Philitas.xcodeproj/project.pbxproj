@@ -14,6 +14,23 @@
 		5910CC0127F0C68E00841351 /* PhilitasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0027F0C68E00841351 /* PhilitasTests.swift */; };
 		5910CC0B27F0C68E00841351 /* PhilitasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0A27F0C68E00841351 /* PhilitasUITests.swift */; };
 		5910CC0D27F0C68E00841351 /* PhilitasUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0C27F0C68E00841351 /* PhilitasUITestsLaunchTests.swift */; };
+		5910CC2927F0C82000841351 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2827F0C82000841351 /* DashboardView.swift */; };
+		5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2A27F0C83A00841351 /* DictionaryView.swift */; };
+		5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2D27F0C85A00841351 /* TabItem.swift */; };
+		5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2F27F0C86C00841351 /* BaseResponse.swift */; };
+		5910CC3227F0C87500841351 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3127F0C87500841351 /* Pageable.swift */; };
+		5910CC3427F0C87D00841351 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3327F0C87D00841351 /* Word.swift */; };
+		5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3527F0C8C700841351 /* WordDetailsView.swift */; };
+		5910CC3927F0C8EC00841351 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5910CC3827F0C8EC00841351 /* Alamofire */; };
+		5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3B27F0C95200841351 /* String+urlEncoded.swift */; };
+		5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */; };
+		5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4127F0CA6500841351 /* DictionaryModel.swift */; };
+		5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4427F0CAEA00841351 /* WordDetailsModel.swift */; };
+		5910CC4927F0CB4900841351 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4827F0CB4900841351 /* Pagination.swift */; };
+		5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4C27F0CC3000841351 /* Queryable.swift */; };
+		5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */; };
+		5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5127F0CCA400841351 /* SearchHit.swift */; };
+		5910CC5527F0CD2000841351 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5427F0CD2000841351 /* WordRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +61,22 @@
 		5910CC0627F0C68E00841351 /* PhilitasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhilitasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5910CC0A27F0C68E00841351 /* PhilitasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasUITests.swift; sourceTree = "<group>"; };
 		5910CC0C27F0C68E00841351 /* PhilitasUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5910CC2827F0C82000841351 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		5910CC2A27F0C83A00841351 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
+		5910CC2D27F0C85A00841351 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		5910CC2F27F0C86C00841351 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		5910CC3127F0C87500841351 /* Pageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pageable.swift; sourceTree = "<group>"; };
+		5910CC3327F0C87D00841351 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		5910CC3527F0C8C700841351 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
+		5910CC3B27F0C95200841351 /* String+urlEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+urlEncoded.swift"; sourceTree = "<group>"; };
+		5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UpdateWord.swift"; sourceTree = "<group>"; };
+		5910CC4127F0CA6500841351 /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
+		5910CC4427F0CAEA00841351 /* WordDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsModel.swift; sourceTree = "<group>"; };
+		5910CC4827F0CB4900841351 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		5910CC4C27F0CC3000841351 /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
+		5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExplanation.swift; sourceTree = "<group>"; };
+		5910CC5127F0CCA400841351 /* SearchHit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHit.swift; sourceTree = "<group>"; };
+		5910CC5427F0CD2000841351 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5910CC3927F0C8EC00841351 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +128,9 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
+				5910CC3A27F0C93A00841351 /* Extensions */,
+				5910CC2C27F0C84B00841351 /* Model */,
+				5910CC3F27F0CA3200841351 /* Views */,
 				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
 				5910CBF127F0C68D00841351 /* ContentView.swift */,
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
@@ -127,6 +164,99 @@
 			path = PhilitasUITests;
 			sourceTree = "<group>";
 		};
+		5910CC2C27F0C84B00841351 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC4B27F0CC2800841351 /* Protocols */,
+				5910CC4727F0CB3C00841351 /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5910CC3A27F0C93A00841351 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC3B27F0C95200841351 /* String+urlEncoded.swift */,
+				5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5910CC3F27F0CA3200841351 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC5327F0CD0900841351 /* Shared */,
+				5910CC4627F0CB1C00841351 /* Dashboard */,
+				5910CC4327F0CACA00841351 /* WordDetails */,
+				5910CC4027F0CA3E00841351 /* Dictionary */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5910CC4027F0CA3E00841351 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC2A27F0C83A00841351 /* DictionaryView.swift */,
+				5910CC4127F0CA6500841351 /* DictionaryModel.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		5910CC4327F0CACA00841351 /* WordDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC3527F0C8C700841351 /* WordDetailsView.swift */,
+				5910CC4427F0CAEA00841351 /* WordDetailsModel.swift */,
+			);
+			path = WordDetails;
+			sourceTree = "<group>";
+		};
+		5910CC4627F0CB1C00841351 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC2D27F0C85A00841351 /* TabItem.swift */,
+				5910CC2827F0C82000841351 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		5910CC4727F0CB3C00841351 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC4E27F0CC7700841351 /* Word */,
+				5910CC4827F0CB4900841351 /* Pagination.swift */,
+				5910CC2F27F0C86C00841351 /* BaseResponse.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5910CC4B27F0CC2800841351 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC3127F0C87500841351 /* Pageable.swift */,
+				5910CC4C27F0CC3000841351 /* Queryable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5910CC4E27F0CC7700841351 /* Word */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC3327F0C87D00841351 /* Word.swift */,
+				5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */,
+				5910CC5127F0CCA400841351 /* SearchHit.swift */,
+			);
+			path = Word;
+			sourceTree = "<group>";
+		};
+		5910CC5327F0CD0900841351 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC5427F0CD2000841351 /* WordRow.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +273,9 @@
 			dependencies = (
 			);
 			name = Philitas;
+			packageProductDependencies = (
+				5910CC3827F0C8EC00841351 /* Alamofire */,
+			);
 			productName = Philitas;
 			productReference = 5910CBEC27F0C68D00841351 /* Philitas.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +348,9 @@
 				Base,
 			);
 			mainGroup = 5910CBE327F0C68D00841351;
+			packageReferences = (
+				5910CC3727F0C8EC00841351 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 5910CBED27F0C68D00841351 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +393,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */,
+				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
+				5910CC3427F0C87D00841351 /* Word.swift in Sources */,
+				5910CC4927F0CB4900841351 /* Pagination.swift in Sources */,
 				5910CBF227F0C68D00841351 /* ContentView.swift in Sources */,
+				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
+				5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */,
+				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
+				5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */,
+				5910CC3227F0C87500841351 /* Pageable.swift in Sources */,
+				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
+				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,
+				5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */,
+				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
+				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
+				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
+				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +729,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5910CC3727F0C8EC00841351 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5910CC3827F0C8EC00841351 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5910CC3727F0C8EC00841351 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5910CBE427F0C68D00841351 /* Project object */;
 }
