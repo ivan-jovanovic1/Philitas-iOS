@@ -61,8 +61,6 @@ struct DictionaryView: View {
 }
 
 
-
-
 struct DictionaryView_Previews: PreviewProvider {
     static var previews: some View {
         DictionaryView()

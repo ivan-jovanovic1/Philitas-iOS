@@ -5,6 +5,8 @@
 //  Created by Ivan Jovanović on 27/02/2022.
 //
 
+import Foundation
+
 struct Word: Decodable, Identifiable {
     
     let _id: String
@@ -41,5 +43,19 @@ extension Word: Comparable {
 extension Word: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(word)
+    }
+}
+
+
+extension Word {
+    static var dummy: Word {
+        Word(
+            _id: UUID().uuidString,
+            word: UUID().uuidString,
+            translatedWord: UUID().uuidString,
+            language: "sl",
+            dictionaryExplanations: [.dummy, .dummy, .dummy],
+            searchHits: []
+        )
     }
 }

@@ -9,14 +9,11 @@ import SwiftUI
 
 struct WordDetailsView: View {
     
-    
     @StateObject private var model: WordDetailsModel
-    
     
     init(word: Word) {
         self._model = StateObject(wrappedValue: .init(singleWord: word))
     }
-    
     
     var body: some View {
         
@@ -88,9 +85,12 @@ struct WordDetailsView: View {
     
 }
 
-//struct WordDetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WordDetailsView(word: Word(name: "Beseda"))
-//            .previewDevice("iPhone 13 Pro")
-//    }
-//}
+
+
+
+struct WordDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        WordDetailsView(word: .dummy)
+            .previewDevice("iPhone 13 Pro")
+    }
+}

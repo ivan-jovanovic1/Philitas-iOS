@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 class DictionaryModel: ObservableObject, Pageable {
-    var pageSize: Int { 25 }
+    let pageSize: Int
     var pagination: Pagination? = nil {
         didSet {
             print(String(describing: pagination))
@@ -20,6 +20,16 @@ class DictionaryModel: ObservableObject, Pageable {
     @Published var wordsFromSearch = false
     @Published var searchString = ""
     @Published var searchWords: [Word] = []
+    
+    
+    init(
+        pageSize: Int = 25,
+        words: [Word] = []
+    ) {
+        self.pageSize = pageSize
+        self.words = words
+    }
+    
 }
 
 extension DictionaryModel: Queryable {

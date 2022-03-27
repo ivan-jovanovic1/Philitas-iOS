@@ -5,6 +5,7 @@
 //  Created by Ivan Jovanović on 27/03/2022.
 //
 
+import Foundation
 struct DictionaryExplanation: Decodable {
     let explanations: [String]
     let dictionaryName: String
@@ -18,5 +19,20 @@ extension DictionaryExplanation: Identifiable {
         hasher.combine(source)
         hasher.combine(dictionaryName)
         return hasher.finalize()
+    }
+}
+
+
+
+extension DictionaryExplanation {
+    static var dummy: DictionaryExplanation {
+        DictionaryExplanation(
+            explanations: .init(
+                repeating: UUID().uuidString,
+                count:  Int.random(in: 5...15)
+            ),
+            dictionaryName: UUID().uuidString,
+            source: "https://www.termania.net"
+        )
     }
 }
