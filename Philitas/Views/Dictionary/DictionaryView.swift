@@ -16,17 +16,11 @@ struct DictionaryView: View {
             List(model.words) { word in
                 
                 NavigationLink(destination: WordDetailsView(word: word)) {
-                    
-                    
                     WordRow(
                         word: word.word,
                         language: word.language,
                         translated: word.translatedWord
                     )
-                    
-                    
-                    
-
                 }
                 
                 if model.shouldShowNextPage(word: word) {
@@ -36,16 +30,12 @@ struct DictionaryView: View {
             }
             .searchable(text: $model.searchString) {
                 ForEach(model.searchWords) { word in
-                    Text(word.word.capitalized)
-//                    Text(word.word.capitliz)
-                    
+                        WordRow(
+                            word: word.word,
+                            language: word.language,
+                            translated: word.translatedWord
+                        )
                 }
-                
-
-//                ForEach(model.searchResult) { result in
-//
-//                    Text(result.name.capitalized).searchCompletion(result.name)
-//                }
             }
             .navigationTitle("Dictionary")
         }
@@ -54,9 +44,6 @@ struct DictionaryView: View {
         .onReceive(model.$searchString.debounce(for: 0.5, scheduler: DispatchQueue .main)) { _ in
             model.searchForWords()
         }
-//        .refreshable(action: model.updateCurrentMostPopular)
-        
-        
     }
 }
 
