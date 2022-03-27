@@ -25,7 +25,7 @@ struct DictionaryView: View {
                 
                 if model.shouldShowNextPage(word: word) {
                     ProgressView()
-                        .onAppear(perform: model.getWords)
+                        .onAppear(perform: model.loadWords)
                 }
             }
             .searchable(text: $model.searchString) {
@@ -40,7 +40,7 @@ struct DictionaryView: View {
             .navigationTitle("Slovar")
         }
         .background(.red)
-        .onAppear(perform: model.getWords)
+        .onAppear(perform: model.loadWords)
         .onReceive(model.$searchString.debounce(for: 0.5, scheduler: DispatchQueue .main)) { _ in
             model.searchForWords()
         }
