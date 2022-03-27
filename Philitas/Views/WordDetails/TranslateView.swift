@@ -10,12 +10,17 @@ import SwiftUI
 
 class TranslationModel: ObservableObject {
     var from: TranslateCountryCode
-    @Published var to: TranslateCountryCode = .en
+    @Published var to: TranslateCountryCode
     let word: Word
     
     init(word: Word) {
         self.word = word
-        from = TranslateCountryCode(rawValue: word.language) ?? .sl
+        self.from = TranslateCountryCode(rawValue: word.language) ?? .sl
+        self.to = .en
+    }
+    
+    var availableLanguages: [TranslateCountryCode] {
+        TranslateCountryCode.allCases.filter { $0 != from }
     }
 }
 
@@ -36,12 +41,14 @@ struct TranslateView: View {
                     Text(model.from.sloveneTranslate)
                 }
                 .frame(maxWidth: .infinity)
+                .disabled(true)
                 
                 Image(systemName: "arrow.right")
                 
-                Picker(selection: $model.from, label: Text(model.to.sloveneTranslate)) {
-                    ForEach(TranslateCountryCode.allCases) { code in
+                Picker(model.to.sloveneTranslate, selection: $model.to) {
+                    ForEach(model.availableLanguages) { code in
                         Text(code.sloveneTranslate)
+                            .disabled(model.from.id == code.id)
                         
                     }
                 }
