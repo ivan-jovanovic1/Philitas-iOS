@@ -33,6 +33,8 @@
 		5910CC5527F0CD2000841351 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5427F0CD2000841351 /* WordRow.swift */; };
 		5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */; };
 		5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5827F0F14F00841351 /* TranslateView.swift */; };
+		592CABC427F112760093F879 /* ServicePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* ServicePresentation.swift */; };
+		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		5910CC5427F0CD2000841351 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCountryCode.swift; sourceTree = "<group>"; };
 		5910CC5827F0F14F00841351 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		592CABC327F112760093F879 /* ServicePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicePresentation.swift; sourceTree = "<group>"; };
+		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
+				592CABC227F111F90093F879 /* Service */,
 				5910CC3A27F0C93A00841351 /* Extensions */,
 				5910CC2C27F0C84B00841351 /* Model */,
 				5910CC3F27F0CA3200841351 /* Views */,
@@ -261,6 +266,15 @@
 				5910CC5427F0CD2000841351 /* WordRow.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		592CABC227F111F90093F879 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				592CABC327F112760093F879 /* ServicePresentation.swift */,
+				592CABC527F113430093F879 /* WordService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,9 +420,11 @@
 				5910CBF227F0C68D00841351 /* ContentView.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
 				5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */,
+				592CABC427F112760093F879 /* ServicePresentation.swift in Sources */,
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
 				5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */,
 				5910CC3227F0C87500841351 /* Pageable.swift in Sources */,
+				592CABC627F113430093F879 /* WordService.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
 				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,
 				5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */,

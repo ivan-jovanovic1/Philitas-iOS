@@ -10,57 +10,43 @@ import Foundation
 
 class DictionaryModel: ObservableObject, Pageable {
     let pageSize: Int
-    var pagination: Pagination? = nil {
-        didSet {
-            print(String(describing: pagination))
-        }
-    }
+    var pagination: Pagination? = nil
     
     @Published var words: [Word] = []
     @Published var wordsFromSearch = false
     @Published var searchString = ""
     @Published var searchWords: [Word] = []
-    
+
+    let service: any WordServiceable
     
     init(
         pageSize: Int = 25,
-        words: [Word] = []
+        words: [Word] = [],
+        service: any WordServiceable = WordService()
     ) {
         self.pageSize = pageSize
         self.words = words
+        self.service = service
     }
     
-}
-
-extension DictionaryModel: Queryable {
-    var params: [String : Any] {
-        [
-            "page": pagination?.nextPage() ?? 1,
-            "pageSize": pageSize
-        ]
-    }
 }
 
 extension DictionaryModel {
     
-    func getWords()  {
+    func loadWords()  {
         
-        let request = AF.request("http://localhost:3002/words/list\(urlParams())")
-            .serializingDecodable(BaseResponse.self)
-        
-        Task {
-            
-            if let response = await request.response.value {
-                print(String(describing: response))
-     
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    
-                    self.words.update(with: response.words)
-                    self.pagination = response.pagination
-                }
+        service.list(
+            page: pagination?.nextPage(),
+            pageSize: pageSize
+        ) { [weak self] in
+            if let response = $0 {
+                self?.words.update(with: response.words)
+                self?.pagination = response.pagination
             }
+            
+            self?.handleError($1)
         }
+        
         
     }
     
@@ -84,4 +70,14 @@ extension DictionaryModel {
        return word.id == words.last?.id && pagination?.hasNextPage() ?? false
     }
     
+}
+
+
+extension DictionaryModel {
+    
+    private func handleError(_ error: AFError?) {
+        if let error = error {
+            print(error.localizedDescription)
+        }
+    }
 }
