@@ -56,11 +56,15 @@ struct WordDetailsView: View {
             }
         }
         .onAppear(perform: model.loadWordDetails)
-        .sheet(isPresented: model.isPresented(subview: .translate)) {
-            VStack {
-                Text("Hello world")
-            }
-        }
+        .sheet(
+            isPresented: model.isPresented(subview: .translate),
+            content: translateSheet
+        )
+    }
+    
+    @ViewBuilder
+    private func translateSheet() -> some View {
+        TranslateView(word: model.singleWord)
     }
     
     @ViewBuilder

@@ -35,7 +35,7 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .dictionary:
-            return "Dictionary"
+            return "Seznam besed"
         case .favorites:
             return "Favorites"
         case .profile:

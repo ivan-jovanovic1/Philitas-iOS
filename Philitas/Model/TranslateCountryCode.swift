@@ -1,5 +1,5 @@
 //
-//  CountryCodes.swift
+//  TranslateCountryCode.swift
 //  Philitas
 //
 //  Created by Ivan Jovanović on 27/03/2022.
@@ -38,6 +38,10 @@ enum TranslateCountryCode: String, CaseIterable {
     case hr
     /// Chinese (Simplified)
     case zh
+}
+
+extension TranslateCountryCode: Identifiable {
+    var id: String { self.rawValue }
 }
 
 extension TranslateCountryCode {

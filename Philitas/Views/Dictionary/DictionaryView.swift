@@ -37,7 +37,7 @@ struct DictionaryView: View {
                         )
                 }
             }
-            .navigationTitle("Dictionary")
+            .navigationTitle("Slovar")
         }
         .background(.red)
         .onAppear(perform: model.getWords)
