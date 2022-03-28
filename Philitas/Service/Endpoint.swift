@@ -9,7 +9,8 @@
 enum Endpoint: String {
     
     case listOfWords = "/words/list"
-    
+   
+    case login = "/users/login"
     
     var baseURL: String {
         "http://localhost:3002"
