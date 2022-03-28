@@ -27,7 +27,6 @@
 		5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4127F0CA6500841351 /* DictionaryModel.swift */; };
 		5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4427F0CAEA00841351 /* WordDetailsModel.swift */; };
 		5910CC4927F0CB4900841351 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4827F0CB4900841351 /* Pagination.swift */; };
-		5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4C27F0CC3000841351 /* Queryable.swift */; };
 		5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */; };
 		5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5127F0CCA400841351 /* SearchHit.swift */; };
 		5910CC5527F0CD2000841351 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5427F0CD2000841351 /* WordRow.swift */; };
@@ -39,6 +38,8 @@
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
 		597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordMethods.swift */; };
+		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
+		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */; };
 		59C890B427F21CAA008956B3 /* URLParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B327F21CAA008956B3 /* URLParams.swift */; };
 		59C890B927F21EB1008956B3 /* Request+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* Request+User.swift */; };
@@ -92,7 +93,6 @@
 		5910CC4127F0CA6500841351 /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
 		5910CC4427F0CAEA00841351 /* WordDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsModel.swift; sourceTree = "<group>"; };
 		5910CC4827F0CB4900841351 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
-		5910CC4C27F0CC3000841351 /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExplanation.swift; sourceTree = "<group>"; };
 		5910CC5127F0CCA400841351 /* SearchHit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHit.swift; sourceTree = "<group>"; };
 		5910CC5427F0CD2000841351 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
@@ -104,6 +104,8 @@
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		597A55D027F25FAB00A92CC9 /* WordMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMethods.swift; sourceTree = "<group>"; };
+		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLConvertiable+String.swift"; sourceTree = "<group>"; };
 		59C890B327F21CAA008956B3 /* URLParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParams.swift; sourceTree = "<group>"; };
 		59C890B827F21EB1008956B3 /* Request+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+User.swift"; sourceTree = "<group>"; };
@@ -166,11 +168,13 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
+				597A55D227F2602300A92CC9 /* Managers */,
 				592CABC227F111F90093F879 /* Service */,
 				5910CC3A27F0C93A00841351 /* Extensions */,
 				5910CC2C27F0C84B00841351 /* Model */,
 				5910CC3F27F0CA3200841351 /* Views */,
 				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
+				597A55D527F2658700A92CC9 /* Session.swift */,
 				5910CBF127F0C68D00841351 /* ContentView.swift */,
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
 				5910CBF527F0C68D00841351 /* Preview Content */,
@@ -280,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				5910CC3127F0C87500841351 /* Pageable.swift */,
-				5910CC4C27F0CC3000841351 /* Queryable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -326,6 +329,14 @@
 				592CABC527F113430093F879 /* WordService.swift */,
 			);
 			path = WordService;
+			sourceTree = "<group>";
+		};
+		597A55D227F2602300A92CC9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				597A55D327F2605500A92CC9 /* UserDefaults.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		59C890B527F21DC7008956B3 /* UserService */ = {
@@ -493,14 +504,15 @@
 				5910CBF227F0C68D00841351 /* ContentView.swift in Sources */,
 				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
-				5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */,
 				592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */,
 				592CABC427F112760093F879 /* Endpoint.swift in Sources */,
 				59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */,
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
 				5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */,
+				597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */,
 				5910CC3227F0C87500841351 /* Pageable.swift in Sources */,
 				592CABC627F113430093F879 /* WordService.swift in Sources */,
+				597A55D627F2658700A92CC9 /* Session.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
 				59C890BB27F21EDF008956B3 /* Request.swift in Sources */,
 				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,

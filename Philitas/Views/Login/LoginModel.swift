@@ -40,8 +40,12 @@ extension LoginModel {
         
         service.login(payload: payload) { [weak self] user, error in
             if let user = user {
-                print(user)
+                UserDefaults.standard.jwsToken = user.jwsToken
+                return
             }
+
+            UserDefaults.standard.jwsToken = nil
+
             
             if let error = error {
                 print(error)

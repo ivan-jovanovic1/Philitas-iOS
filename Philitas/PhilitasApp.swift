@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-
-class Session: ObservableObject {
-    
-    @Published var user: Response.User? = nil
-    
-}
-
 @main
 struct PhilitasApp: App {
     
@@ -21,8 +14,22 @@ struct PhilitasApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            AppContainer()
                 .environmentObject(session)
         }
+    }
+}
+
+fileprivate extension PhilitasApp {
+    struct AppContainer: View {
+
+        @EnvironmentObject private var session: Session
+        
+        var body: some View {
+            DashboardView()
+                .onAppear(perform: session.verifyJWSToken)
+            
+        }
+        
     }
 }
