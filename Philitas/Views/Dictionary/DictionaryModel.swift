@@ -17,12 +17,12 @@ class DictionaryModel: ObservableObject, Pageable {
     @Published var searchString = ""
     @Published var searchWords: [Response.Word] = []
 
-    let service: any WordServiceable
+    let service: any WordMethods
     
     init(
         pageSize: Int = 25,
         words: [Response.Word] = [],
-        service: any WordServiceable = WordService()
+        service: any WordMethods = WordService()
     ) {
         self.pageSize = pageSize
         self.words = words

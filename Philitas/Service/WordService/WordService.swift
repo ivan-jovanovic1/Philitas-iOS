@@ -8,19 +8,8 @@
 import Alamofire
 import Foundation
 
-protocol WordServiceable {
-    func words(
-        page: Int?,
-        pageSize: Int,
-        completionHandler: @escaping(_ response: Response.BaseResponse?, _ error: AFError?) -> Void
-    )
-    
-    func singleWord()
-    
-}
+class WordService: WordMethods {
 
-
-class WordService: WordServiceable {
     func words(
         page: Int?,
         pageSize: Int,
@@ -40,10 +29,6 @@ class WordService: WordServiceable {
             }
             
         }
-    }
-    
-    func singleWord() {
-        
     }
     
 }

@@ -38,6 +38,7 @@
 		592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
+		597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordMethods.swift */; };
 		59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */; };
 		59C890B427F21CAA008956B3 /* URLParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B327F21CAA008956B3 /* URLParams.swift */; };
 		59C890B927F21EB1008956B3 /* Request+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* Request+User.swift */; };
@@ -102,6 +103,7 @@
 		592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+isPresented.swift"; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
+		597A55D027F25FAB00A92CC9 /* WordMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMethods.swift; sourceTree = "<group>"; };
 		59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLConvertiable+String.swift"; sourceTree = "<group>"; };
 		59C890B327F21CAA008956B3 /* URLParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParams.swift; sourceTree = "<group>"; };
 		59C890B827F21EB1008956B3 /* Request+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+User.swift"; sourceTree = "<group>"; };
@@ -309,12 +311,21 @@
 		592CABC227F111F90093F879 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				597A55CF27F25F5E00A92CC9 /* WordService */,
 				59C890B527F21DC7008956B3 /* UserService */,
 				592CABC327F112760093F879 /* Endpoint.swift */,
 				59C890B327F21CAA008956B3 /* URLParams.swift */,
-				592CABC527F113430093F879 /* WordService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		597A55CF27F25F5E00A92CC9 /* WordService */ = {
+			isa = PBXGroup;
+			children = (
+				597A55D027F25FAB00A92CC9 /* WordMethods.swift */,
+				592CABC527F113430093F879 /* WordService.swift */,
+			);
+			path = WordService;
 			sourceTree = "<group>";
 		};
 		59C890B527F21DC7008956B3 /* UserService */ = {
@@ -499,6 +510,7 @@
 				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
 				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
+				597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */,
 				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
 				59C890C127F2215F008956B3 /* UserMethods.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
