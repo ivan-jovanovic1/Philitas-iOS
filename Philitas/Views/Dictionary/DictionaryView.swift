@@ -35,7 +35,7 @@ struct DictionaryView: View {
                             language: word.language,
                             translated: word.translatedWord
                         )
-x                }
+                }
             }
             .navigationTitle("Slovar")
         }
