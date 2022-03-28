@@ -6,4 +6,4 @@
 //
 
 
-enum Response {}
+public enum Response {}

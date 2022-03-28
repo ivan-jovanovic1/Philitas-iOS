@@ -33,14 +33,22 @@
 		5910CC5527F0CD2000841351 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5427F0CD2000841351 /* WordRow.swift */; };
 		5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */; };
 		5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5827F0F14F00841351 /* TranslateView.swift */; };
+		592850B127F2499E007DD160 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B027F2499E007DD160 /* ProfileView.swift */; };
+		592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B227F24AD5007DD160 /* ProfileModel.swift */; };
+		592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
 		59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */; };
 		59C890B427F21CAA008956B3 /* URLParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B327F21CAA008956B3 /* URLParams.swift */; };
-		59C890B727F21E06008956B3 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B627F21E06008956B3 /* UserMethods.swift */; };
-		59C890B927F21EB1008956B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* User.swift */; };
+		59C890B927F21EB1008956B3 /* Request+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* Request+User.swift */; };
 		59C890BB27F21EDF008956B3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BA27F21EDF008956B3 /* Request.swift */; };
 		59C890BD27F21EF0008956B3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BC27F21EF0008956B3 /* Response.swift */; };
+		59C890BF27F220D0008956B3 /* Response+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BE27F220D0008956B3 /* Response+User.swift */; };
+		59C890C127F2215F008956B3 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C027F2215F008956B3 /* UserMethods.swift */; };
+		59C890C327F2220E008956B3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C227F2220E008956B3 /* UserService.swift */; };
+		59C890C627F231A9008956B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C527F231A9008956B3 /* LoginView.swift */; };
+		59C890C827F231B1008956B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C727F231B1008956B3 /* LoginModel.swift */; };
+		59C890CA27F23663008956B3 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C927F23663008956B3 /* LineDivider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,14 +97,22 @@
 		5910CC5427F0CD2000841351 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCountryCode.swift; sourceTree = "<group>"; };
 		5910CC5827F0F14F00841351 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		592850B027F2499E007DD160 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		592850B227F24AD5007DD160 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+isPresented.swift"; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLConvertiable+String.swift"; sourceTree = "<group>"; };
 		59C890B327F21CAA008956B3 /* URLParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParams.swift; sourceTree = "<group>"; };
-		59C890B627F21E06008956B3 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
-		59C890B827F21EB1008956B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		59C890B827F21EB1008956B3 /* Request+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+User.swift"; sourceTree = "<group>"; };
 		59C890BA27F21EDF008956B3 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		59C890BC27F21EF0008956B3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		59C890BE27F220D0008956B3 /* Response+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+User.swift"; sourceTree = "<group>"; };
+		59C890C027F2215F008956B3 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
+		59C890C227F2220E008956B3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		59C890C527F231A9008956B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		59C890C727F231B1008956B3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		59C890C927F23663008956B3 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +217,7 @@
 				5910CC3B27F0C95200841351 /* String+urlEncoded.swift */,
 				5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */,
 				59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */,
+				592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -210,8 +227,11 @@
 			children = (
 				5910CC5327F0CD0900841351 /* Shared */,
 				5910CC4627F0CB1C00841351 /* Dashboard */,
-				5910CC4327F0CACA00841351 /* WordDetails */,
 				5910CC4027F0CA3E00841351 /* Dictionary */,
+				59C890C427F2318A008956B3 /* Login */,
+				5910CC4327F0CACA00841351 /* WordDetails */,
+				592850B027F2499E007DD160 /* ProfileView.swift */,
+				592850B227F24AD5007DD160 /* ProfileModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,9 +289,10 @@
 				5910CC3327F0C87D00841351 /* Word.swift */,
 				5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */,
 				5910CC5127F0CCA400841351 /* SearchHit.swift */,
-				59C890B827F21EB1008956B3 /* User.swift */,
+				59C890B827F21EB1008956B3 /* Request+User.swift */,
 				59C890BA27F21EDF008956B3 /* Request.swift */,
 				59C890BC27F21EF0008956B3 /* Response.swift */,
+				59C890BE27F220D0008956B3 /* Response+User.swift */,
 			);
 			path = Word;
 			sourceTree = "<group>";
@@ -280,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				5910CC5427F0CD2000841351 /* WordRow.swift */,
+				59C890C927F23663008956B3 /* LineDivider.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -298,9 +320,19 @@
 		59C890B527F21DC7008956B3 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
-				59C890B627F21E06008956B3 /* UserMethods.swift */,
+				59C890C027F2215F008956B3 /* UserMethods.swift */,
+				59C890C227F2220E008956B3 /* UserService.swift */,
 			);
 			path = UserService;
+			sourceTree = "<group>";
+		};
+		59C890C427F2318A008956B3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				59C890C527F231A9008956B3 /* LoginView.swift */,
+				59C890C727F231B1008956B3 /* LoginModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,15 +471,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59C890B927F21EB1008956B3 /* User.swift in Sources */,
+				59C890B927F21EB1008956B3 /* Request+User.swift in Sources */,
 				5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */,
 				59C890B427F21CAA008956B3 /* URLParams.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
+				592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */,
 				5910CC3427F0C87D00841351 /* Word.swift in Sources */,
 				5910CC4927F0CB4900841351 /* Pagination.swift in Sources */,
+				59C890CA27F23663008956B3 /* LineDivider.swift in Sources */,
 				5910CBF227F0C68D00841351 /* ContentView.swift in Sources */,
+				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
 				5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */,
+				592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */,
 				592CABC427F112760093F879 /* Endpoint.swift in Sources */,
 				59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */,
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
@@ -459,12 +495,16 @@
 				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,
 				5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */,
 				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
+				59C890C827F231B1008956B3 /* LoginModel.swift in Sources */,
 				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
+				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
+				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
+				59C890C127F2215F008956B3 /* UserMethods.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
 				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
+				59C890C327F2220E008956B3 /* UserService.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
-				59C890B727F21E06008956B3 /* UserMethods.swift in Sources */,
 				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
 				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
 			);
