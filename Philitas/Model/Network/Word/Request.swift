@@ -7,5 +7,5 @@
 
 import Foundation
 
-enum Request {}
+public enum Request {}
 
