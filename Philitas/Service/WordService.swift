@@ -8,19 +8,8 @@
 import Alamofire
 import Foundation
 
-typealias URLParams = [String : Any]
-
-extension URLParams {
-    func string() -> String {
-       "?" + self.compactMap({ (key, value) -> String in
-            return "\(key)=\(value)"
-        }).joined(separator: "&")
-    }
-
-}
-
 protocol WordServiceable {
-    func list(
+    func words(
         page: Int?,
         pageSize: Int,
         completionHandler: @escaping(_ response: BaseResponse?, _ error: AFError?) -> Void
@@ -31,17 +20,8 @@ protocol WordServiceable {
 }
 
 
-
-class WordService: ServicePresentation {
-    var baseURL: String {
-        "http://localhost:3002/"
-    }
-    var firstComponent: String { "words/" }
-    
-}
-
-extension WordService: WordServiceable {
-    func list(
+class WordService: WordServiceable {
+    func words(
         page: Int?,
         pageSize: Int,
         completionHandler: @escaping(_ response: BaseResponse?, _ error: AFError?) -> Void
@@ -52,7 +32,7 @@ extension WordService: WordServiceable {
         ]
         
         Task {
-            let response = await AF.request(url(endpoint: "/list", params: params))
+            let response = await AF.request(.url(.listOfWords, params: params))
                 .serializingDecodable(BaseResponse.self).response
             
             DispatchQueue.main.async {

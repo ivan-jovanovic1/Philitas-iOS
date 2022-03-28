@@ -34,7 +34,7 @@ class DictionaryModel: ObservableObject, Pageable {
 extension DictionaryModel {
     
     func loadWords()  {        
-        service.list(
+        service.words(
             page: pagination?.nextPage(),
             pageSize: pageSize
         ) { [weak self] in
