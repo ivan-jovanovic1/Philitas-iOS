@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+
+class Session: ObservableObject {
+    
+}
+
 @main
 struct PhilitasApp: App {
     var body: some Scene {
