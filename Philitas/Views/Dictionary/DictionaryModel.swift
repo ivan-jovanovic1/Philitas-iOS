@@ -33,8 +33,7 @@ class DictionaryModel: ObservableObject, Pageable {
 
 extension DictionaryModel {
     
-    func loadWords()  {
-        
+    func loadWords()  {        
         service.list(
             page: pagination?.nextPage(),
             pageSize: pageSize
