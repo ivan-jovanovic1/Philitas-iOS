@@ -9,7 +9,7 @@ import SwiftUI
 
 class WordDetailsModel: ObservableObject {
     
-    @Published private(set) var singleWord: Word
+    @Published private(set) var singleWord: Response.Word
     @Published var presented: Subview? = .none
     
     var title: String {
@@ -23,7 +23,7 @@ class WordDetailsModel: ObservableObject {
         return singleWord.word
     }
         
-    init(singleWord: Word) {
+    init(singleWord: Response.Word) {
         self.singleWord = singleWord
     }
     

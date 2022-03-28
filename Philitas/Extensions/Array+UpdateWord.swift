@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == Word {
+extension Array where Element == Response.Word {
     /// Updates current array of words with unique elements.
     mutating func update(with new: [Element]) {
         self.append(contentsOf: new)

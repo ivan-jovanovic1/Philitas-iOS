@@ -12,7 +12,7 @@ protocol WordServiceable {
     func words(
         page: Int?,
         pageSize: Int,
-        completionHandler: @escaping(_ response: BaseResponse?, _ error: AFError?) -> Void
+        completionHandler: @escaping(_ response: Response.BaseResponse?, _ error: AFError?) -> Void
     )
     
     func singleWord()
@@ -24,7 +24,7 @@ class WordService: WordServiceable {
     func words(
         page: Int?,
         pageSize: Int,
-        completionHandler: @escaping(_ response: BaseResponse?, _ error: AFError?) -> Void
+        completionHandler: @escaping(_ response: Response.BaseResponse?, _ error: AFError?) -> Void
     ) {
         let params: URLParams = [
             "page": page ?? 1,
@@ -33,7 +33,7 @@ class WordService: WordServiceable {
         
         Task {
             let response = await AF.request(.url(.listOfWords, params: params))
-                .serializingDecodable(BaseResponse.self).response
+                .serializingDecodable(Response.BaseResponse.self).response
             
             DispatchQueue.main.async {
                 completionHandler(response.value, response.error)

@@ -12,16 +12,16 @@ class DictionaryModel: ObservableObject, Pageable {
     let pageSize: Int
     var pagination: Pagination? = nil
     
-    @Published var words: [Word] = []
+    @Published var words: [Response.Word] = []
     @Published var wordsFromSearch = false
     @Published var searchString = ""
-    @Published var searchWords: [Word] = []
+    @Published var searchWords: [Response.Word] = []
 
     let service: any WordServiceable
     
     init(
         pageSize: Int = 25,
-        words: [Word] = [],
+        words: [Response.Word] = [],
         service: any WordServiceable = WordService()
     ) {
         self.pageSize = pageSize
@@ -52,7 +52,7 @@ extension DictionaryModel {
     func searchForWords() {
         
         let request = AF.request("http://localhost:3002/words/nekaj/1")
-            .serializingDecodable(Word.self)
+            .serializingDecodable(Response.Word.self)
         
         Task {
 
@@ -64,7 +64,7 @@ extension DictionaryModel {
         }
     }
     
-    func shouldShowNextPage(word: Word) -> Bool {
+    func shouldShowNextPage(word: Response.Word) -> Bool {
 //        print("\(pagination?.hasNextPage() as Any) and \(word.id == words.last?.id)")
        return word.id == words.last?.id && pagination?.hasNextPage() ?? false
     }

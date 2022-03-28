@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+extension Response {
+    
 struct Word: Decodable, Identifiable {
     
     let _id: String
@@ -26,30 +29,32 @@ struct Word: Decodable, Identifiable {
     }
 }
 
+}
+
 // MARK: - Equatable conformation
-extension Word: Equatable {
-    static func == (lhs: Word, rhs: Word) -> Bool {
+extension Response.Word: Equatable {
+    static func == (lhs: Response.Word, rhs: Response.Word) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension Word: Comparable {
-    static func <(lhs: Word, rhs: Word) -> Bool {
+extension Response.Word: Comparable {
+    static func <(lhs: Response.Word, rhs: Response.Word) -> Bool {
         return lhs.word < rhs.word
     }
 }
 
 
-extension Word: Hashable {
+extension Response.Word: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(word)
     }
 }
 
 
-extension Word {
-    static var dummy: Word {
-        Word(
+extension Response.Word {
+    static var dummy: Response.Word {
+        Response.Word(
             _id: UUID().uuidString,
             word: UUID().uuidString,
             translatedWord: UUID().uuidString,

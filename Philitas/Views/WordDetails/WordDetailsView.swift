@@ -11,7 +11,7 @@ struct WordDetailsView: View {
     
     @StateObject private var model: WordDetailsModel
     
-    init(word: Word) {
+    init(word: Response.Word) {
         self._model = StateObject(wrappedValue: .init(singleWord: word))
     }
     

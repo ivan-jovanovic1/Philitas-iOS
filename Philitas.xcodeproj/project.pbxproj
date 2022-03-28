@@ -37,6 +37,10 @@
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
 		59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */; };
 		59C890B427F21CAA008956B3 /* URLParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B327F21CAA008956B3 /* URLParams.swift */; };
+		59C890B727F21E06008956B3 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B627F21E06008956B3 /* UserMethods.swift */; };
+		59C890B927F21EB1008956B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* User.swift */; };
+		59C890BB27F21EDF008956B3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BA27F21EDF008956B3 /* Request.swift */; };
+		59C890BD27F21EF0008956B3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BC27F21EF0008956B3 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,10 @@
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLConvertiable+String.swift"; sourceTree = "<group>"; };
 		59C890B327F21CAA008956B3 /* URLParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParams.swift; sourceTree = "<group>"; };
+		59C890B627F21E06008956B3 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
+		59C890B827F21EB1008956B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		59C890BA27F21EDF008956B3 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		59C890BC27F21EF0008956B3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +269,9 @@
 				5910CC3327F0C87D00841351 /* Word.swift */,
 				5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */,
 				5910CC5127F0CCA400841351 /* SearchHit.swift */,
+				59C890B827F21EB1008956B3 /* User.swift */,
+				59C890BA27F21EDF008956B3 /* Request.swift */,
+				59C890BC27F21EF0008956B3 /* Response.swift */,
 			);
 			path = Word;
 			sourceTree = "<group>";
@@ -276,11 +287,20 @@
 		592CABC227F111F90093F879 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				59C890B527F21DC7008956B3 /* UserService */,
 				592CABC327F112760093F879 /* Endpoint.swift */,
-				592CABC527F113430093F879 /* WordService.swift */,
 				59C890B327F21CAA008956B3 /* URLParams.swift */,
+				592CABC527F113430093F879 /* WordService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		59C890B527F21DC7008956B3 /* UserService */ = {
+			isa = PBXGroup;
+			children = (
+				59C890B627F21E06008956B3 /* UserMethods.swift */,
+			);
+			path = UserService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59C890B927F21EB1008956B3 /* User.swift in Sources */,
 				5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */,
 				59C890B427F21CAA008956B3 /* URLParams.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
@@ -434,13 +455,16 @@
 				5910CC3227F0C87500841351 /* Pageable.swift in Sources */,
 				592CABC627F113430093F879 /* WordService.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
+				59C890BB27F21EDF008956B3 /* Request.swift in Sources */,
 				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,
 				5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */,
 				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
+				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
 				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
+				59C890B727F21E06008956B3 /* UserMethods.swift in Sources */,
 				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
 				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
 			);

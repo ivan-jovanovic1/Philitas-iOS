@@ -11,9 +11,9 @@ import SwiftUI
 class TranslationModel: ObservableObject {
     var from: TranslateCountryCode
     @Published var to: TranslateCountryCode
-    let word: Word
+    let word: Response.Word
     
-    init(word: Word) {
+    init(word: Response.Word) {
         self.word = word
         self.from = TranslateCountryCode(rawValue: word.language) ?? .sl
         self.to = .en
@@ -30,7 +30,7 @@ struct TranslateView: View {
     @StateObject private var model: TranslationModel
     
     
-    init(word: Word) {
+    init(word: Response.Word) {
         self._model = StateObject(wrappedValue: TranslationModel(word: word))
     }
     
