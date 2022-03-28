@@ -28,14 +28,14 @@ struct DictionaryView: View {
                         .onAppear(perform: model.loadWords)
                 }
             }
-            .searchable(text: $model.searchString) {
+            .searchable(text: $model.searchString, prompt: "Iskanje") {
                 ForEach(model.searchWords) { word in
                         WordRow(
                             word: word.word,
                             language: word.language,
                             translated: word.translatedWord
                         )
-                }
+x                }
             }
             .navigationTitle("Slovar")
         }
