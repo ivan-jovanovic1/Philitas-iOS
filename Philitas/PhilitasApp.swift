@@ -10,13 +10,19 @@ import SwiftUI
 
 class Session: ObservableObject {
     
+    @Published var user: Response.User? = nil
+    
 }
 
 @main
 struct PhilitasApp: App {
+    
+    @StateObject private var session = Session()
+    
     var body: some Scene {
         WindowGroup {
             DashboardView()
+                .environmentObject(session)
         }
     }
 }

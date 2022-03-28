@@ -34,6 +34,8 @@
 		5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */; };
 		5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5827F0F14F00841351 /* TranslateView.swift */; };
 		592850B127F2499E007DD160 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B027F2499E007DD160 /* ProfileView.swift */; };
+		592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B227F24AD5007DD160 /* ProfileModel.swift */; };
+		592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
 		59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */; };
@@ -96,6 +98,8 @@
 		5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCountryCode.swift; sourceTree = "<group>"; };
 		5910CC5827F0F14F00841351 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		592850B027F2499E007DD160 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		592850B227F24AD5007DD160 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+isPresented.swift"; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLConvertiable+String.swift"; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				5910CC3B27F0C95200841351 /* String+urlEncoded.swift */,
 				5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */,
 				59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */,
+				592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				59C890C427F2318A008956B3 /* Login */,
 				5910CC4327F0CACA00841351 /* WordDetails */,
 				592850B027F2499E007DD160 /* ProfileView.swift */,
+				592850B227F24AD5007DD160 /* ProfileModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */,
 				59C890B427F21CAA008956B3 /* URLParams.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
+				592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */,
 				5910CC3427F0C87D00841351 /* Word.swift in Sources */,
 				5910CC4927F0CB4900841351 /* Pagination.swift in Sources */,
 				59C890CA27F23663008956B3 /* LineDivider.swift in Sources */,
@@ -476,6 +483,7 @@
 				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
 				5910CC4D27F0CC3000841351 /* Queryable.swift in Sources */,
+				592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */,
 				592CABC427F112760093F879 /* Endpoint.swift in Sources */,
 				59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */,
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,

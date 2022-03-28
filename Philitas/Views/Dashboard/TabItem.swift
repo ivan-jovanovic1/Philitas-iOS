@@ -26,7 +26,7 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
         case .dictionary:
             DictionaryView()
         case .profile:
-            EmptyView()
+            ProfileView()
         case .favorites:
             DictionaryView()
         }
