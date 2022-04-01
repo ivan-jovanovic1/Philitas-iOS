@@ -5,14 +5,13 @@
 //  Created by Ivan Jovanović on 28/03/2022.
 //
 
-import Alamofire
+import Foundation
 
 protocol WordMethods {
     
     func words(
         page: Int?,
-        pageSize: Int,
-        completionHandler: @escaping(_ response: Response.BaseResponse?, _ error: AFError?) -> Void
-    )
+        pageSize: Int
+    ) async throws -> Response.BaseResponse<[Response.Word]>
     
 }

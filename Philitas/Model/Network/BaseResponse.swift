@@ -7,8 +7,10 @@
 
 extension Response {
     
-    struct BaseResponse: Decodable {
-        let pagination: Pagination
-        let words: [Response.Word]
+    struct BaseResponse<T: Decodable>: Decodable {
+        let pagination: Pagination?
+        let errorMessage: String?
+        let errorCode: Int? 
+        let data: T
     }    
 }

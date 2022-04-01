@@ -56,11 +56,17 @@ extension LoginView {
             .textFieldStyle(.roundedBorder)
             .padding(.bottom, 80)
         }
+        .onAppear {
+            Task {
+                await model.login()
+            }
+        }
     }
     
     @ViewBuilder
-    private func button(_ text: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
+    private func button(_ text: String, action: @escaping () async -> Void) -> some View {
+        
+        AsyncButton(action: action) {
             Text(text).frame(maxWidth: .infinity)
         }
         .buttonStyle(.bordered)

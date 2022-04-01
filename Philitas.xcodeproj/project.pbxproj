@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		590C518F27F63606003D26F9 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C518E27F63606003D26F9 /* Translation.swift */; };
+		590C519227F64DB3003D26F9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519127F64DB3003D26F9 /* Networking.swift */; };
+		590C519427F64DD9003D26F9 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519327F64DD9003D26F9 /* APIRequest.swift */; };
+		590C519627F64DF7003D26F9 /* Networking+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519527F64DF7003D26F9 /* Networking+Error.swift */; };
+		590C519827F64F14003D26F9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519727F64F14003D26F9 /* Logger.swift */; };
+		590C519A27F65B4B003D26F9 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519927F65B4B003D26F9 /* BaseURL.swift */; };
+		590C519C27F65F63003D26F9 /* Networking+ToQueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519B27F65F63003D26F9 /* Networking+ToQueryItems.swift */; };
+		590C519E27F66E4D003D26F9 /* Networking+HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519D27F66E4D003D26F9 /* Networking+HttpMethod.swift */; };
+		590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519F27F67627003D26F9 /* AsyncButton.swift */; };
 		5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CBEF27F0C68D00841351 /* PhilitasApp.swift */; };
 		5910CBF227F0C68D00841351 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CBF127F0C68D00841351 /* ContentView.swift */; };
 		5910CBF427F0C68D00841351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5910CBF327F0C68D00841351 /* Assets.xcassets */; };
@@ -18,10 +27,8 @@
 		5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2A27F0C83A00841351 /* DictionaryView.swift */; };
 		5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2D27F0C85A00841351 /* TabItem.swift */; };
 		5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC2F27F0C86C00841351 /* BaseResponse.swift */; };
-		5910CC3227F0C87500841351 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3127F0C87500841351 /* Pageable.swift */; };
 		5910CC3427F0C87D00841351 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3327F0C87D00841351 /* Word.swift */; };
 		5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3527F0C8C700841351 /* WordDetailsView.swift */; };
-		5910CC3927F0C8EC00841351 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5910CC3827F0C8EC00841351 /* Alamofire */; };
 		5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3B27F0C95200841351 /* String+urlEncoded.swift */; };
 		5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */; };
 		5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4127F0CA6500841351 /* DictionaryModel.swift */; };
@@ -40,7 +47,11 @@
 		597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordMethods.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
-		59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */; };
+		5986B96927F78A3900703697 /* URLRequest+cURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96827F78A3900703697 /* URLRequest+cURL.swift */; };
+		5986B96B27F7981E00703697 /* Networking+APIHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96A27F7981E00703697 /* Networking+APIHeaders.swift */; };
+		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
+		5986B96F27F7B6BD00703697 /* Networking+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96E27F7B6BD00703697 /* Networking+Log.swift */; };
+		5986B97127F7B74A00703697 /* Networking+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B97027F7B74A00703697 /* Networking+Response.swift */; };
 		59C890B427F21CAA008956B3 /* URLParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B327F21CAA008956B3 /* URLParams.swift */; };
 		59C890B927F21EB1008956B3 /* Request+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* Request+User.swift */; };
 		59C890BB27F21EDF008956B3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BA27F21EDF008956B3 /* Request.swift */; };
@@ -71,6 +82,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		590C518E27F63606003D26F9 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		590C519127F64DB3003D26F9 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		590C519327F64DD9003D26F9 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		590C519527F64DF7003D26F9 /* Networking+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Error.swift"; sourceTree = "<group>"; };
+		590C519727F64F14003D26F9 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		590C519927F65B4B003D26F9 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		590C519B27F65F63003D26F9 /* Networking+ToQueryItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+ToQueryItems.swift"; sourceTree = "<group>"; };
+		590C519D27F66E4D003D26F9 /* Networking+HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+HttpMethod.swift"; sourceTree = "<group>"; };
+		590C519F27F67627003D26F9 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		5910CBEC27F0C68D00841351 /* Philitas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Philitas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5910CBEF27F0C68D00841351 /* PhilitasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasApp.swift; sourceTree = "<group>"; };
 		5910CBF127F0C68D00841351 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,7 +105,6 @@
 		5910CC2A27F0C83A00841351 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		5910CC2D27F0C85A00841351 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		5910CC2F27F0C86C00841351 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
-		5910CC3127F0C87500841351 /* Pageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pageable.swift; sourceTree = "<group>"; };
 		5910CC3327F0C87D00841351 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		5910CC3527F0C8C700841351 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 		5910CC3B27F0C95200841351 /* String+urlEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+urlEncoded.swift"; sourceTree = "<group>"; };
@@ -106,7 +125,11 @@
 		597A55D027F25FAB00A92CC9 /* WordMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMethods.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLConvertiable+String.swift"; sourceTree = "<group>"; };
+		5986B96827F78A3900703697 /* URLRequest+cURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+cURL.swift"; sourceTree = "<group>"; };
+		5986B96A27F7981E00703697 /* Networking+APIHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+APIHeaders.swift"; sourceTree = "<group>"; };
+		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
+		5986B96E27F7B6BD00703697 /* Networking+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Log.swift"; sourceTree = "<group>"; };
+		5986B97027F7B74A00703697 /* Networking+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Response.swift"; sourceTree = "<group>"; };
 		59C890B327F21CAA008956B3 /* URLParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParams.swift; sourceTree = "<group>"; };
 		59C890B827F21EB1008956B3 /* Request+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+User.swift"; sourceTree = "<group>"; };
 		59C890BA27F21EDF008956B3 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -124,7 +147,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5910CC3927F0C8EC00841351 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +167,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		590C518D27F63454003D26F9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				59C890B827F21EB1008956B3 /* Request+User.swift */,
+				59C890BE27F220D0008956B3 /* Response+User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		590C519027F64D7B003D26F9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				590C519327F64DD9003D26F9 /* APIRequest.swift */,
+				590C519927F65B4B003D26F9 /* BaseURL.swift */,
+				590C519127F64DB3003D26F9 /* Networking.swift */,
+				5986B96A27F7981E00703697 /* Networking+APIHeaders.swift */,
+				590C519527F64DF7003D26F9 /* Networking+Error.swift */,
+				590C519D27F66E4D003D26F9 /* Networking+HttpMethod.swift */,
+				5986B96E27F7B6BD00703697 /* Networking+Log.swift */,
+				5986B97027F7B74A00703697 /* Networking+Response.swift */,
+				590C519B27F65F63003D26F9 /* Networking+ToQueryItems.swift */,
+				5986B96827F78A3900703697 /* URLRequest+cURL.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		5910CBE327F0C68D00841351 = {
 			isa = PBXGroup;
 			children = (
@@ -168,12 +216,14 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
+				590C519027F64D7B003D26F9 /* Networking */,
 				597A55D227F2602300A92CC9 /* Managers */,
 				592CABC227F111F90093F879 /* Service */,
 				5910CC3A27F0C93A00841351 /* Extensions */,
 				5910CC2C27F0C84B00841351 /* Model */,
 				5910CC3F27F0CA3200841351 /* Views */,
 				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
+				5986B96C27F79B2600703697 /* APIConfigure.swift */,
 				597A55D527F2658700A92CC9 /* Session.swift */,
 				5910CBF127F0C68D00841351 /* ContentView.swift */,
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
@@ -210,7 +260,6 @@
 		5910CC2C27F0C84B00841351 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5910CC4B27F0CC2800841351 /* Protocols */,
 				5910CC4727F0CB3C00841351 /* Network */,
 				5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */,
 			);
@@ -222,7 +271,6 @@
 			children = (
 				5910CC3B27F0C95200841351 /* String+urlEncoded.swift */,
 				5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */,
-				59C890B127F21C1E008956B3 /* URLConvertiable+String.swift */,
 				592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */,
 			);
 			path = Extensions;
@@ -273,19 +321,14 @@
 		5910CC4727F0CB3C00841351 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				59C890BA27F21EDF008956B3 /* Request.swift */,
+				59C890BC27F21EF0008956B3 /* Response.swift */,
+				590C518D27F63454003D26F9 /* User */,
 				5910CC4E27F0CC7700841351 /* Word */,
 				5910CC4827F0CB4900841351 /* Pagination.swift */,
 				5910CC2F27F0C86C00841351 /* BaseResponse.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		5910CC4B27F0CC2800841351 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				5910CC3127F0C87500841351 /* Pageable.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		5910CC4E27F0CC7700841351 /* Word */ = {
@@ -294,10 +337,7 @@
 				5910CC3327F0C87D00841351 /* Word.swift */,
 				5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */,
 				5910CC5127F0CCA400841351 /* SearchHit.swift */,
-				59C890B827F21EB1008956B3 /* Request+User.swift */,
-				59C890BA27F21EDF008956B3 /* Request.swift */,
-				59C890BC27F21EF0008956B3 /* Response.swift */,
-				59C890BE27F220D0008956B3 /* Response+User.swift */,
+				590C518E27F63606003D26F9 /* Translation.swift */,
 			);
 			path = Word;
 			sourceTree = "<group>";
@@ -307,6 +347,7 @@
 			children = (
 				5910CC5427F0CD2000841351 /* WordRow.swift */,
 				59C890C927F23663008956B3 /* LineDivider.swift */,
+				590C519F27F67627003D26F9 /* AsyncButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -335,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				597A55D327F2605500A92CC9 /* UserDefaults.swift */,
+				590C519727F64F14003D26F9 /* Logger.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -374,7 +416,6 @@
 			);
 			name = Philitas;
 			packageProductDependencies = (
-				5910CC3827F0C8EC00841351 /* Alamofire */,
 			);
 			productName = Philitas;
 			productReference = 5910CBEC27F0C68D00841351 /* Philitas.app */;
@@ -449,7 +490,6 @@
 			);
 			mainGroup = 5910CBE327F0C68D00841351;
 			packageReferences = (
-				5910CC3727F0C8EC00841351 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 5910CBED27F0C68D00841351 /* Products */;
 			projectDirPath = "";
@@ -496,38 +536,50 @@
 				59C890B927F21EB1008956B3 /* Request+User.swift in Sources */,
 				5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */,
 				59C890B427F21CAA008956B3 /* URLParams.swift in Sources */,
+				590C519227F64DB3003D26F9 /* Networking.swift in Sources */,
+				590C519E27F66E4D003D26F9 /* Networking+HttpMethod.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
 				592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */,
 				5910CC3427F0C87D00841351 /* Word.swift in Sources */,
 				5910CC4927F0CB4900841351 /* Pagination.swift in Sources */,
+				5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */,
 				59C890CA27F23663008956B3 /* LineDivider.swift in Sources */,
 				5910CBF227F0C68D00841351 /* ContentView.swift in Sources */,
 				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,
+				5986B96B27F7981E00703697 /* Networking+APIHeaders.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
+				5986B96927F78A3900703697 /* URLRequest+cURL.swift in Sources */,
+				590C519627F64DF7003D26F9 /* Networking+Error.swift in Sources */,
 				592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */,
 				592CABC427F112760093F879 /* Endpoint.swift in Sources */,
-				59C890B227F21C1E008956B3 /* URLConvertiable+String.swift in Sources */,
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
 				5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */,
 				597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */,
-				5910CC3227F0C87500841351 /* Pageable.swift in Sources */,
+				590C519427F64DD9003D26F9 /* APIRequest.swift in Sources */,
 				592CABC627F113430093F879 /* WordService.swift in Sources */,
 				597A55D627F2658700A92CC9 /* Session.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
 				59C890BB27F21EDF008956B3 /* Request.swift in Sources */,
 				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,
+				590C519A27F65B4B003D26F9 /* BaseURL.swift in Sources */,
+				590C519C27F65F63003D26F9 /* Networking+ToQueryItems.swift in Sources */,
+				590C519827F64F14003D26F9 /* Logger.swift in Sources */,
 				5910CC4227F0CA6500841351 /* DictionaryModel.swift in Sources */,
 				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
+				5986B96F27F7B6BD00703697 /* Networking+Log.swift in Sources */,
 				59C890C827F231B1008956B3 /* LoginModel.swift in Sources */,
 				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
 				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
+				5986B97127F7B74A00703697 /* Networking+Response.swift in Sources */,
 				597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */,
 				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
 				59C890C127F2215F008956B3 /* UserMethods.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
 				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
+				590C518F27F63606003D26F9 /* Translation.swift in Sources */,
 				59C890C327F2220E008956B3 /* UserService.swift in Sources */,
+				590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
 				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
 				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
@@ -849,25 +901,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5910CC3727F0C8EC00841351 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5910CC3827F0C8EC00841351 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5910CC3727F0C8EC00841351 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5910CBE427F0C68D00841351 /* Project object */;
 }

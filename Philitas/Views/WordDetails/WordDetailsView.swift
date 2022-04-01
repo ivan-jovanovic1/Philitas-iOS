@@ -22,12 +22,12 @@ struct WordDetailsView: View {
                 Text(model.singleWord.word).font(.title3)
             }
             
-            if let translatedWord = model.singleWord.translatedWord {
-                Section(header: Text("PREVODI").font(.headline)) {
-                    #warning("Change logic to an array with translations and languages")
-                    WordRow(word: translatedWord, language: model.singleWord.language == "sl" ? "en" : "sl")
-                }
-            }
+//            if let translatedWord = model.singleWord.translatedWord {
+//                Section(header: Text("PREVODI").font(.headline)) {
+//                    #warning("Change logic to an array with translations and languages")
+//                    WordRow(word: translatedWord, language: model.singleWord.language == "sl" ? "en" : "sl")
+//                }
+//            }
             
             ForEach(model.singleWord.dictionaryExplanations) { dict in
                 Section(

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class LoginModel: ObservableObject {
     
     let session: Session
@@ -27,7 +28,8 @@ class LoginModel: ObservableObject {
 
 extension LoginModel {
     
-    func login() {
+    @Sendable
+    func login() async {
         guard
             validateUsername(),
             validatePassword()
@@ -38,19 +40,17 @@ extension LoginModel {
         
         let payload = Request.User(username: username, password: password)
         
-        service.login(payload: payload) { [weak self] user, error in
-            if let user = user {
-                UserDefaults.standard.jwsToken = user.jwsToken
-                return
-            }
-
-            UserDefaults.standard.jwsToken = nil
-
+        do {
+            let response = try await service.login(payload: payload)
+//            UserDefaults.standard.jwsToken = response.data.jwsToken
             
-            if let error = error {
-                print(error)
-            }
+        } catch let error as Networking.NetworkError {
+            PHLogger.networking.error("\(error.description)")
+        } catch {
+            PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
         }
+        
+        
     }
     
 }

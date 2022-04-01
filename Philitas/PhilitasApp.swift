@@ -10,7 +10,12 @@ import SwiftUI
 @main
 struct PhilitasApp: App {
     
-    @StateObject private var session = Session()
+    @StateObject private var session: Session
+    
+    init() {
+        APIConfigure.configure()
+        self._session = StateObject(wrappedValue: Session())
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -28,6 +33,13 @@ fileprivate extension PhilitasApp {
         var body: some View {
             DashboardView()
                 .onAppear(perform: session.verifyJWSToken)
+                .task {
+                    let userService = UserService()
+                    
+                    let result = try? await userService.login(payload: .init(username: "IvanFERI", password: "IvanFERI"))
+                    
+            
+                }
             
         }
         

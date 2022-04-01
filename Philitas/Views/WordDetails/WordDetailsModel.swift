@@ -13,14 +13,16 @@ class WordDetailsModel: ObservableObject {
     @Published var presented: Subview? = .none
     
     var title: String {
-        (singleWord.language == "sl" ? singleWord.word : singleWord.translatedWord ?? singleWord.word).capitalized
+        singleWord.word
+//        (singleWord.language == "sl" ? singleWord.word : singleWord.translatedWord ?? singleWord.word).capitalized
     }
     
     var subtitle: String? {
-        if singleWord.language == "sl" {
-            return singleWord.translatedWord
-        }
-        return singleWord.word
+        ""
+//        if singleWord.language == "sl" {
+//            return singleWord.translatedWord
+//        }
+//        return singleWord.word
     }
         
     init(singleWord: Response.Word) {

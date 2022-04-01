@@ -9,38 +9,45 @@ import SwiftUI
 
 struct DictionaryView: View {
     
-    @StateObject private var model = DictionaryModel()
+    @StateObject private var model: DictionaryModel
+    
+    init() {
+        self._model = StateObject(wrappedValue: DictionaryModel())
+    }
     
     var body: some View {
         NavigationView {
             List(model.words) { word in
                 
-                NavigationLink(destination: WordDetailsView(word: word)) {
+//                NavigationLink(destination: WordDetailsView(word: word) {
+                NavigationLink(destination: VStack {Text(word.word) } ) {
                     WordRow(
                         word: word.word,
                         language: word.language,
-                        translated: word.translatedWord
+                        translated: ""
                     )
                 }
                 
                 if model.shouldShowNextPage(word: word) {
                     ProgressView()
-                        .onAppear(perform: model.loadWords)
+                        .task(model.loadWords)
+//                        .onAppear(perform: model.loadWords)
                 }
             }
             .searchable(text: $model.searchString, prompt: "Iskanje") {
-                ForEach(model.searchWords) { word in
-                        WordRow(
-                            word: word.word,
-                            language: word.language,
-                            translated: word.translatedWord
-                        )
-                }
+//                ForEach(model.searchWords) { word in
+//                        WordRow(
+//                            word: word.word,
+//                            language: word.language,
+//                            translated: word.translation
+//                        )
+//                }
             }
             .navigationTitle("Slovar")
         }
         .background(.red)
-        .onAppear(perform: model.loadWords)
+        .task(model.loadWords)
+        .refreshable(action: model.loadWords)
         .onReceive(model.$searchString.debounce(for: 0.5, scheduler: DispatchQueue .main)) { _ in
             model.searchForWords()
         }

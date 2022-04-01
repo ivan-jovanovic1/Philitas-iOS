@@ -6,13 +6,11 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol UserMethods {
     
     func login(
-        payload: Request.User,
-        completionHandler: @escaping(_ response: Response.User?, _ error: AFError?) -> Void
-    )
+        payload: Request.User) async throws -> Response.User
+
 }
 

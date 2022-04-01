@@ -6,18 +6,19 @@
 //
 
 
-enum Endpoint: String {
-    
+enum Endpoint: String, BaseURL {
+        
     case listOfWords = "/words/list"
-   
+    
     case login = "/users/login"
+    
+}
+
+// MARK: - BaseURL conformation
+extension Endpoint {
     
     var baseURL: String {
         "http://localhost:3002"
     }
     
-    var fullURL: String {
-        baseURL + self.rawValue
-    }
-        
 }
