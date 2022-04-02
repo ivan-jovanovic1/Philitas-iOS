@@ -10,8 +10,8 @@ import Foundation
 extension Array where Element == Response.Word {
     /// Updates current array of words with unique elements.
     mutating func update(with new: [Element]) {
-        self.append(contentsOf: new)
+        append(contentsOf: new)
         var seen = Set<Element>()
-        self = filter{ seen.insert($0).inserted }.sorted()
+        self = filter { seen.insert($0).inserted }.sorted()
     }
 }

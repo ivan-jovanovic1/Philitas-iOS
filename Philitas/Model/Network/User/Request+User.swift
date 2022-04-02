@@ -8,11 +8,10 @@
 import Foundation
 
 public extension Request {
-    
     struct User: Encodable {
         let username: String
         let password: String
-        
+
         init(
             username: String,
             password: String
@@ -21,5 +20,4 @@ public extension Request {
             self.password = password
         }
     }
-    
 }

@@ -9,12 +9,11 @@ import Foundation
 
 public typealias Headers = [String: String]
 
-
 extension Networking {
     enum APIHeaders {
         static var headers: Headers = [:]
     }
-    
+
     static func addHeadersToRequest(_ request: inout URLRequest) {
         APIHeaders.headers.forEach {
             request.setValue($0.value, forHTTPHeaderField: $0.key)
@@ -22,10 +21,8 @@ extension Networking {
     }
 }
 
-public extension Networking {
-    
-    static func setHeaders(_ headers: Headers) {
+extension Networking {
+    public static func setHeaders(_ headers: Headers) {
         APIHeaders.headers = headers
     }
 }
-

@@ -11,15 +11,15 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
     case dictionary
     case favorites
     case profile
-    
+
     var id: Int {
-        self.rawValue
+        rawValue
     }
-    
+
     var zIndex: Double {
-        Double(self.rawValue)
+        Double(rawValue)
     }
-    
+
     @ViewBuilder
     var mainView: some View {
         switch self {
@@ -31,7 +31,7 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
             DictionaryView()
         }
     }
-    
+
     var description: String {
         switch self {
         case .dictionary:
@@ -42,7 +42,7 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
             return "Profile"
         }
     }
-    
+
     var iconSystemName: String {
         switch self {
         case .dictionary:

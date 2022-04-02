@@ -8,7 +8,6 @@
 import Foundation
 
 public extension Networking {
-    
     enum NetworkError: Error {
         case invalidURL(url: String)
         case notHttpResponse
@@ -17,27 +16,23 @@ public extension Networking {
         case unexpectedStatusCode(code: Int)
         case unknown
     }
-    
 }
 
-
 extension Networking.NetworkError: LocalizedError {
-    
     public var errorDescription: String? {
         switch self {
-        case .invalidURL(let url):
+        case let .invalidURL(url):
             return "URL \(url) is not valid."
         case .notHttpResponse:
             return "URL Response is not a valid http response."
-        case .decodingError(let type):
+        case let .decodingError(type):
             return "Error while trying to decode \(type.self)"
-        case .encodingError(let type):
+        case let .encodingError(type):
             return "Error while trying to encode \(type.self)"
-        case .unexpectedStatusCode(let code):
+        case let .unexpectedStatusCode(code):
             return "Unexpected status code \(code)"
         case .unknown:
             return "Unknown networking error"
         }
     }
-    
 }

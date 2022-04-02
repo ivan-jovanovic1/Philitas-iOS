@@ -15,7 +15,7 @@ extension Pagination {
     func hasNextPage() -> Bool {
         currentPage < allPages
     }
-    
+
     func nextPage() -> Int {
         currentPage < allPages ? currentPage + 1 : allPages
     }

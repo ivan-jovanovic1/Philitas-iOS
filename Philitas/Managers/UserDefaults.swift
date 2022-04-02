@@ -7,14 +7,13 @@
 
 import Foundation
 
-
 extension UserDefaults {
-    var jwsToken: String? {
-        get {
-            string(forKey: #function)
-        }
-        set {
-            set(newValue, forKey: #function)
-        }
-    }
+	var jwsToken: String? {
+		get {
+			string(forKey: #function)
+		}
+		set {
+			set(newValue, forKey: #function)
+		}
+	}
 }

@@ -11,8 +11,8 @@ public protocol BaseURL: RawRepresentable where RawValue == String {
     var baseURL: String { get }
 }
 
-public extension BaseURL {
-    var fullURL: String {
-        baseURL + self.rawValue
+extension BaseURL {
+    public var fullURL: String {
+        baseURL + rawValue
     }
 }

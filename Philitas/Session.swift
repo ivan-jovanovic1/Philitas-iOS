@@ -9,10 +9,9 @@ import Foundation
 
 @MainActor
 class Session: ObservableObject {
-    
     @Published var user: Response.UserData?
     let service: UserMethods
-    
+
     init(service: UserMethods = UserService()) {
         APIConfigure.configure()
         self.service = service
@@ -20,14 +19,13 @@ class Session: ObservableObject {
 }
 
 extension Session {
-    
     @Sendable
     func verifyJWSToken() async {
         guard UserDefaults.standard.jwsToken != nil else {
             user = nil
             return
         }
- 
+
         do {
             user = try await service.userFromToken().data
             print(String(describing: user))
@@ -35,10 +33,9 @@ extension Session {
             handleError(error)
         }
     }
-    
+
     private func handleError(_ error: any Error) {
         UserDefaults.standard.jwsToken = nil
         PHLogger.networking.error("\(error.localizedDescription)")
     }
-    
 }

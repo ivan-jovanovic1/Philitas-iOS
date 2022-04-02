@@ -17,7 +17,7 @@ struct AsyncButton<Label: View>: View {
         Button(
             action: {
                 isPerformingTask = true
-            
+
                 Task {
                     await action()
                     isPerformingTask = false

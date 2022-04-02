@@ -8,15 +8,14 @@
 import SwiftUI
 
 class WordDetailsModel: ObservableObject {
-    
     @Published private(set) var singleWord: Response.Word
     @Published var presented: Subview? = .none
-    
+
     var title: String {
         singleWord.word
 //        (singleWord.language == "sl" ? singleWord.word : singleWord.translatedWord ?? singleWord.word).capitalized
     }
-    
+
     var subtitle: String? {
         ""
 //        if singleWord.language == "sl" {
@@ -24,16 +23,14 @@ class WordDetailsModel: ObservableObject {
 //        }
 //        return singleWord.word
     }
-        
+
     init(singleWord: Response.Word) {
         self.singleWord = singleWord
     }
-    
+
     func loadWordDetails() {
-        
     }
 }
-
 
 extension WordDetailsModel {
     func isPresented(subview: Subview) -> Binding<Bool> {
@@ -44,15 +41,12 @@ extension WordDetailsModel {
     }
 }
 
-
 extension WordDetailsModel {
     enum Subview: Int, Identifiable {
         case translate
-        
+
         var id: Int {
-            self.rawValue
+            rawValue
         }
     }
 }
-
-

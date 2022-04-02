@@ -9,24 +9,21 @@ import Foundation
 
 @MainActor
 class LoginModel: ObservableObject {
-    
     @Published var username: String
     @Published var password: String
     @Published var userData: Response.UserData?
-    
+
     @Published var showInvalidInput: Bool = false
     let service: any UserMethods
-    
+
     init(service: any UserMethods = UserService()) {
         self.service = service
-        self.username = ""
-        self.password = ""
+        username = ""
+        password = ""
     }
 }
 
-
 extension LoginModel {
-    
     @Sendable
     func login() async {
         guard
@@ -36,9 +33,9 @@ extension LoginModel {
             showInvalidInput = true
             return
         }
-        
+
         let payload = Request.User(username: username, password: password)
-        
+
         do {
             userData = try await service.login(payload: payload).data
             UserDefaults.standard.jwsToken = userData?.jwsToken
@@ -46,11 +43,9 @@ extension LoginModel {
             PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
         }
     }
-    
 }
 
 extension LoginModel {
-    
     func validateUsername() -> Bool {
         return username.count >= 8
     }
@@ -58,7 +53,4 @@ extension LoginModel {
     func validatePassword() -> Bool {
         return password.count >= 8
     }
-    
-    
-    
 }

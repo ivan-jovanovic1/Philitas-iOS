@@ -9,14 +9,13 @@ import SwiftUI
 
 @main
 struct PhilitasApp: App {
-    
     @StateObject private var session: Session
-    
+
     init() {
         APIConfigure.configure()
-        self._session = StateObject(wrappedValue: Session())
+        _session = StateObject(wrappedValue: Session())
     }
-    
+
     var body: some Scene {
         WindowGroup {
             AppContainer()
@@ -27,16 +26,11 @@ struct PhilitasApp: App {
 
 fileprivate extension PhilitasApp {
     struct AppContainer: View {
-
         @EnvironmentObject private var session: Session
-        
+
         var body: some View {
             DashboardView()
                 .task(session.verifyJWSToken)
-                
-                
-            
         }
-        
     }
 }

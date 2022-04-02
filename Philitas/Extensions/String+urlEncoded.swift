@@ -6,10 +6,9 @@
 //
 
 extension String {
-    
     /// Returns encoded string if succeeds, otherwise an empty string.
     /// This is useful if string has non-ascii values.
     var urlEncoded: String {
-        self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
 }

@@ -6,11 +6,9 @@
 //
 
 extension Response {
-    
     struct SearchHit: Decodable {
         let hits: Int
         let month: Int
         let year: Int
     }
-    
 }

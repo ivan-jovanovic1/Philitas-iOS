@@ -8,4 +8,3 @@
 import Foundation
 
 public enum Request {}
-

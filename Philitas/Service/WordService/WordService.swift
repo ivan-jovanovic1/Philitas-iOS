@@ -8,20 +8,18 @@
 import Foundation
 
 class WordService: WordMethods {
-    
-    func words(
-        page: Int?,
-        pageSize: Int
-    ) async throws -> Response.BaseResponse<[Response.Word]> {
-        try await APIRequest(
-            Endpoint.listOfWords,
-            params: [
-                "page": page ?? 1,
-                "pageSize": pageSize
-            ],
-            method: .get
-        )
-        .perform()
-    }
-    
+	func words(
+		page: Int?,
+		pageSize: Int
+	) async throws -> Response.BaseResponse<[Response.Word]> {
+		try await APIRequest(
+			Endpoint.listOfWords,
+			params: [
+				"page": page ?? 1,
+				"pageSize": pageSize,
+			],
+			method: .get
+		)
+		.perform()
+	}
 }

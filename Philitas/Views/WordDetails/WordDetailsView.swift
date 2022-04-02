@@ -8,27 +8,25 @@
 import SwiftUI
 
 struct WordDetailsView: View {
-    
     @StateObject private var model: WordDetailsModel
-    
+
     init(word: Response.Word) {
-        self._model = StateObject(wrappedValue: .init(singleWord: word))
+        _model = StateObject(wrappedValue: .init(singleWord: word))
     }
-    
+
     var body: some View {
-        
         List {
             Section(header: Text("Beseda v izvirni obliki").font(.headline)) {
                 Text(model.singleWord.word).font(.title3)
             }
-            
+
 //            if let translatedWord = model.singleWord.translatedWord {
 //                Section(header: Text("PREVODI").font(.headline)) {
 //                    #warning("Change logic to an array with translations and languages")
 //                    WordRow(word: translatedWord, language: model.singleWord.language == "sl" ? "en" : "sl")
 //                }
 //            }
-            
+
             ForEach(model.singleWord.dictionaryExplanations) { dict in
                 Section(
                     header: Text("Razlage").font(.headline),
@@ -41,7 +39,6 @@ struct WordDetailsView: View {
                         Text(description)
                     }
                 }
-                
             }
         }
         .listStyle(.insetGrouped)
@@ -61,12 +58,12 @@ struct WordDetailsView: View {
             content: translateSheet
         )
     }
-    
+
     @ViewBuilder
     private func translateSheet() -> some View {
         TranslateView(word: model.singleWord)
     }
-    
+
     @ViewBuilder
     private func dictionaryFooter(name: String, source: String) -> some View {
         if let url = URL(string: source.urlEncoded) {
@@ -75,7 +72,7 @@ struct WordDetailsView: View {
             Text(name)
         }
     }
-    
+
     @ViewBuilder
     private func languageCell(_ language: String, _ languageFullName: String) -> some View {
         ZStack {
@@ -83,7 +80,7 @@ struct WordDetailsView: View {
                 Text(languageFullName)
                     .fontWeight(.light)
                     .font(.body)
-                
+
                 Text(language.uppercased())
                     .fontWeight(.ultraLight)
                     .font(.caption)
@@ -96,7 +93,6 @@ struct WordDetailsView: View {
                 .stroke(Color.purple, lineWidth: 1)
         )
     }
-    
 }
 
 struct WordDetailsView_Previews: PreviewProvider {

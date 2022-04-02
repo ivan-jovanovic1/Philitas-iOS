@@ -8,10 +8,6 @@
 import Foundation
 
 protocol UserMethods {
-    
     func login(payload: Request.User) async throws -> Response.BaseResponse<Response.UserData>
-    
     func userFromToken() async throws -> Response.BaseResponse<Response.UserData>
-
 }
-

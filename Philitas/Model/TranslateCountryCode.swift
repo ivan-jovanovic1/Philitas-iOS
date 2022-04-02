@@ -5,7 +5,6 @@
 //  Created by Ivan Jovanović on 27/03/2022.
 //
 
-
 /// Country codes from `https://cloud.google.com/translate/docs/languages`
 enum TranslateCountryCode: String, CaseIterable {
     /// Czech
@@ -41,11 +40,10 @@ enum TranslateCountryCode: String, CaseIterable {
 }
 
 extension TranslateCountryCode: Identifiable {
-    var id: String { self.rawValue }
+    var id: String { rawValue }
 }
 
 extension TranslateCountryCode {
-    
     var sloveneTranslate: String {
         switch self {
         case .cz:
@@ -81,4 +79,3 @@ extension TranslateCountryCode {
         }
     }
 }
-

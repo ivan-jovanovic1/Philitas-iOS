@@ -8,10 +8,8 @@
 import Foundation
 
 protocol WordMethods {
-    
     func words(
         page: Int?,
         pageSize: Int
     ) async throws -> Response.BaseResponse<[Response.Word]>
-    
 }

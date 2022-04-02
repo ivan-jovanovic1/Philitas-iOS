@@ -7,22 +7,19 @@
 
 import SwiftUI
 
-
 struct ProfileView: View {
-    
     @EnvironmentObject private var session: Session
     @StateObject private var model = ProfileModel()
     @State private var isSheetPresented = false
-        
+
     var body: some View {
         VStack {
             if session.user == nil {
                 Text("Hello,xr world!")
-                
-                
+
                 Button {
                     isSheetPresented = true
-                } label:  {
+                } label: {
                     Text("Prijava")
                 }
             } else {
@@ -35,7 +32,6 @@ struct ProfileView: View {
         .onAppear {
             isSheetPresented = session.user == nil
         }
-        
     }
 }
 

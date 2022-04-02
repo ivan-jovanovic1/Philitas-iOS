@@ -6,12 +6,10 @@
 //
 
 extension Response {
-    
     struct BaseResponse<T: Decodable>: Decodable {
         let pagination: Pagination?
         let errorMessage: String?
-        let errorCode: Int? 
+        let errorCode: Int?
         let data: T
     }
-    
 }
