@@ -11,10 +11,6 @@ import Foundation
 extension WordDetailsStore {
     
     struct ViewModel: Equatable {
-        static func == (lhs: WordDetailsStore.ViewModel, rhs: WordDetailsStore.ViewModel) -> Bool {
-            lhs.id == rhs.id
-        }
-        
         let id: String
         /// The word in its main language
         let word: String
@@ -24,6 +20,10 @@ extension WordDetailsStore {
         let language: String
         /// An array of all dictionaries with their explanations
         let dictionaries: [Dictionary]
+        
+        static func == (lhs: WordDetailsStore.ViewModel, rhs: WordDetailsStore.ViewModel) -> Bool {
+            lhs.id == rhs.id
+        }
     }
 
     struct Dictionary: Identifiable{
