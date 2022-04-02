@@ -11,3 +11,10 @@ struct Translation: Decodable {
     let language: String
     let word: String
 }
+
+// MARK: - Identifiable conformation
+extension Translation: Identifiable {
+    var id: String {
+        language+word
+    }
+}
