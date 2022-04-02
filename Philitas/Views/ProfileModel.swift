@@ -16,7 +16,7 @@ class ProfileModel: ObservableObject {
 
 extension ProfileModel {
 
-    func checkIfLogged() {
+    @MainActor func checkIfLogged() {
         if session?.user == nil {
             presentedSubview = .login
         }

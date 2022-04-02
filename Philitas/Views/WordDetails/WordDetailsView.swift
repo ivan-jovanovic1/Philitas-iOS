@@ -57,7 +57,7 @@ struct WordDetailsView: View {
         }
         .onAppear(perform: model.loadWordDetails)
         .sheet(
-            isPresented: model.isPresented(subview: .translate),
+            isPresented: model.presented?.isPresented(subview: .translate) ?? .constant(false),
             content: translateSheet
         )
     }

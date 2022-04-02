@@ -9,16 +9,19 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @EnvironmentObject private var session: Session
+    @Environment(\.dismiss) private var dismiss
+
     @State var isValidData = true
     @StateObject private var model: LoginModel
     init(session: Session) {
-        self._model = StateObject(wrappedValue: LoginModel(session: session))
+        self._model = StateObject(wrappedValue: LoginModel())
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-           loginSection()
-            .padding(.horizontal, 16)
+            loginSection()
+                .padding(.horizontal, 16)
             
             LineDivider("ALI")
                 .padding(.horizontal, 16)
@@ -28,6 +31,12 @@ struct LoginView: View {
             button("Registracija", action: {})
                 .padding(.horizontal, 16)
                 .hidden()
+        }
+        .onReceive(model.$userData) {
+            if let value = $0 {
+                session.user = value
+                dismiss()
+            }
         }
     }
 }
@@ -55,11 +64,6 @@ extension LoginView {
             }
             .textFieldStyle(.roundedBorder)
             .padding(.bottom, 80)
-        }
-        .onAppear {
-            Task {
-                await model.login()
-            }
         }
     }
     

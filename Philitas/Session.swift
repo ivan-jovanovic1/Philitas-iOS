@@ -7,34 +7,38 @@
 
 import Foundation
 
+@MainActor
 class Session: ObservableObject {
     
-    @Published var user: Response.User?
+    @Published var user: Response.UserData?
     let service: UserMethods
     
     init(service: UserMethods = UserService()) {
+        APIConfigure.configure()
         self.service = service
     }
 }
 
 extension Session {
     
-    func verifyJWSToken() {
-        guard let token = UserDefaults.standard.jwsToken else {
+    @Sendable
+    func verifyJWSToken() async {
+        guard UserDefaults.standard.jwsToken != nil else {
+            user = nil
             return
         }
-        
-        // TODO: Add method to the back-end which returns isLoggedIn bool property.
-        // service.verifyJWSToken(...) { [weak self] in
-        // if let user = $0 {
-        // self?.user = user
-        // } else {
-        // UserDefaults.standard.jwsToken = nil
-        // }
-        //
-        //if let error = $1 {
-        //  self?.handleError(error)
-        //}
+ 
+        do {
+            user = try await service.userFromToken().data
+            print(String(describing: user))
+        } catch {
+            handleError(error)
+        }
+    }
+    
+    private func handleError(_ error: any Error) {
+        UserDefaults.standard.jwsToken = nil
+        PHLogger.networking.error("\(error.localizedDescription)")
     }
     
 }

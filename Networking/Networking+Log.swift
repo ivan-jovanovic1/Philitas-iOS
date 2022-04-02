@@ -23,7 +23,7 @@ extension Networking {
         )
     }
     
-    private func logResponse(response: URLResponse, data: Data) {
+    static func logResponse(response: URLResponse, data: Data) {
         Networking.logger.debug(
             """
             

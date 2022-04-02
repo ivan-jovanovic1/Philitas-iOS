@@ -10,15 +10,14 @@ import Foundation
 @MainActor
 class LoginModel: ObservableObject {
     
-    let session: Session
     @Published var username: String
     @Published var password: String
+    @Published var userData: Response.UserData?
     
     @Published var showInvalidInput: Bool = false
     let service: any UserMethods
     
-    init(session: Session, service: any UserMethods = UserService()) {
-        self.session = session
+    init(service: any UserMethods = UserService()) {
         self.service = service
         self.username = ""
         self.password = ""
@@ -41,16 +40,11 @@ extension LoginModel {
         let payload = Request.User(username: username, password: password)
         
         do {
-            let response = try await service.login(payload: payload)
-//            UserDefaults.standard.jwsToken = response.data.jwsToken
-            
-        } catch let error as Networking.NetworkError {
-            PHLogger.networking.error("\(error.description)")
+            userData = try await service.login(payload: payload).data
+            UserDefaults.standard.jwsToken = userData?.jwsToken
         } catch {
             PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
         }
-        
-        
     }
     
 }

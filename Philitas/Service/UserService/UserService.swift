@@ -8,14 +8,14 @@
 import Foundation
 
 class UserService: UserMethods {
-    
-    func login(payload: Request.User) async throws -> Response.User {
-        try await APIRequest(
-            Endpoint.login,
-            method: .post
-        )
-        .setBody(payload)
-        .perform()
+    func login(payload: Request.User) async throws -> Response.BaseResponse<Response.UserData> {
+        try await APIRequest(Endpoint.login, method: .post)
+            .setBody(payload)
+            .perform()
     }
-    
+
+    func userFromToken() async throws -> Response.BaseResponse<Response.UserData> {
+        try await APIRequest(Endpoint.verifyToken, method: .get)
+            .perform()
+    }
 }

@@ -10,15 +10,21 @@ import Foundation
 
 @MainActor
 class DictionaryModel: ObservableObject {
-    let pageSize: Int
-    var pagination: Pagination? = nil
+
+    // MARK: - State
     
     @Published var words: [ViewModel] = []
     @Published var wordsFromSearch = false
     @Published var searchString = ""
-    @Published var searchWords: [Response.Word] = []
-
-    let service: any WordMethods
+    @Published var searchWords: [ViewModel] = []
+    
+    // MARK: - Internals
+    
+    private let pageSize: Int
+    private var pagination: Pagination? = nil
+    private let service: any WordMethods
+    
+    // MARK: - Init
     
     init(
         pageSize: Int = 25,
@@ -29,66 +35,50 @@ class DictionaryModel: ObservableObject {
         self.words = words
         self.service = service
     }
-    
 }
+
+// MARK: - Actions
 
 extension DictionaryModel {
     
     @Sendable
     func loadWords() async {
-        do {
-            let response = try await service.words(page: pagination?.nextPage(), pageSize: pageSize)
-            words = Self.map(response)
-            
-        } catch let error as Networking.NetworkError {
-            PHLogger.networking.error("\(error.description)")
-        } catch {
-            print("Unknown error: \(error.localizedDescription)")
+        guard let response = try? await service.words(
+            page: pagination?.nextPage(),
+            pageSize: pageSize
+        ) else {
+            return
         }
+        
+        words = Self.map(response)
     }
     
     func searchForWords() {
         guard !searchString.isEmpty else { return }
-        
-        //        let request = AF.request("http://localhost:3002/words/nekaj/1")
-//            .serializingDecodable(Response.Word.self)
-//
-//        Task {
-//
-//            if let word = await request.response.value {
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.searchWords.append(word)
-//                }
-//            }
-//        }
     }
     
     func shouldShowNextPage(word: ViewModel) -> Bool {
-//        print("\(pagination?.hasNextPage() as Any) and \(word.id == words.last?.id)")
        return word.id == words.last?.id && pagination?.hasNextPage() ?? false
     }
-    
 }
 
-extension DictionaryModel {
-    struct ViewModel: Identifiable {
-        let id: String
-        let word: String
-        let language: String
-        let translation: String
-    }
-}
-
+// MARK: - Private
 
 private extension DictionaryModel {
     
     static func map(_ model: Response.BaseResponse<[Response.Word]>) -> [ViewModel] {
-        return model.data.compactMap { word -> DictionaryModel.ViewModel in
+        model.data.compactMap { word -> DictionaryModel.ViewModel in
             
-            let translations = word.translations?.filter { translation in  word.language == "sl" ? translation.language != "en" : translation.language != "sl" }
+            let translations = word.translations?.filter { translation in
+                word.language == "sl" ? translation.language != "en" : translation.language != "sl"
+            }
             
-            return DictionaryModel.ViewModel(id: word._id, word: word.word, language: word.language, translation: translations?.first?.word ?? "")
-            
+            return DictionaryModel.ViewModel(
+                id: word._id,
+                word: word.word,
+                language: word.language,
+                translation: translations?.first?.word ?? ""
+            )
         }
     }
 

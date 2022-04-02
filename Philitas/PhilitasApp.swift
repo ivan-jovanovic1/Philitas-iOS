@@ -32,14 +32,9 @@ fileprivate extension PhilitasApp {
         
         var body: some View {
             DashboardView()
-                .onAppear(perform: session.verifyJWSToken)
-                .task {
-                    let userService = UserService()
-                    
-                    let result = try? await userService.login(payload: .init(username: "IvanFERI", password: "IvanFERI"))
-                    
-            
-                }
+                .task(session.verifyJWSToken)
+                
+                
             
         }
         

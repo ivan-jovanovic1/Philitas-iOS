@@ -65,8 +65,9 @@ public extension APIRequest {
         
         Networking.logRequest(request: self.request)
         
+        
         // Uncomment the following line if you want to see the response
-        // Networking.logResponse(response: response, data: data)
+//         Networking.logResponse(response: response, data: data)
         
         if let error = Networking.Response.verify(response: response) {
             throw error

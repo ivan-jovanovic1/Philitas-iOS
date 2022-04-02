@@ -12,21 +12,28 @@ struct ProfileView: View {
     
     @EnvironmentObject private var session: Session
     @StateObject private var model = ProfileModel()
+    @State private var isSheetPresented = false
         
     var body: some View {
         VStack {
-            Text("Hello, world!")
-        }
-        .padding()
-        .sheet(
-            isPresented: .constant(true)
-        ) {
-            if let session = model.session {
-                LoginView(session: session)
+            if session.user == nil {
+                Text("Hello,xr world!")
+                
+                
+                Button {
+                    isSheetPresented = true
+                } label:  {
+                    Text("Prijava")
+                }
+            } else {
+                Text("Seznam")
             }
         }
+        .sheet(isPresented: $isSheetPresented) {
+            LoginView(session: session)
+        }
         .onAppear {
-            model.session = session
+            isSheetPresented = session.user == nil
         }
         
     }

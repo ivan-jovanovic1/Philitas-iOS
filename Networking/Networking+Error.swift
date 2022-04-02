@@ -23,7 +23,7 @@ public extension Networking {
 
 public extension Networking.NetworkError {
     
-    var description: String {
+    var localizedDescription: String {
         switch self {
         case .invalidURL(let url):
             return "URL \(url) is not valid."

@@ -44,6 +44,7 @@
 		592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
+		596B64EA27F7C3D500EF99A4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596B64E927F7C3D500EF99A4 /* ViewModel.swift */; };
 		597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordMethods.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
@@ -52,7 +53,6 @@
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
 		5986B96F27F7B6BD00703697 /* Networking+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96E27F7B6BD00703697 /* Networking+Log.swift */; };
 		5986B97127F7B74A00703697 /* Networking+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B97027F7B74A00703697 /* Networking+Response.swift */; };
-		59C890B427F21CAA008956B3 /* URLParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B327F21CAA008956B3 /* URLParams.swift */; };
 		59C890B927F21EB1008956B3 /* Request+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890B827F21EB1008956B3 /* Request+User.swift */; };
 		59C890BB27F21EDF008956B3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BA27F21EDF008956B3 /* Request.swift */; };
 		59C890BD27F21EF0008956B3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BC27F21EF0008956B3 /* Response.swift */; };
@@ -122,6 +122,7 @@
 		592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+isPresented.swift"; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
+		596B64E927F7C3D500EF99A4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		597A55D027F25FAB00A92CC9 /* WordMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMethods.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -130,7 +131,6 @@
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
 		5986B96E27F7B6BD00703697 /* Networking+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Log.swift"; sourceTree = "<group>"; };
 		5986B97027F7B74A00703697 /* Networking+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Response.swift"; sourceTree = "<group>"; };
-		59C890B327F21CAA008956B3 /* URLParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParams.swift; sourceTree = "<group>"; };
 		59C890B827F21EB1008956B3 /* Request+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+User.swift"; sourceTree = "<group>"; };
 		59C890BA27F21EDF008956B3 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		59C890BC27F21EF0008956B3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -196,6 +196,7 @@
 		5910CBE327F0C68D00841351 = {
 			isa = PBXGroup;
 			children = (
+				590C519027F64D7B003D26F9 /* Networking */,
 				5910CBEE27F0C68D00841351 /* Philitas */,
 				5910CBFF27F0C68E00841351 /* PhilitasTests */,
 				5910CC0927F0C68E00841351 /* PhilitasUITests */,
@@ -216,7 +217,6 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
-				590C519027F64D7B003D26F9 /* Networking */,
 				597A55D227F2602300A92CC9 /* Managers */,
 				592CABC227F111F90093F879 /* Service */,
 				5910CC3A27F0C93A00841351 /* Extensions */,
@@ -295,6 +295,7 @@
 			children = (
 				5910CC2A27F0C83A00841351 /* DictionaryView.swift */,
 				5910CC4127F0CA6500841351 /* DictionaryModel.swift */,
+				596B64E927F7C3D500EF99A4 /* ViewModel.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -355,10 +356,9 @@
 		592CABC227F111F90093F879 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				592CABC327F112760093F879 /* Endpoint.swift */,
 				597A55CF27F25F5E00A92CC9 /* WordService */,
 				59C890B527F21DC7008956B3 /* UserService */,
-				592CABC327F112760093F879 /* Endpoint.swift */,
-				59C890B327F21CAA008956B3 /* URLParams.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -535,7 +535,6 @@
 			files = (
 				59C890B927F21EB1008956B3 /* Request+User.swift in Sources */,
 				5910CC4527F0CAEA00841351 /* WordDetailsModel.swift in Sources */,
-				59C890B427F21CAA008956B3 /* URLParams.swift in Sources */,
 				590C519227F64DB3003D26F9 /* Networking.swift in Sources */,
 				590C519E27F66E4D003D26F9 /* Networking+HttpMethod.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
@@ -573,6 +572,7 @@
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
 				5986B97127F7B74A00703697 /* Networking+Response.swift in Sources */,
 				597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */,
+				596B64EA27F7C3D500EF99A4 /* ViewModel.swift in Sources */,
 				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
 				59C890C127F2215F008956B3 /* UserMethods.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
