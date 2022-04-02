@@ -21,9 +21,9 @@ public extension Networking {
 }
 
 
-public extension Networking.NetworkError {
+extension Networking.NetworkError: LocalizedError {
     
-    var localizedDescription: String {
+    public var errorDescription: String? {
         switch self {
         case .invalidURL(let url):
             return "URL \(url) is not valid."
