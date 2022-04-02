@@ -10,7 +10,7 @@ import OSLog
 
 extension Networking {
     
-    static let logger = Logger(subsystem: "ivan.Philitas.networking", category: "N")
+    static let logger = Logger(subsystem: "ivan.Philitas.networking", category: "NetworkingLibrary")
     
     static func logRequest(request: URLRequest) {
         Networking.logger.debug(
