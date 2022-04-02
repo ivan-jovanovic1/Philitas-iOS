@@ -127,9 +127,9 @@ extension WordDetailsView {
 #if DEBUG
 	extension WordDetailsView {
 		fileprivate init(
-			_ model: WordDetailsStore
+			_ store: WordDetailsStore
 		) {
-			_model = StateObject(wrappedValue: model)
+			_model = StateObject(wrappedValue: store)
 		}
 	}
 
@@ -152,13 +152,13 @@ extension WordDetailsView {
 				]
 			)
 			var body: some View {
-				WordDetailsView(model)
+				WordDetailsView(store)
 			}
 
-			var model: WordDetailsStore {
-				let model = WordDetailsStore(wordId: "")
-				model.state = .data(word)
-				return model
+			var store: WordDetailsStore {
+				let store = WordDetailsStore(wordId: "")
+				store.state = .data(word)
+				return store
 			}
 		}
 

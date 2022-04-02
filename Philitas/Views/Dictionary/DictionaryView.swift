@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct DictionaryView: View {
-	@StateObject private var model: DictionaryModel
+	@StateObject private var store: DictionaryStore
 
 	init() {
-		_model = StateObject(wrappedValue: DictionaryModel())
+		_store = StateObject(wrappedValue: DictionaryStore())
 	}
 
 	var body: some View {
 		NavigationView {
-			List(model.words) { word in
+			List(store.words) { word in
                 NavigationLink(destination: WordDetailsView(wordId: word.id)) {
 					WordRow(
 						word: word.word,
@@ -25,15 +25,15 @@ struct DictionaryView: View {
 					)
 				}
 
-				if model.shouldShowNextPage(word: word) {
+				if store.shouldShowNextPage(word: word) {
 					ProgressView()
-						.task(model.loadWords)
+						.task(store.loadWords)
 					//                        .onAppear(perform: model.loadWords)
 				}
 			}
 
 			.searchable(
-				text: $model.searchString,
+				text: $store.searchString,
 				placement: .navigationBarDrawer(displayMode: .always),
 				prompt: "Iskanje"
 			) {
@@ -48,10 +48,10 @@ struct DictionaryView: View {
 			.navigationTitle("Slovar")
 		}
 		.background(.red)
-		.task(model.loadWords)
-		.refreshable(action: model.loadWords)
-		.onReceive(model.$searchString.debounce(for: 0.5, scheduler: DispatchQueue.main)) { _ in
-			model.searchForWords()
+		.task(store.loadWords)
+		.refreshable(action: store.loadWords)
+		.onReceive(store.$searchString.debounce(for: 0.5, scheduler: DispatchQueue.main)) { _ in
+			store.searchForWords()
 		}
 	}
 }

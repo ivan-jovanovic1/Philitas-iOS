@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class DictionaryModel: ObservableObject {
+class DictionaryStore: ObservableObject {
     // MARK: - State
 
     @Published var words: [ViewModel] = []
@@ -37,7 +37,7 @@ class DictionaryModel: ObservableObject {
 
 // MARK: - Actions
 
-extension DictionaryModel {
+extension DictionaryStore {
     @Sendable
     func loadWords() async {
         guard let response = try? await service.words(
@@ -56,25 +56,5 @@ extension DictionaryModel {
 
     func shouldShowNextPage(word: ViewModel) -> Bool {
         return word.id == words.last?.id && pagination?.hasNextPage() ?? false
-    }
-}
-
-// MARK: - Private
-
-private extension DictionaryModel {
-    static func map(_ model: Response.BaseResponse<[Response.Word]>) -> [ViewModel] {
-        model.data.compactMap { word -> DictionaryModel.ViewModel in
-
-            let translations = word.translations?.filter { translation in
-                word.language == "sl" ? translation.language != "en" : translation.language != "sl"
-            }
-
-            return DictionaryModel.ViewModel(
-                id: word._id,
-                word: word.word,
-                language: word.language,
-                translation: translations?.first?.word ?? ""
-            )
-        }
     }
 }

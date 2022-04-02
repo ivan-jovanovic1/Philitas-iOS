@@ -13,7 +13,6 @@ class Session: ObservableObject {
     let service: UserMethods
 
     init(service: UserMethods = UserService()) {
-        APIConfigure.configure()
         self.service = service
     }
 }
