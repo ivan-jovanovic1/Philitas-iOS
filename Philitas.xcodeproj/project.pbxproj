@@ -76,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5903FC7A27F99D6B00ED0D67 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = ../../Networking; sourceTree = "<group>"; };
 		590C518E27F63606003D26F9 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		590C519727F64F14003D26F9 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		590C519F27F67627003D26F9 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
@@ -174,6 +175,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		5903FC7927F99D6B00ED0D67 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				5903FC7A27F99D6B00ED0D67 /* Networking */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		590C518D27F63454003D26F9 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +195,7 @@
 		5910CBE327F0C68D00841351 = {
 			isa = PBXGroup;
 			children = (
+				5903FC7927F99D6B00ED0D67 /* Packages */,
 				5910CBEE27F0C68D00841351 /* Philitas */,
 				5910CBFF27F0C68E00841351 /* PhilitasTests */,
 				5910CC0927F0C68E00841351 /* PhilitasUITests */,
