@@ -17,7 +17,6 @@
 		590C519E27F66E4D003D26F9 /* Networking+HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519D27F66E4D003D26F9 /* Networking+HttpMethod.swift */; };
 		590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519F27F67627003D26F9 /* AsyncButton.swift */; };
 		5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CBEF27F0C68D00841351 /* PhilitasApp.swift */; };
-		5910CBF227F0C68D00841351 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CBF127F0C68D00841351 /* ContentView.swift */; };
 		5910CBF427F0C68D00841351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5910CBF327F0C68D00841351 /* Assets.xcassets */; };
 		5910CBF727F0C68D00841351 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5910CBF627F0C68D00841351 /* Preview Assets.xcassets */; };
 		5910CC0127F0C68E00841351 /* PhilitasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0027F0C68E00841351 /* PhilitasTests.swift */; };
@@ -98,7 +97,6 @@
 		590C519F27F67627003D26F9 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		5910CBEC27F0C68D00841351 /* Philitas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Philitas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5910CBEF27F0C68D00841351 /* PhilitasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasApp.swift; sourceTree = "<group>"; };
-		5910CBF127F0C68D00841351 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5910CBF327F0C68D00841351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5910CBF627F0C68D00841351 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5910CBFC27F0C68E00841351 /* PhilitasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhilitasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +175,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5903FC6F27F9357B00ED0D67 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
+				5986B96C27F79B2600703697 /* APIConfigure.swift */,
+				597A55D527F2658700A92CC9 /* Session.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5903FC7027F935B600ED0D67 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				592850B027F2499E007DD160 /* ProfileView.swift */,
+				592850B227F24AD5007DD160 /* ProfileModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		590C518D27F63454003D26F9 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,15 +244,13 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
-				597A55D227F2602300A92CC9 /* Managers */,
-				592CABC227F111F90093F879 /* Service */,
+				5903FC6F27F9357B00ED0D67 /* App */,
+				5910CC5327F0CD0900841351 /* Components */,
 				5910CC3A27F0C93A00841351 /* Extensions */,
+				597A55D227F2602300A92CC9 /* Managers */,
 				5910CC2C27F0C84B00841351 /* Model */,
+				592CABC227F111F90093F879 /* Service */,
 				5910CC3F27F0CA3200841351 /* Views */,
-				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
-				5986B96C27F79B2600703697 /* APIConfigure.swift */,
-				597A55D527F2658700A92CC9 /* Session.swift */,
-				5910CBF127F0C68D00841351 /* ContentView.swift */,
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
 				5910CBF527F0C68D00841351 /* Preview Content */,
 			);
@@ -290,13 +305,11 @@
 		5910CC3F27F0CA3200841351 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5910CC5327F0CD0900841351 /* Components */,
 				5910CC4627F0CB1C00841351 /* Dashboard */,
 				5910CC4027F0CA3E00841351 /* Dictionary */,
 				59C890C427F2318A008956B3 /* Login */,
+				5903FC7027F935B600ED0D67 /* Profile */,
 				5910CC4327F0CACA00841351 /* WordDetails */,
-				592850B027F2499E007DD160 /* ProfileView.swift */,
-				592850B227F24AD5007DD160 /* ProfileModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -561,7 +574,6 @@
 				5910CC4927F0CB4900841351 /* Pagination.swift in Sources */,
 				5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */,
 				59C890CA27F23663008956B3 /* LineDivider.swift in Sources */,
-				5910CBF227F0C68D00841351 /* ContentView.swift in Sources */,
 				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,
 				5986B96B27F7981E00703697 /* Networking+APIHeaders.swift in Sources */,
 				59BCF78727F8D68500B1DE8D /* WordDetailsPresentation.swift in Sources */,
