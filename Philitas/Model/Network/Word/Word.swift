@@ -27,26 +27,6 @@ extension Response {
     }
 }
 
-// MARK: - Equatable conformation
-
-extension Response.Word: Equatable {
-    static func == (lhs: Response.Word, rhs: Response.Word) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
-extension Response.Word: Comparable {
-    static func < (lhs: Response.Word, rhs: Response.Word) -> Bool {
-        return lhs.word < rhs.word
-    }
-}
-
-extension Response.Word: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(word)
-    }
-}
-
 #if DEBUG
     extension Response.Word {
         static var dummy: Response.Word {

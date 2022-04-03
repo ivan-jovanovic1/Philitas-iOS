@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct WordDetailsView: View {
-	@StateObject private var model: WordDetailsStore
+	@Environment(\.dismiss) private var dismiss
 
-	init(wordId: String) {
+	@StateObject private var model: WordDetailsStore
+	@State private var isAlertPresented = false
+	@State private var error: Error? = nil
+
+	init(
+		wordId: String
+	) {
 		_model = StateObject(wrappedValue: .init(wordId: wordId))
 	}
 
@@ -18,30 +24,39 @@ struct WordDetailsView: View {
 		Group {
 			switch model.state {
 			case .loading:
-				ProgressView()
-					.progressViewStyle(.circular)
+				wordList(Self.dummy)
+					.redacted(reason: .placeholder)
 			case let .error(error):
-				Text("Prislo je do napake \(error.localizedDescription)")
+				VStack {
+                    Image(systemName: "exclamationmark.circle")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.padding(.all, 40)
+                        .foregroundColor(.red)
+                        .opacity(0.5)
+				}
+				.onAppear {
+					isAlertPresented.toggle()
+					self.error = error
+				}
+
 			case let .data(viewModel):
 				wordList(viewModel)
 			}
 		}
-		.animation(.easeInOut, value: model.state)
-		.navigationTitle("Podrobnosti")
-		.toolbar {
-			ToolbarItem(placement: .status) {
-				Button {
-					model.presented = .translate
-				} label: {
-					Text("Prevedi")
-				}
-			}
-		}
-		.onAppear(perform: model.loadWordDetails)
 		.sheet(
-			isPresented: model.presented?.isPresented(subview: .translate) ?? .constant(false),
+			isPresented: model.isPresented(view: .translate),
 			content: translateSheet
 		)
+		.alert(isPresented: $isAlertPresented) {
+			Alert(
+				title: Text("Prišlo je do napake"),
+				message: Text("\(error?.localizedDescription ?? "")"),
+				dismissButton: .cancel(Text("Zapri"), action: { self.dismiss() })
+			)
+		}
+		.task(model.loadWordDetails)
+
 	}
 }
 
@@ -77,8 +92,19 @@ extension WordDetailsView {
 					}
 				}
 			}
+
 		}
 		.listStyle(.insetGrouped)
+		.navigationTitle("Podrobnosti")
+		.toolbar {
+			ToolbarItem(placement: .status) {
+				Button {
+					model.presented = .translate
+				} label: {
+					Text("Prevedi")
+				}
+			}
+		}
 	}
 
 	@ViewBuilder
@@ -122,48 +148,39 @@ extension WordDetailsView {
 
 }
 
+extension WordDetailsView {
+	fileprivate init(
+		_ store: WordDetailsStore
+	) {
+		_model = StateObject(wrappedValue: store)
+	}
+
+	fileprivate static var dummy: WordDetailsStore.ViewModel {
+		WordDetailsStore.ViewModel(
+			id: UUID().uuidString,
+			word: "beseda",
+			translations: [
+				Translation(language: "en", word: "word"),
+				Translation(language: "sr", word: "реч"),
+			],
+			language: "sl",
+			dictionaries: [
+				WordDetailsStore.Dictionary(
+					explanations: .init(repeating: "some explanation", count: 10),
+					dictionaryName: "Some dictionary",
+					source: "www.example.com"
+				)
+			]
+		)
+	}
+}
+
 // MARK: - Previews
 
 #if DEBUG
-	extension WordDetailsView {
-		fileprivate init(
-			_ store: WordDetailsStore
-		) {
-			_model = StateObject(wrappedValue: store)
-		}
-	}
-
 	struct WordDetailsView_Previews: PreviewProvider {
-		struct Preview: View {
-			let word = WordDetailsStore.ViewModel(
-				id: UUID().uuidString,
-				word: "beseda",
-				translations: [
-					Translation(language: "en", word: "word"),
-					Translation(language: "sr", word: "реч"),
-				],
-				language: "sl",
-				dictionaries: [
-					WordDetailsStore.Dictionary(
-						explanations: .init(repeating: "some explanation", count: 10),
-						dictionaryName: "Some dictionary",
-						source: "www.example.com"
-					)
-				]
-			)
-			var body: some View {
-				WordDetailsView(store)
-			}
-
-			var store: WordDetailsStore {
-				let store = WordDetailsStore(wordId: "")
-				store.state = .data(word)
-				return store
-			}
-		}
-
 		static var previews: some View {
-			Preview()
+			WordDetailsView(wordId: "623f5833575f79e453e16a40")
 				.previewDevice("iPhone 13 Pro")
 		}
 	}

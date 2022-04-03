@@ -17,7 +17,7 @@ struct DictionaryView: View {
 	var body: some View {
 		NavigationView {
 			List(store.words) { word in
-                NavigationLink(destination: WordDetailsView(wordId: word.id)) {
+                NavigationLink(destination: WordDetailsView(wordId: word._id)) {
 					WordRow(
 						word: word.word,
 						language: word.language,

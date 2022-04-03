@@ -8,15 +8,27 @@
 import Networking
 
 class WordService: WordServiceRepresentable {
+	func singleFromId(id: String) async throws -> Response.BaseResponse<Response.Word> {
+		try await APIRequest(
+			Endpoint.wordFromId,
+            params: [
+                "id": id
+            ],
+			method: .get
+		)
+		.perform()
+
+	}
+
 	func words(
 		page: Int?,
 		pageSize: Int
 	) async throws -> Response.BaseResponse<[Response.Word]> {
 		try await APIRequest(
 			Endpoint.listOfWords,
-			params: [
-				"page": page ?? 1,
-				"pageSize": pageSize,
+            queryItems: [
+				"page": String(page ?? 1),
+				"pageSize": String(pageSize),
 			],
 			method: .get
 		)

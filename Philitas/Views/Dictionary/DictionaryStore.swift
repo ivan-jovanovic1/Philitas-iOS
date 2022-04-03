@@ -47,7 +47,8 @@ extension DictionaryStore {
             return
         }
 
-        words = Self.map(response)
+        words.update(with: Self.map(response))
+        pagination = response.pagination
     }
 
     func searchForWords() {

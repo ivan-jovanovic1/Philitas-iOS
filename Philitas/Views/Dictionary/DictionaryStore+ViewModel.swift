@@ -7,9 +7,31 @@
 
 extension DictionaryStore {
     struct ViewModel: Identifiable {
-        let id: String
+        let _id: String
         let word: String
         let language: String
         let translation: String
+        
+        var id: String {
+            word
+        }
+    }
+}
+
+extension DictionaryStore.ViewModel: Equatable {
+    static func == (lhs: DictionaryStore.ViewModel, rhs: DictionaryStore.ViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+extension DictionaryStore.ViewModel: Comparable {
+    static func < (lhs: DictionaryStore.ViewModel, rhs: DictionaryStore.ViewModel) -> Bool {
+        return lhs.word < rhs.word
+    }
+}
+
+extension DictionaryStore.ViewModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(word)
     }
 }

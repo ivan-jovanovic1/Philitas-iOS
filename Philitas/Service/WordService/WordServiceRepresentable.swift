@@ -8,8 +8,11 @@
 import Foundation
 
 protocol WordServiceRepresentable {
-    func words(
-        page: Int?,
-        pageSize: Int
-    ) async throws -> Response.BaseResponse<[Response.Word]>
+
+	func singleFromId(id: String) async throws -> Response.BaseResponse<Response.Word>
+
+	func words(
+		page: Int?,
+		pageSize: Int
+	) async throws -> Response.BaseResponse<[Response.Word]>
 }

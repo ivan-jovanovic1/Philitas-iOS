@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == Response.Word {
+extension Array where Element == DictionaryStore.ViewModel {
     /// Updates current array of words with unique elements.
     mutating func update(with new: [Element]) {
         append(contentsOf: new)

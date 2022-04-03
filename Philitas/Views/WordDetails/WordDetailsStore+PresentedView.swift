@@ -1,13 +1,14 @@
 //
-//  WordDetailsPresentation.swift
+//  WordDetailsStore+PresentedView.swift
 //  Philitas
 //
 //  Created by Ivan Jovanović on 02/04/2022.
 //
 
-import Foundation
+import SwiftUI
+
 extension WordDetailsStore {
-    enum Presentation: Int, Identifiable {
+    enum PresentedView: Int, Identifiable {
         case translate
 
         var id: Int {
@@ -15,3 +16,5 @@ extension WordDetailsStore {
         }
     }
 }
+
+

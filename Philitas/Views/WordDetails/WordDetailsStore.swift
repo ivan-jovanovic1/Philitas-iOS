@@ -7,42 +7,33 @@
 
 import SwiftUI
 
-class WordDetailsStore: ObservableObject {
-	@Published private(set) var wordId: String
-	@Published var presented: Presentation? = .none
-    @Published var state: DataState<ViewModel> = .loading
+class WordDetailsStore: ObservableObject, ViewPresentable {
+	@Published var presented: PresentedView?
+	@Published var state: DataState<ViewModel> = .loading
 
-	var title: String {
-		""
-		//        singleWord.word
-	}
-
-	var subtitle: String? {
-		""
-		//        if singleWord.language == "sl" {
-		//            return singleWord.translatedWord
-		//        }
-		//        return singleWord.word
-	}
-
-	init(wordId: String) {
+    private let wordId: String
+    private let service: any WordServiceRepresentable
+    
+    init(
+		wordId: String,
+        service: any WordServiceRepresentable = WordService()
+	) {
 		self.wordId = wordId
+        self.service = service
 	}
 }
 
 extension WordDetailsStore {
-    
-    func loadWordDetails() {
-    }
-    
-	func isPresented(view: Presentation) -> Binding<Bool> {
-		Binding {
-			view == self.presented
-		} set: {
-            if !$0 {
-                self.presented = .none
-            }
-		}
+
+	@MainActor
+    @Sendable
+	func loadWordDetails() async {
+        do {
+            let wordFromResponse = try await service.singleFromId(id: wordId).data
+            state = .data(Self.map(wordFromResponse))
+        } catch {
+            state = .error(error)
+        }
+
 	}
 }
-

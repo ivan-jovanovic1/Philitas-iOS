@@ -15,7 +15,7 @@ extension DictionaryStore {
             }
 
             return DictionaryStore.ViewModel(
-                id: word._id,
+                _id: word._id,
                 word: word.word,
                 language: word.language,
                 translation: translations?.first?.word ?? ""
