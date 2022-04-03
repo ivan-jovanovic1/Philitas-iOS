@@ -28,6 +28,7 @@ extension WordDetailsStore {
 	@MainActor
     @Sendable
 	func loadWordDetails() async {
+        state = .loading
         do {
             let wordFromResponse = try await service.singleFromId(id: wordId).data
             state = .data(Self.map(wordFromResponse))
