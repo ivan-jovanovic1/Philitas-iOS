@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DictionaryView: View {
+
+    @Environment(\.isSearching) var isSearching
 	@StateObject private var store: DictionaryStore
 
 	init() {
@@ -29,9 +31,11 @@ struct DictionaryView: View {
 		.navigationViewStyle(.stack)
 		.background(.red)
 		.task { await store.loadWords() }
-//		.onReceive(store.$searchString.debounce(for: 0.5, scheduler: DispatchQueue.main)) { _ in
-//
-//		}
+        .onChange(of: isSearching) {
+            if !$0 {
+                store.resetSearchState()
+            }
+        }
 	}
     
     @ViewBuilder
@@ -54,23 +58,27 @@ struct DictionaryView: View {
         .searchable(
             text: $store.searchString,
             placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "Iskanje"
-        ) {
-            switch store.wordFromSearch {
-            case .loading:
-                ProgressView()
-            case .error(let error):
-                Text(error.localizedDescription)
-            case .data(let data):
-                Text(data.word)                
-            case .none:
-                EmptyView()
-            }
-        }
+            prompt: "Iskanje",
+            suggestions: searchView
+        )
         .onSubmit(of: .search) {
             Task { await store.searchForWord() }
         }
         .navigationTitle("Slovar")
+    }
+    
+    @ViewBuilder
+    func searchView() -> some View {
+        switch store.wordFromSearch {
+        case .loading:
+            ProgressView()
+        case .error(let error):
+            Text(error.localizedDescription)
+        case .data(let data):
+            Text(data.word)
+        case .none:
+            EmptyView()
+        }
     }
 }
 

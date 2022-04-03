@@ -54,7 +54,7 @@ extension DictionaryStore {
             if refreshing {
                 words = .loading
             }
-            
+
             processLoadWordsResponse(response)
         } catch {
             words = .error(error)
@@ -63,9 +63,8 @@ extension DictionaryStore {
 
     func searchForWord() async {
         guard !searchString.isEmpty else { return }
-
         wordFromSearch = .loading
-        
+
         do {
             let response = try await service.singleWord(query: searchString)
             wordFromSearch = .data(Self.mapSingle(response.data))
@@ -73,12 +72,16 @@ extension DictionaryStore {
             wordFromSearch = .error(error)
         }
     }
+    
+    func resetSearchState() {
+        searchString = ""
+        wordFromSearch = .none
+    }
 
     func shouldShowNextPage(word: ViewModel) -> Bool {
         return word.id == words.value?.last?.id && pagination?.hasNextPage() ?? false
     }
 }
-
 
 extension DictionaryStore {
     private func processLoadWordsResponse(_ response: Response.BaseResponse<[Response.Word]>) {
