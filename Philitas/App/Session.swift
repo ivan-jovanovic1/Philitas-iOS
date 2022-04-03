@@ -10,9 +10,9 @@ import Foundation
 @MainActor
 class Session: ObservableObject {
     @Published var user: Response.UserData?
-    let service: UserMethods
+    let service: any UserServiceRepresentable
 
-    init(service: UserMethods = UserService()) {
+    init(service: any UserServiceRepresentable = UserService()) {
         self.service = service
     }
 }

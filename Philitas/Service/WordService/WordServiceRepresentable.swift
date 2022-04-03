@@ -1,5 +1,5 @@
 //
-//  WordMethods.swift
+//  WordServiceRepresentable.swift
 //  Philitas
 //
 //  Created by Ivan Jovanović on 28/03/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WordMethods {
+protocol WordServiceRepresentable {
     func words(
         page: Int?,
         pageSize: Int

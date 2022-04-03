@@ -5,6 +5,8 @@
 //  Created by Ivan Jovanović on 27/03/2022.
 //
 
+import Networking
+
 enum Endpoint: String, BaseURL {
     case listOfWords = "/words/list"
     case login = "/users/login"

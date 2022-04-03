@@ -14,9 +14,9 @@ class LoginModel: ObservableObject {
     @Published var userData: Response.UserData?
 
     @Published var showInvalidInput: Bool = false
-    let service: any UserMethods
+    let service: any UserServiceRepresentable
 
-    init(service: any UserMethods = UserService()) {
+    init(service: any UserServiceRepresentable = UserService()) {
         self.service = service
         username = ""
         password = ""

@@ -20,14 +20,14 @@ class DictionaryStore: ObservableObject {
 
     private let pageSize: Int
     private var pagination: Pagination?
-    private let service: any WordMethods
+    private let service: any WordServiceRepresentable
 
     // MARK: - Init
 
     init(
         pageSize: Int = 25,
         words: [ViewModel] = [],
-        service: any WordMethods = WordService()
+        service: any WordServiceRepresentable = WordService()
     ) {
         self.pageSize = pageSize
         self.words = words

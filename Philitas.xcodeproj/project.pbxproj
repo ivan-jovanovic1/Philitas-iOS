@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5903FC8027F9A89100ED0D67 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 5903FC7F27F9A89100ED0D67 /* Networking */; };
 		590C518F27F63606003D26F9 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C518E27F63606003D26F9 /* Translation.swift */; };
 		590C519827F64F14003D26F9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519727F64F14003D26F9 /* Logger.swift */; };
 		590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519F27F67627003D26F9 /* AsyncButton.swift */; };
@@ -38,7 +39,7 @@
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
 		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
 		596B64EA27F7C3D500EF99A4 /* DictionaryStore+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596B64E927F7C3D500EF99A4 /* DictionaryStore+ViewModel.swift */; };
-		597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordMethods.swift */; };
+		597A55D127F25FAB00A92CC9 /* WordServiceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordServiceRepresentable.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -51,7 +52,7 @@
 		59C890BB27F21EDF008956B3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BA27F21EDF008956B3 /* Request.swift */; };
 		59C890BD27F21EF0008956B3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BC27F21EF0008956B3 /* Response.swift */; };
 		59C890BF27F220D0008956B3 /* Response+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BE27F220D0008956B3 /* Response+User.swift */; };
-		59C890C127F2215F008956B3 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C027F2215F008956B3 /* UserMethods.swift */; };
+		59C890C127F2215F008956B3 /* UserServiceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C027F2215F008956B3 /* UserServiceRepresentable.swift */; };
 		59C890C327F2220E008956B3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C227F2220E008956B3 /* UserService.swift */; };
 		59C890C627F231A9008956B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C527F231A9008956B3 /* LoginView.swift */; };
 		59C890C827F231B1008956B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C727F231B1008956B3 /* LoginModel.swift */; };
@@ -111,7 +112,7 @@
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		596B64E927F7C3D500EF99A4 /* DictionaryStore+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DictionaryStore+ViewModel.swift"; sourceTree = "<group>"; };
-		597A55D027F25FAB00A92CC9 /* WordMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMethods.swift; sourceTree = "<group>"; };
+		597A55D027F25FAB00A92CC9 /* WordServiceRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordServiceRepresentable.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -124,7 +125,7 @@
 		59C890BA27F21EDF008956B3 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		59C890BC27F21EF0008956B3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		59C890BE27F220D0008956B3 /* Response+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+User.swift"; sourceTree = "<group>"; };
-		59C890C027F2215F008956B3 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
+		59C890C027F2215F008956B3 /* UserServiceRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRepresentable.swift; sourceTree = "<group>"; };
 		59C890C227F2220E008956B3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		59C890C527F231A9008956B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		59C890C727F231B1008956B3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5903FC8027F9A89100ED0D67 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +185,13 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		5903FC7C27F9A86A00ED0D67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		590C518D27F63454003D26F9 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +209,7 @@
 				5910CBFF27F0C68E00841351 /* PhilitasTests */,
 				5910CC0927F0C68E00841351 /* PhilitasUITests */,
 				5910CBED27F0C68D00841351 /* Products */,
+				5903FC7C27F9A86A00ED0D67 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -366,7 +376,7 @@
 		597A55CF27F25F5E00A92CC9 /* WordService */ = {
 			isa = PBXGroup;
 			children = (
-				597A55D027F25FAB00A92CC9 /* WordMethods.swift */,
+				597A55D027F25FAB00A92CC9 /* WordServiceRepresentable.swift */,
 				592CABC527F113430093F879 /* WordService.swift */,
 			);
 			path = WordService;
@@ -384,7 +394,7 @@
 		59C890B527F21DC7008956B3 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
-				59C890C027F2215F008956B3 /* UserMethods.swift */,
+				59C890C027F2215F008956B3 /* UserServiceRepresentable.swift */,
 				59C890C227F2220E008956B3 /* UserService.swift */,
 			);
 			path = UserService;
@@ -416,6 +426,7 @@
 			);
 			name = Philitas;
 			packageProductDependencies = (
+				5903FC7F27F9A89100ED0D67 /* Networking */,
 			);
 			productName = Philitas;
 			productReference = 5910CBEC27F0C68D00841351 /* Philitas.app */;
@@ -565,10 +576,10 @@
 				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
 				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
-				597A55D127F25FAB00A92CC9 /* WordMethods.swift in Sources */,
+				597A55D127F25FAB00A92CC9 /* WordServiceRepresentable.swift in Sources */,
 				596B64EA27F7C3D500EF99A4 /* DictionaryStore+ViewModel.swift in Sources */,
 				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
-				59C890C127F2215F008956B3 /* UserMethods.swift in Sources */,
+				59C890C127F2215F008956B3 /* UserServiceRepresentable.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
 				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
 				590C518F27F63606003D26F9 /* Translation.swift in Sources */,
@@ -730,6 +741,7 @@
 		5910CC1127F0C68E00841351 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -758,6 +770,7 @@
 		5910CC1227F0C68E00841351 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -895,6 +908,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5903FC7F27F9A89100ED0D67 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5910CBE427F0C68D00841351 /* Project object */;
 }

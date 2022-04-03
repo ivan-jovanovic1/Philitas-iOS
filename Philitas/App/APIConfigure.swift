@@ -5,7 +5,7 @@
 //  Created by Ivan Jovanović on 01/04/2022.
 //
 
-import Foundation
+import Networking
 
 enum APIConfigure {
     static var headers: Headers {

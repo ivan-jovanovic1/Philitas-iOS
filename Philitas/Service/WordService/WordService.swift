@@ -5,9 +5,9 @@
 //  Created by Ivan Jovanović on 27/03/2022.
 //
 
-import Foundation
+import Networking
 
-class WordService: WordMethods {
+class WordService: WordServiceRepresentable {
 	func words(
 		page: Int?,
 		pageSize: Int
