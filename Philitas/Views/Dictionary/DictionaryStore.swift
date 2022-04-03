@@ -11,10 +11,11 @@ import Foundation
 class DictionaryStore: ObservableObject {
     // MARK: - State
 
-    @Published var words: [ViewModel] = []
+    @Published var words: DataState<[ViewModel]> = .loading
     @Published var wordsFromSearch = false
     @Published var searchString = ""
-    @Published var searchWords: [ViewModel] = []
+
+    @Published var wordFromSearch: DataState<ViewModel>? = .none
 
     // MARK: - Internals
 
@@ -30,7 +31,7 @@ class DictionaryStore: ObservableObject {
         service: any WordServiceRepresentable = WordService()
     ) {
         self.pageSize = pageSize
-        self.words = words
+        self.words = .loading
         self.service = service
     }
 }
@@ -39,23 +40,53 @@ class DictionaryStore: ObservableObject {
 
 extension DictionaryStore {
     @Sendable
-    func loadWords() async {
-        guard let response = try? await service.words(
-            page: pagination?.nextPage(),
-            pageSize: pageSize
-        ) else {
-            return
+    func loadWords(refreshing: Bool = false) async {
+        if refreshing {
+            pagination = nil
         }
 
-        words.update(with: Self.map(response))
-        pagination = response.pagination
+        do {
+            let response = try await service.words(
+                page: pagination?.nextPage(),
+                pageSize: pageSize
+            )
+
+            if refreshing {
+                words = .loading
+            }
+            
+            processLoadWordsResponse(response)
+        } catch {
+            words = .error(error)
+        }
     }
 
-    func searchForWords() {
+    func searchForWord() async {
         guard !searchString.isEmpty else { return }
+
+        wordFromSearch = .loading
+        
+        do {
+            let response = try await service.singleWord(query: searchString)
+            wordFromSearch = .data(Self.mapSingle(response.data))
+        } catch {
+            wordFromSearch = .error(error)
+        }
     }
 
     func shouldShowNextPage(word: ViewModel) -> Bool {
-        return word.id == words.last?.id && pagination?.hasNextPage() ?? false
+        return word.id == words.value?.last?.id && pagination?.hasNextPage() ?? false
+    }
+}
+
+
+extension DictionaryStore {
+    private func processLoadWordsResponse(_ response: Response.BaseResponse<[Response.Word]>) {
+        if let values = words.value {
+            words = .data(values.update(with: Self.map(response.data).sortByLanguage()))
+        } else {
+            words = .data(Self.map(response.data).sortByLanguage())
+        }
+        pagination = response.pagination
     }
 }
