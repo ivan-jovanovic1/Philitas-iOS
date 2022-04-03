@@ -7,19 +7,22 @@
 
 import Foundation
 extension DictionaryStore {
-    static func map(_ model: Response.BaseResponse<[Response.Word]>) -> [ViewModel] {
-        model.data.compactMap { word -> DictionaryStore.ViewModel in
-
-            let translations = word.translations?.filter { translation in
-                word.language == "sl" ? translation.language != "en" : translation.language != "sl"
-            }
-
-            return DictionaryStore.ViewModel(
-                _id: word._id,
-                word: word.word,
-                language: word.language,
-                translation: translations?.first?.word ?? ""
-            )
+    static func map(_ data: [Response.Word]) -> [ViewModel] {
+        data.compactMap { word -> ViewModel in
+            Self.mapSingle(word)
         }
     }
+    
+    static func mapSingle(_ data: Response.Word) -> ViewModel {
+        let translations = data.translations?.filter { translation in
+            data.language == "sl" ? translation.language != "en" : translation.language != "sl"
+        }
+            return ViewModel(
+            _id: data._id,
+            word: data.word,
+            language: data.language,
+            translation: translations?.first?.word ?? ""
+        )
+    }
 }
+
