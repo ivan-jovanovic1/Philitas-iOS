@@ -19,6 +19,17 @@ class WordService: WordServiceRepresentable {
 		.perform()
 
 	}
+    
+    func singleWord(query: String) async throws -> Response.BaseResponse<Response.Word> {
+        try await APIRequest(
+            Endpoint.wordFromQuery,
+            params: [
+                "word": query
+            ],
+            method: .get
+        )
+        .perform()
+    }
 
 	func words(
 		page: Int?,
