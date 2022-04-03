@@ -8,8 +8,10 @@
 import Networking
 
 enum Endpoint: String, BaseURL {
-    case listOfWords = "/words/list"
+    case listOfWords = "/words/list/all"
+
     case wordFromId = "/words/byId/{id}"
+    case wordFromQuery = "/words/{word}"
     
     case login = "/users/login"
     case verifyToken = "/users/me"
