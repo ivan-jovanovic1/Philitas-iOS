@@ -9,9 +9,22 @@ import Foundation
 
 extension Array where Element == DictionaryStore.ViewModel {
     /// Updates current array of words with unique elements.
-    mutating func update(with new: [Element]) {
-        append(contentsOf: new)
+    func update(with new: [Element]) -> [Element] {
+        var array = self
+        array.append(contentsOf: new)
         var seen = Set<Element>()
-        self = filter { seen.insert($0).inserted }.sorted()
+        return array.filter { seen.insert($0).inserted }
     }
+    
+    func sortByLanguage() -> [Element] {
+        sorted { (lhs, rhs) in
+            if lhs.language == "sl" && rhs.language == "sl" {
+                return lhs.word < rhs.word
+            }
+            
+            return lhs.language == "sl"
+        }
+    }
+    
+    
 }
