@@ -11,6 +11,15 @@ enum DataState<T: Equatable> {
     case loading
     case data(T)
     case error(Error)
+    
+    var value: T? {
+        switch self {
+        case .data(let t):
+            return t
+        default:
+            return nil
+        }
+    }
 }
 
 extension DataState: Equatable {
