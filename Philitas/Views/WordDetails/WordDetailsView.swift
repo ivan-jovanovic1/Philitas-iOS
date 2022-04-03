@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WordDetailsView: View {
-	@Environment(\.dismiss) private var dismiss
+//	@Environment(\.dismiss) private var dismiss
 
 	@StateObject private var model: WordDetailsStore
 	@State private var isAlertPresented = false
@@ -24,23 +24,22 @@ struct WordDetailsView: View {
 		Group {
 			switch model.state {
 			case .loading:
-				wordList(Self.dummy)
-					.redacted(reason: .placeholder)
-			case let .error(error):
-				VStack {
-                    Image(systemName: "exclamationmark.circle")
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.padding(.all, 40)
-                        .foregroundColor(.red)
-                        .opacity(0.5)
-				}
-				.onAppear {
-					isAlertPresented.toggle()
-					self.error = error
-				}
+                wordList(Self.dummy)
+                    .redacted(reason: .placeholder)
+            case .error(let error):
+                
+                Image(systemName: "exclamationmark.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.all, 40)
+                    .foregroundColor(.red)
+                    .opacity(0.5)
+                    .onAppear {
+                        isAlertPresented.toggle()
+                        self.error = error
+                    }
 
-			case let .data(viewModel):
+			case .data(let viewModel):
 				wordList(viewModel)
 			}
 		}
@@ -52,11 +51,10 @@ struct WordDetailsView: View {
 			Alert(
 				title: Text("Prišlo je do napake"),
 				message: Text("\(error?.localizedDescription ?? "")"),
-				dismissButton: .cancel(Text("Zapri"), action: { self.dismiss() })
+				dismissButton: .cancel(Text("Zapri"), action: {  })
 			)
 		}
 		.task(model.loadWordDetails)
-
 	}
 }
 
@@ -166,7 +164,7 @@ extension WordDetailsView {
 			language: "sl",
 			dictionaries: [
 				WordDetailsStore.Dictionary(
-					explanations: .init(repeating: "some explanation", count: 10),
+                    explanations: ["a", "b", "c", "d"],
 					dictionaryName: "Some dictionary",
 					source: "www.example.com"
 				)
