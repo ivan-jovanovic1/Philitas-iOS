@@ -37,9 +37,9 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
         case .dictionary:
             return "Seznam besed"
         case .favorites:
-            return "Favorites"
+            return "Priljubljeno"
         case .profile:
-            return "Profile"
+            return "Račun"
         }
     }
 
