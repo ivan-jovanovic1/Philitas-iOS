@@ -13,7 +13,7 @@ extension DictionaryStore {
         let translation: String
         
         var id: String {
-            word
+            _id
         }
     }
 }
