@@ -7,9 +7,8 @@
 
 import Foundation
 
-
 extension WordDetailsStore {
-    
+
     struct ViewModel {
         let id: String
         /// The word in its main language
@@ -22,16 +21,16 @@ extension WordDetailsStore {
         let dictionaries: [Dictionary]
     }
 
-    struct Dictionary: Identifiable{
+    struct Dictionary: Identifiable {
         let explanations: [String]
         let dictionaryName: String
         let source: String
-        
+
         var id: String {
-            dictionaryName+source
+            dictionaryName + source
         }
     }
-    
+
 }
 extension WordDetailsStore.ViewModel: Equatable {
     static func == (lhs: WordDetailsStore.ViewModel, rhs: WordDetailsStore.ViewModel) -> Bool {

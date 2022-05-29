@@ -16,7 +16,9 @@ class LoginModel: ObservableObject {
     @Published var showInvalidInput: Bool = false
     let service: any UserServiceRepresentable
 
-    init(service: any UserServiceRepresentable = UserService()) {
+    init(
+        service: any UserServiceRepresentable = UserService()
+    ) {
         self.service = service
         username = ""
         password = ""
@@ -39,7 +41,8 @@ extension LoginModel {
         do {
             userData = try await service.login(payload: payload).data
             UserDefaults.standard.jwsToken = userData?.jwsToken
-        } catch {
+        }
+        catch {
             PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
         }
     }

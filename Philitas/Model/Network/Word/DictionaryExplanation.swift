@@ -31,7 +31,7 @@ extension Response.DictionaryExplanation {
         Response.DictionaryExplanation(
             explanations: .init(
                 repeating: UUID().uuidString,
-                count: Int.random(in: 5 ... 15)
+                count: Int.random(in: 5...15)
             ),
             dictionaryName: UUID().uuidString,
             source: "https://www.termania.net"

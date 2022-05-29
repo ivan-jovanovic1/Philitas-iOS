@@ -8,18 +8,18 @@
 import Networking
 
 class WordService: WordServiceRepresentable {
-	func singleFromId(id: String) async throws -> Response.BaseResponse<Response.Word> {
-		try await APIRequest(
-			Endpoint.wordFromId,
+    func singleFromId(id: String) async throws -> Response.BaseResponse<Response.Word> {
+        try await APIRequest(
+            Endpoint.wordFromId,
             params: [
                 "id": id
             ],
-			method: .get
-		)
-		.perform()
+            method: .get
+        )
+        .perform()
 
-	}
-    
+    }
+
     func singleWord(query: String) async throws -> Response.BaseResponse<Response.Word> {
         try await APIRequest(
             Endpoint.wordFromQuery,
@@ -31,18 +31,18 @@ class WordService: WordServiceRepresentable {
         .perform()
     }
 
-	func words(
-		page: Int?,
-		pageSize: Int
-	) async throws -> Response.BaseResponse<[Response.Word]> {
-		try await APIRequest(
-			Endpoint.listOfWords,
+    func words(
+        page: Int?,
+        pageSize: Int
+    ) async throws -> Response.BaseResponse<[Response.Word]> {
+        try await APIRequest(
+            Endpoint.listOfWords,
             queryItems: [
-				"page": String(page ?? 1),
-				"pageSize": String(pageSize),
-			],
-			method: .get
-		)
-		.perform()
-	}
+                "page": String(page ?? 1),
+                "pageSize": String(pageSize),
+            ],
+            method: .get
+        )
+        .perform()
+    }
 }

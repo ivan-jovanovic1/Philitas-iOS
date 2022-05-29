@@ -8,33 +8,34 @@
 import SwiftUI
 
 class WordDetailsStore: ObservableObject, ViewPresentable {
-	@Published var presented: PresentedView?
-	@Published var state: DataState<ViewModel> = .loading
+    @Published var presented: PresentedView?
+    @Published var state: DataState<ViewModel> = .loading
 
     private let wordId: String
     private let service: any WordServiceRepresentable
-    
+
     init(
-		wordId: String,
+        wordId: String,
         service: any WordServiceRepresentable = WordService()
-	) {
-		self.wordId = wordId
+    ) {
+        self.wordId = wordId
         self.service = service
-	}
+    }
 }
 
 extension WordDetailsStore {
 
-	@MainActor
+    @MainActor
     @Sendable
-	func loadWordDetails() async {
+    func loadWordDetails() async {
         state = .loading
         do {
             let wordFromResponse = try await service.singleFromId(id: wordId).data
             state = .data(Self.map(wordFromResponse))
-        } catch {
+        }
+        catch {
             state = .error(error)
         }
 
-	}
+    }
 }

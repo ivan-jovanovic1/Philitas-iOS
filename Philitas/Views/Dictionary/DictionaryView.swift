@@ -10,15 +10,15 @@ import SwiftUI
 struct DictionaryView: View {
 
     @Environment(\.isSearching) var isSearching
-	@StateObject private var store: DictionaryStore
+    @StateObject private var store: DictionaryStore
 
-	init() {
-		_store = StateObject(wrappedValue: DictionaryStore())
-	}
+    init() {
+        _store = StateObject(wrappedValue: DictionaryStore())
+    }
 
-	var body: some View {
+    var body: some View {
 
-		NavigationView {
+        NavigationView {
             switch store.words {
             case .loading:
                 ProgressView()
@@ -27,17 +27,17 @@ struct DictionaryView: View {
             case .data(let data):
                 wordsList(data)
             }
-		}
-		.navigationViewStyle(.stack)
-		.background(.red)
-		.task { await store.loadWords() }
+        }
+        .navigationViewStyle(.stack)
+        .background(.red)
+        .task { await store.loadWords() }
         .onChange(of: isSearching) {
             if !$0 {
                 store.resetSearchState()
             }
         }
-	}
-    
+    }
+
     @ViewBuilder
     func wordsList(_ data: [DictionaryStore.ViewModel]) -> some View {
         List(data) { word in
@@ -66,7 +66,7 @@ struct DictionaryView: View {
         }
         .navigationTitle("Slovar")
     }
-    
+
     @ViewBuilder
     func searchView() -> some View {
         switch store.wordFromSearch {
@@ -83,10 +83,10 @@ struct DictionaryView: View {
 }
 
 #if DEBUG
-	struct DictionaryView_Previews: PreviewProvider {
-		static var previews: some View {
-			DictionaryView()
-				.previewDevice("iPhone 13 Pro")
-		}
-	}
+    struct DictionaryView_Previews: PreviewProvider {
+        static var previews: some View {
+            DictionaryView()
+                .previewDevice("iPhone 13 Pro")
+        }
+    }
 #endif

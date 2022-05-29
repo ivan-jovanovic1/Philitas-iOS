@@ -22,7 +22,8 @@ struct ProfileView: View {
                 } label: {
                     Text("Prijava")
                 }
-            } else {
+            }
+            else {
                 Text("Seznam")
             }
         }

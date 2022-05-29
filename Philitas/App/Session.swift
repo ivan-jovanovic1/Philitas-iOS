@@ -12,7 +12,9 @@ class Session: ObservableObject {
     @Published var user: Response.UserData?
     let service: any UserServiceRepresentable
 
-    init(service: any UserServiceRepresentable = UserService()) {
+    init(
+        service: any UserServiceRepresentable = UserService()
+    ) {
         self.service = service
     }
 }
@@ -28,7 +30,8 @@ extension Session {
         do {
             user = try await service.userFromToken().data
             print(String(describing: user))
-        } catch {
+        }
+        catch {
             handleError(error)
         }
     }

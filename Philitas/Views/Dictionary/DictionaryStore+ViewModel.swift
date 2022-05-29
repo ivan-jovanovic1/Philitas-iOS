@@ -11,7 +11,7 @@ extension DictionaryStore {
         let word: String
         let language: String
         let translation: String
-        
+
         var id: String {
             _id
         }

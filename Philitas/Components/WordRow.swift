@@ -8,42 +8,42 @@
 import SwiftUI
 
 struct WordRow: View {
-	let word: String
-	let translated: String?
-	let language: String
+    let word: String
+    let translated: String?
+    let language: String
 
-	init(
-		word: String,
-		language: String,
-		translated: String? = nil
-	) {
-		self.word = word
-		self.language = language
-		self.translated = translated
-	}
+    init(
+        word: String,
+        language: String,
+        translated: String? = nil
+    ) {
+        self.word = word
+        self.language = language
+        self.translated = translated
+    }
 
-	var body: some View {
-		HStack {
-			VStack(alignment: .leading) {
-				Text(word.capitalized)
-					.font(.body)
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(word.capitalized)
+                    .font(.body)
 
-				if let translated = translated {
-					Text(translated)
-						.font(.caption2)
-						.foregroundColor(.gray)
-				}
-			}
+                if let translated = translated {
+                    Text(translated)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
+            }
 
-			Spacer()
-            
-			ZStack(alignment: .center) {
-				Circle().fill()
-					.frame(width: 30, height: 30)
-					.foregroundColor(.blue.opacity(0.2))
+            Spacer()
 
-				Text(language.prefix(2))
-			}
-		}
-	}
+            ZStack(alignment: .center) {
+                Circle().fill()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.blue.opacity(0.2))
+
+                Text(language.prefix(2))
+            }
+        }
+    }
 }

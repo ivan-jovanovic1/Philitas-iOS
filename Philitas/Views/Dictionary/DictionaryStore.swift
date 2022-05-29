@@ -56,7 +56,8 @@ extension DictionaryStore {
             }
 
             processLoadWordsResponse(response)
-        } catch {
+        }
+        catch {
             words = .error(error)
         }
     }
@@ -68,11 +69,12 @@ extension DictionaryStore {
         do {
             let response = try await service.singleWord(query: searchString)
             wordFromSearch = .data(Self.mapSingle(response.data))
-        } catch {
+        }
+        catch {
             wordFromSearch = .error(error)
         }
     }
-    
+
     func resetSearchState() {
         searchString = ""
         wordFromSearch = .none
@@ -87,7 +89,8 @@ extension DictionaryStore {
     private func processLoadWordsResponse(_ response: Response.BaseResponse<[Response.Word]>) {
         if let values = words.value {
             words = .data(values.update(with: Self.map(response.data).sortByLanguage()))
-        } else {
+        }
+        else {
             words = .data(Self.map(response.data).sortByLanguage())
         }
         pagination = response.pagination

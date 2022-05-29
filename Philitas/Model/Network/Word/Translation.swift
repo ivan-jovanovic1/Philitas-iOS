@@ -15,6 +15,6 @@ struct Translation: Decodable {
 // MARK: - Identifiable conformation
 extension Translation: Identifiable {
     var id: String {
-        language+word
+        language + word
     }
 }

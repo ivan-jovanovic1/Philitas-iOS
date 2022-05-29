@@ -23,14 +23,14 @@ struct DashboardView: View {
 extension DashboardView {
     @ViewBuilder
     private func tabView(_ item: TabItem) -> some View {
-//        if item == .profile, session.user == nil {
-//            EmptyView()
-//        } else {
+        //        if item == .profile, session.user == nil {
+        //            EmptyView()
+        //        } else {
         item.mainView
             .tabItem {
                 Label(item.description, systemImage: item.iconSystemName)
             }
-//        }
+        //        }
     }
 }
 

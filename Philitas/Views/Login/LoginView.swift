@@ -13,7 +13,9 @@ struct LoginView: View {
 
     @State var isValidData = true
     @StateObject private var model: LoginModel
-    init(session: Session) {
+    init(
+        session: Session
+    ) {
         _model = StateObject(wrappedValue: LoginModel())
     }
 
@@ -24,12 +26,11 @@ struct LoginView: View {
 
             LineDivider("ALI")
                 .padding(.horizontal, 16)
-                .padding(.vertical, 80)
-                .hidden()
+                .padding(.vertical, 40)
+            //                .hidden()
 
-            button("Registracija", action: {})
+            button("Registriraj se", action: {})
                 .padding(.horizontal, 16)
-                .hidden()
         }
         .onReceive(model.$userData) {
             if let value = $0 {
@@ -37,6 +38,8 @@ struct LoginView: View {
                 dismiss()
             }
         }
+        .onReceive(model.$username) { _ in model.showInvalidInput = false }
+        .onReceive(model.$password) { _ in model.showInvalidInput = false }
     }
 }
 
@@ -44,14 +47,15 @@ extension LoginView {
     @ViewBuilder
     private func loginSection() -> some View {
         Section(
-            header: Text("Login").font(.largeTitle),
-            footer: button("Prijava", action: model.login)
+            header: Text("Prijava").font(.largeTitle),
+            footer: button("Prijavi se", action: model.login)
         ) {
             VStack {
                 TextField("Uporabniško ime", text: $model.username)
                     .disableAutocorrection(true)
 
-                SecureField("Password", text: $model.password)
+                SecureField("Geslo", text: $model.password)
+                    .disableAutocorrection(true)
 
                 if model.showInvalidInput {
                     Text("Vneseno uporabniško ime ali geslo ni pravilno.")
@@ -60,6 +64,7 @@ extension LoginView {
                 }
             }
             .textFieldStyle(.roundedBorder)
+            .animation(.spring(), value: model.showInvalidInput)
             .padding(.bottom, 80)
         }
     }

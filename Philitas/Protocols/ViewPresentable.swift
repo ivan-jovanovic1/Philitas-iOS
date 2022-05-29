@@ -10,13 +10,13 @@ import SwiftUI
 protocol ViewPresentable: AnyObject {
     associatedtype E: RawRepresentable, Identifiable where E.RawValue == Int
     var presented: E? { get set }
-    
+
     func isPresented(view: E) -> Binding<Bool>
 }
 
 extension ViewPresentable {
-    
-    func isPresented(view: E) -> Binding<Bool> {        
+
+    func isPresented(view: E) -> Binding<Bool> {
         Binding {
             if let presented = self.presented {
                 return view == presented
@@ -28,6 +28,5 @@ extension ViewPresentable {
             }
         }
     }
-    
-    
+
 }

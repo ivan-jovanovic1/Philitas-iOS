@@ -15,16 +15,15 @@ extension Array where Element == DictionaryStore.ViewModel {
         var seen = Set<Element>()
         return array.filter { seen.insert($0).inserted }
     }
-    
+
     func sortByLanguage() -> [Element] {
         sorted { (lhs, rhs) in
             if lhs.language == "sl" && rhs.language == "sl" {
                 return lhs.word < rhs.word
             }
-            
+
             return lhs.language == "sl"
         }
     }
-    
-    
+
 }

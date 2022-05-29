@@ -21,7 +21,7 @@ class AsyncButtonStore: ObservableObject {
 struct AsyncButton<Label: View>: View {
     @ViewBuilder let label: () -> Label
     @ObservedObject private var store: AsyncButtonStore
-    
+
     init(
         action: @escaping () async -> Void,
         label: @escaping () -> Label
@@ -56,4 +56,3 @@ struct AsyncButton<Label: View>: View {
         .disabled(store.isPerformingTask)
     }
 }
-

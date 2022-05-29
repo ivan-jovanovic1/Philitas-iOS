@@ -12,7 +12,7 @@ enum Endpoint: String, BaseURL {
 
     case wordFromId = "/words/byId/{id}"
     case wordFromQuery = "/words/{word}"
-    
+
     case login = "/users/login"
     case verifyToken = "/users/me"
 }

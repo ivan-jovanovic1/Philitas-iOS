@@ -12,7 +12,9 @@ class TranslationModel: ObservableObject {
     @Published var to: TranslateCountryCode
     let word: Response.Word
 
-    init(word: Response.Word) {
+    init(
+        word: Response.Word
+    ) {
         self.word = word
         from = TranslateCountryCode(rawValue: word.language) ?? .sl
         to = .en
@@ -26,14 +28,17 @@ class TranslationModel: ObservableObject {
 struct TranslateView: View {
     @StateObject private var model: TranslationModel
 
-    init(word: Response.Word) {
+    init(
+        word: Response.Word
+    ) {
         _model = StateObject(wrappedValue: TranslationModel(word: word))
     }
 
     var body: some View {
         VStack {
             HStack {
-                Button {} label: {
+                Button {
+                } label: {
                     Text(model.from.sloveneTranslate)
                 }
                 .frame(maxWidth: .infinity)
