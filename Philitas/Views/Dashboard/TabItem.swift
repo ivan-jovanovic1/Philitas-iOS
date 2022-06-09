@@ -24,11 +24,11 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
     var mainView: some View {
         switch self {
         case .dictionary:
-            DictionaryView()
+            DictionaryView(loader: DictionaryService(pageSize: 25))
         case .profile:
             ProfileView()
         case .favorites:
-            DictionaryView()
+            DictionaryView(loader: DictionaryService(pageSize: 25))
         }
     }
 
