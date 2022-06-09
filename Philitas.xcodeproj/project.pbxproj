@@ -43,6 +43,8 @@
 		5941D52D28524C8A0006C373 /* WordDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52C28524C8A0006C373 /* WordDetailsService.swift */; };
 		5941D52F28525D650006C373 /* DictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52E28525D650006C373 /* DictionaryLoader.swift */; };
 		5941D53128525FC20006C373 /* DictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D53028525FC20006C373 /* DictionaryService.swift */; };
+		5941D533285270670006C373 /* SessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D532285270670006C373 /* SessionLoader.swift */; };
+		5941D5352852706D0006C373 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D5342852706D0006C373 /* SessionService.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -53,8 +55,7 @@
 		59C890BB27F21EDF008956B3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BA27F21EDF008956B3 /* Request.swift */; };
 		59C890BD27F21EF0008956B3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BC27F21EF0008956B3 /* Response.swift */; };
 		59C890BF27F220D0008956B3 /* Response+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BE27F220D0008956B3 /* Response+User.swift */; };
-		59C890C127F2215F008956B3 /* UserServiceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C027F2215F008956B3 /* UserServiceRepresentable.swift */; };
-		59C890C327F2220E008956B3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C227F2220E008956B3 /* UserService.swift */; };
+		59C890C327F2220E008956B3 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C227F2220E008956B3 /* UserAPI.swift */; };
 		59C890C627F231A9008956B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C527F231A9008956B3 /* LoginView.swift */; };
 		59C890C827F231B1008956B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C727F231B1008956B3 /* LoginModel.swift */; };
 		59C890CA27F23663008956B3 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C927F23663008956B3 /* LineDivider.swift */; };
@@ -117,6 +118,8 @@
 		5941D52C28524C8A0006C373 /* WordDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsService.swift; sourceTree = "<group>"; };
 		5941D52E28525D650006C373 /* DictionaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryLoader.swift; sourceTree = "<group>"; };
 		5941D53028525FC20006C373 /* DictionaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryService.swift; sourceTree = "<group>"; };
+		5941D532285270670006C373 /* SessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLoader.swift; sourceTree = "<group>"; };
+		5941D5342852706D0006C373 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -127,8 +130,7 @@
 		59C890BA27F21EDF008956B3 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		59C890BC27F21EF0008956B3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		59C890BE27F220D0008956B3 /* Response+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+User.swift"; sourceTree = "<group>"; };
-		59C890C027F2215F008956B3 /* UserServiceRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRepresentable.swift; sourceTree = "<group>"; };
-		59C890C227F2220E008956B3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		59C890C227F2220E008956B3 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		59C890C527F231A9008956B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		59C890C727F231B1008956B3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		59C890C927F23663008956B3 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
@@ -166,6 +168,8 @@
 				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
 				5986B96C27F79B2600703697 /* APIConfigure.swift */,
 				597A55D527F2658700A92CC9 /* Session.swift */,
+				5941D532285270670006C373 /* SessionLoader.swift */,
+				5941D5342852706D0006C373 /* SessionService.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -405,8 +409,7 @@
 		59C890B527F21DC7008956B3 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
-				59C890C027F2215F008956B3 /* UserServiceRepresentable.swift */,
-				59C890C227F2220E008956B3 /* UserService.swift */,
+				59C890C227F2220E008956B3 /* UserAPI.swift */,
 			);
 			path = UserService;
 			sourceTree = "<group>";
@@ -613,11 +616,12 @@
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
 				5941D52F28525D650006C373 /* DictionaryLoader.swift in Sources */,
 				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
-				59C890C127F2215F008956B3 /* UserServiceRepresentable.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
 				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
+				5941D533285270670006C373 /* SessionLoader.swift in Sources */,
 				590C518F27F63606003D26F9 /* Translation.swift in Sources */,
-				59C890C327F2220E008956B3 /* UserService.swift in Sources */,
+				5941D5352852706D0006C373 /* SessionService.swift in Sources */,
+				59C890C327F2220E008956B3 /* UserAPI.swift in Sources */,
 				590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
 				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,

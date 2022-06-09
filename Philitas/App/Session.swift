@@ -9,13 +9,13 @@ import Foundation
 
 @MainActor
 class Session: ObservableObject {
-    @Published var user: Response.UserData?
-    let service: any UserServiceRepresentable
+    @Published var user: SessionLoader.User?
+    let loader: any SessionLoader
 
     init(
-        service: any UserServiceRepresentable = UserService()
+        loader: any SessionLoader
     ) {
-        self.service = service
+        self.loader = loader
     }
 }
 
@@ -23,13 +23,11 @@ extension Session {
     @Sendable
     func verifyJWSToken() async {
         guard UserDefaults.standard.jwsToken != nil else {
-            user = nil
-            return
+            return user = nil
         }
 
         do {
-            user = try await service.userFromToken().data
-            print(String(describing: user))
+            user = try await loader.loadFromToken()
         }
         catch {
             handleError(error)
