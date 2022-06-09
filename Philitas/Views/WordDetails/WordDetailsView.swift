@@ -7,27 +7,23 @@
 
 import SwiftUI
 
-struct WordDetailsView: View {
-    //	@Environment(\.dismiss) private var dismiss
-
-    @StateObject private var model: WordDetailsStore
+struct WordDetailsView<T: WordDetailsLoader>: View {
+    @StateObject private var model: WordDetailsStore<T>
     @State private var isAlertPresented = false
     @State private var error: Error? = nil
 
     init(
-        wordId: String
+        loader: T
     ) {
-        _model = StateObject(wrappedValue: .init(wordId: wordId))
+        _model = StateObject(wrappedValue: WordDetailsStore(loader: loader))
     }
 
     var body: some View {
         Group {
             switch model.state {
             case .loading:
-                wordList(Self.dummy)
-                    .redacted(reason: .placeholder)
+                ProgressView()
             case .error(let error):
-
                 Image(systemName: "exclamationmark.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -63,21 +59,21 @@ struct WordDetailsView: View {
 extension WordDetailsView {
 
     @ViewBuilder
-    fileprivate func wordList(_ viewModel: WordDetailsStore.ViewModel) -> some View {
+    fileprivate func wordList(_ viewModel: T.Item) -> some View {
         List {
             Section(header: Text("Beseda v izvirni obliki").font(.headline)) {
                 WordRow(word: viewModel.word, language: viewModel.language)
             }
 
-            if !viewModel.translations.isEmpty {
+            if viewModel.translations?.isEmpty != true {
                 Section(header: Text("PREVODI").font(.headline)) {
-                    ForEach(viewModel.translations) { translation in
+                    ForEach(viewModel.translations ?? []) { translation in
                         WordRow(word: translation.word, language: translation.language)
                     }
                 }
             }
 
-            ForEach(viewModel.dictionaries) { dict in
+            ForEach(viewModel.dictionaryExplanations) { dict in
                 Section(
                     header: Text("Razlage").font(.headline),
                     footer: dictionaryFooter(
@@ -146,39 +142,21 @@ extension WordDetailsView {
 
 }
 
-extension WordDetailsView {
-    fileprivate init(
-        _ store: WordDetailsStore
-    ) {
-        _model = StateObject(wrappedValue: store)
-    }
-
-    fileprivate static var dummy: WordDetailsStore.ViewModel {
-        WordDetailsStore.ViewModel(
-            id: UUID().uuidString,
-            word: "beseda",
-            translations: [
-                Translation(language: "en", word: "word"),
-                Translation(language: "sr", word: "реч"),
-            ],
-            language: "sl",
-            dictionaries: [
-                WordDetailsStore.Dictionary(
-                    explanations: ["a", "b", "c", "d"],
-                    dictionaryName: "Some dictionary",
-                    source: "www.example.com"
-                )
-            ]
-        )
-    }
-}
-
 // MARK: - Previews
 
 #if DEBUG
+
     struct WordDetailsView_Previews: PreviewProvider {
+        private class WordDetailsServiceMock: WordDetailsLoader {
+            func load() async throws -> WordDetailsLoader.Item {
+                return WordDetailsLoader.Item.dummy
+            }
+        }
+
+        private static let service = WordDetailsServiceMock()
+
         static var previews: some View {
-            WordDetailsView(wordId: "623f5833575f79e453e16a40")
+            WordDetailsView(loader: service)
                 .previewDevice("iPhone 13 Pro")
         }
     }

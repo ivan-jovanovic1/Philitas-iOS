@@ -5,37 +5,31 @@
 //  Created by Ivan Jovanović on 27/03/2022.
 //
 
-import SwiftUI
+import Foundation
 
-class WordDetailsStore: ObservableObject, ViewPresentable {
+class WordDetailsStore<T: WordDetailsLoader>: ObservableObject, ViewPresentable {
     @Published var presented: PresentedView? = .none
-    @Published var state: DataState<ViewModel> = .loading
-
-    private let wordId: String
-    private let service: any WordServiceRepresentable
+    @Published var state: DataState<T.Item> = .loading
+    private let loader: T
 
     init(
-        wordId: String,
-        service: any WordServiceRepresentable = WordService()
+        loader: T
     ) {
-        self.wordId = wordId
-        self.service = service
+        self.loader = loader
     }
 }
 
 extension WordDetailsStore {
-
     @MainActor
     @Sendable
     func loadWordDetails() async {
         state = .loading
         do {
-            let wordFromResponse = try await service.singleFromId(id: wordId).data
-            state = .data(Self.map(wordFromResponse))
+            let wordFromResponse: T.Item = try await loader.load()
+            state = .data(wordFromResponse)
         }
         catch {
             state = .error(error)
         }
-
     }
 }
