@@ -14,7 +14,9 @@ struct ProfileView: View {
 
     var body: some View {
         VStack {
-            if session.user == nil {
+            if let user = session.user {
+                mainView(user: user)
+            } else {
                 Text("Hello,xr world!")
 
                 Button {
@@ -22,9 +24,6 @@ struct ProfileView: View {
                 } label: {
                     Text("Prijava")
                 }
-            }
-            else {
-                Text("Seznam")
             }
         }
         .sheet(isPresented: $isSheetPresented) {
@@ -34,6 +33,37 @@ struct ProfileView: View {
             isSheetPresented = session.user == nil
         }
     }
+    
+    
+    @ViewBuilder
+    private func mainView(user: SessionLoader.User) -> some View {
+        List {
+            Section {
+                Text(user.username)
+                Text(user.email)
+                if let fullName = fullName {
+                    Text(fullName)
+                }
+            } header: {
+                Text("Osebni podatki")
+            }
+        }
+    }
+    
+    private var fullName: String? {
+        guard
+            let firstName = session.user?.firstName,
+            let lastName = session.user?.lastName
+        else { return nil }
+        
+        var components = PersonNameComponents()
+        components.givenName = firstName
+        components.familyName = lastName
+
+        return formatter.string(from: components)
+    }
+    
+    private let formatter = PersonNameComponentsFormatter()
 }
 
 
@@ -64,7 +94,9 @@ struct ProfileView_Previews: PreviewProvider {
             session.user = .init(
                 username: "Ivan",
                 email: "ivan.jovanovic@student.um.si",
-                jwsToken: UUID().uuidString
+                jwsToken: UUID().uuidString,
+                firstName: "Ivan",
+                lastName: "Jovanović"
             )
             _session = StateObject(wrappedValue: session)
         }
