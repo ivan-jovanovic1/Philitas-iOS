@@ -8,31 +8,20 @@
 import Foundation
 
 @MainActor
-class DictionaryStore: ObservableObject {
-    // MARK: - State
+class DictionaryStore<T: DictionaryLoader>: ObservableObject {
 
-    @Published var words: DataState<[ViewModel]> = .loading
+    // MARK: - State
+    @Published var words: DataState<[T.Item]> = .loading
     @Published var wordsFromSearch = false
     @Published var searchString = ""
+    @Published var wordFromSearch: DataState<T.Item>? = .none
 
-    @Published var wordFromSearch: DataState<ViewModel>? = .none
-
-    // MARK: - Internals
-
-    private let pageSize: Int
-    private var pagination: Pagination?
-    private let service: any WordServiceRepresentable
-
-    // MARK: - Init
+    private let loader: T
 
     init(
-        pageSize: Int = 25,
-        words: [ViewModel] = [],
-        service: any WordServiceRepresentable = WordService()
+        loader: T
     ) {
-        self.pageSize = pageSize
-        self.words = .loading
-        self.service = service
+        self.loader = loader
     }
 }
 
@@ -42,57 +31,43 @@ extension DictionaryStore {
     @Sendable
     func loadWords(refreshing: Bool = false) async {
         if refreshing {
-            pagination = nil
+            loader.resetPagination()
         }
 
         do {
-            let response = try await service.words(
-                page: pagination?.nextPage(),
-                pageSize: pageSize
-            )
-
+            let result = try await loader.load()
             if refreshing {
                 words = .loading
             }
-
-            processLoadWordsResponse(response)
+            guard let values = words.value else {
+                return words = .data(result)
+            }
+            words = .data(values.update(with: result))
         }
         catch {
             words = .error(error)
         }
     }
 
-    func searchForWord() async {
-        guard !searchString.isEmpty else { return }
-        wordFromSearch = .loading
-
-        do {
-            let response = try await service.singleWord(query: searchString)
-            wordFromSearch = .data(Self.mapSingle(response.data))
-        }
-        catch {
-            wordFromSearch = .error(error)
-        }
-    }
+    //    func searchForWord() async {
+    //        guard !searchString.isEmpty else { return }
+    //        //        wordFromSearch = .loading
+    //
+    //        do {
+    //            //            let response = try await service.singleWord(query: searchString)
+    //            //            wordFromSearch = .data(Self.mapSingle(response.data))
+    //        }
+    //        catch {
+    //            wordFromSearch = .error(error)
+    //        }
+    //    }
 
     func resetSearchState() {
         searchString = ""
-        wordFromSearch = .none
+        //        wordFromSearch = .none
     }
 
-    func shouldShowNextPage(word: ViewModel) -> Bool {
-        return word.id == words.value?.last?.id && pagination?.hasNextPage() ?? false
-    }
-}
-
-extension DictionaryStore {
-    private func processLoadWordsResponse(_ response: Response.BaseResponse<[Response.Word]>) {
-        if let values = words.value {
-            words = .data(values.update(with: Self.map(response.data).sortByLanguage()))
-        }
-        else {
-            words = .data(Self.map(response.data).sortByLanguage())
-        }
-        pagination = response.pagination
+    func shouldShowNextPage(word: T.Item) -> Bool {
+        loader.shouldShowNextPage(isLastWord: word.id == words.value?.last?.id)
     }
 }

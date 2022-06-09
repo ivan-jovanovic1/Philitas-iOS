@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct DictionaryView: View {
+struct DictionaryView<T: DictionaryLoader>: View {
 
     @Environment(\.isSearching) var isSearching
-    @StateObject private var store: DictionaryStore
+    @StateObject private var store: DictionaryStore<T>
 
-    init() {
-        _store = StateObject(wrappedValue: DictionaryStore())
+    init(
+        loader: T
+    ) {
+        _store = StateObject(wrappedValue: DictionaryStore(loader: loader))
     }
 
     var body: some View {
-
         NavigationView {
             switch store.words {
             case .loading:
@@ -39,9 +40,11 @@ struct DictionaryView: View {
     }
 
     @ViewBuilder
-    func wordList(_ data: [DictionaryStore.ViewModel]) -> some View {
+    func wordList(_ data: [T.Item]) -> some View {
         List(data) { word in
-            NavigationLink(destination: WordDetailsView(wordId: word._id)) {
+            NavigationLink(
+                destination: WordDetailsView(loader: WordDetailsService(wordId: word._id))
+            ) {
                 WordRow(
                     word: word.word,
                     language: word.language,
@@ -62,7 +65,7 @@ struct DictionaryView: View {
             suggestions: searchView
         )
         .onSubmit(of: .search) {
-            Task { await store.searchForWord() }
+            //            Task { await store.searchForWord() }
         }
         .navigationTitle("Slovar")
     }
@@ -84,8 +87,26 @@ struct DictionaryView: View {
 
 #if DEBUG
     struct DictionaryView_Previews: PreviewProvider {
+        private class DictionaryServiceMock: DictionaryLoader {
+            var pageSize: Int = 25
+
+            var pagination: Pagination?
+
+            func shouldShowNextPage(isLastWord: Bool) -> Bool {
+                true
+            }
+
+            func load() async throws -> [DictionaryLoader.Item] {
+                [.dummy, .dummy, .dummy, .dummy]
+            }
+
+            func resetPagination() {
+                pagination = nil
+            }
+        }
+
         static var previews: some View {
-            DictionaryView()
+            DictionaryView(loader: DictionaryServiceMock())
                 .previewDevice("iPhone 13 Pro")
         }
     }
