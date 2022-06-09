@@ -36,9 +36,47 @@ struct ProfileView: View {
     }
 }
 
+
+// MARK: - Previews
 struct ProfileView_Previews: PreviewProvider {
+    private class SessionServiceMock: SessionLoader {
+        func loadFromToken() async throws -> SessionLoader.User {
+            .init(
+                username: "Ivan",
+                email: "ivan.jovanovic@student.um.si",
+                jwsToken: UUID().uuidString
+            )
+        }
+
+        func login(username: String, password: String) async throws -> SessionLoader.User {
+            .init(
+                username: "Ivan",
+                email: "ivan.jovanovic@student.um.si",
+                jwsToken: UUID().uuidString
+            )
+        }
+    }
+
+    private struct Preview: View {
+        @StateObject private var session: Session
+        init() {
+            let session = Session(loader: SessionServiceMock())
+            session.user = .init(
+                username: "Ivan",
+                email: "ivan.jovanovic@student.um.si",
+                jwsToken: UUID().uuidString
+            )
+            _session = StateObject(wrappedValue: session)
+        }
+        var body: some View {
+            ProfileView()
+                .environmentObject(session)
+
+        }
+    }
+
     static var previews: some View {
-        ProfileView()
+        Preview()
             .previewDevice("iPhone 13 Pro")
     }
 }
