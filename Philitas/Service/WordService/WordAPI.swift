@@ -7,8 +7,8 @@
 
 import Networking
 
-class WordService: WordServiceRepresentable {
-    func singleFromId(id: String) async throws -> Response.BaseResponse<Response.Word> {
+enum WordAPI {
+    static func singleFromId(id: String) async throws -> Response.BaseResponse<Response.Word> {
         try await APIRequest(
             Endpoint.wordFromId,
             params: [
@@ -19,7 +19,7 @@ class WordService: WordServiceRepresentable {
         .perform()
     }
 
-    func singleWord(query: String) async throws -> Response.BaseResponse<Response.Word> {
+    static func singleWord(query: String) async throws -> Response.BaseResponse<Response.Word> {
         try await APIRequest(
             Endpoint.wordFromQuery,
             params: [
@@ -30,7 +30,7 @@ class WordService: WordServiceRepresentable {
         .perform()
     }
 
-    func words(
+    static func words(
         page: Int?,
         pageSize: Int
     ) async throws -> Response.BaseResponse<[Response.Word]> {

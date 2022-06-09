@@ -38,12 +38,11 @@
 		592850B327F24AD5007DD160 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B227F24AD5007DD160 /* ProfileModel.swift */; };
 		592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
-		592CABC627F113430093F879 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordService.swift */; };
+		592CABC627F113430093F879 /* WordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordAPI.swift */; };
 		5941D52B28524BD80006C373 /* WordDetailsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52A28524BD80006C373 /* WordDetailsLoader.swift */; };
 		5941D52D28524C8A0006C373 /* WordDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52C28524C8A0006C373 /* WordDetailsService.swift */; };
 		5941D52F28525D650006C373 /* DictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52E28525D650006C373 /* DictionaryLoader.swift */; };
 		5941D53128525FC20006C373 /* DictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D53028525FC20006C373 /* DictionaryService.swift */; };
-		597A55D127F25FAB00A92CC9 /* WordServiceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D027F25FAB00A92CC9 /* WordServiceRepresentable.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -113,12 +112,11 @@
 		592850B227F24AD5007DD160 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+isPresented.swift"; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		592CABC527F113430093F879 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
+		592CABC527F113430093F879 /* WordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAPI.swift; sourceTree = "<group>"; };
 		5941D52A28524BD80006C373 /* WordDetailsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsLoader.swift; sourceTree = "<group>"; };
 		5941D52C28524C8A0006C373 /* WordDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsService.swift; sourceTree = "<group>"; };
 		5941D52E28525D650006C373 /* DictionaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryLoader.swift; sourceTree = "<group>"; };
 		5941D53028525FC20006C373 /* DictionaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryService.swift; sourceTree = "<group>"; };
-		597A55D027F25FAB00A92CC9 /* WordServiceRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordServiceRepresentable.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -390,8 +388,7 @@
 		597A55CF27F25F5E00A92CC9 /* WordService */ = {
 			isa = PBXGroup;
 			children = (
-				597A55D027F25FAB00A92CC9 /* WordServiceRepresentable.swift */,
-				592CABC527F113430093F879 /* WordService.swift */,
+				592CABC527F113430093F879 /* WordAPI.swift */,
 			);
 			path = WordService;
 			sourceTree = "<group>";
@@ -601,7 +598,7 @@
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
 				5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */,
 				597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */,
-				592CABC627F113430093F879 /* WordService.swift in Sources */,
+				592CABC627F113430093F879 /* WordAPI.swift in Sources */,
 				597A55D627F2658700A92CC9 /* Session.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
 				59C890BB27F21EDF008956B3 /* Request.swift in Sources */,
@@ -615,7 +612,6 @@
 				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
 				5941D52F28525D650006C373 /* DictionaryLoader.swift in Sources */,
-				597A55D127F25FAB00A92CC9 /* WordServiceRepresentable.swift in Sources */,
 				592850B127F2499E007DD160 /* ProfileView.swift in Sources */,
 				59C890C127F2215F008956B3 /* UserServiceRepresentable.swift in Sources */,
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
