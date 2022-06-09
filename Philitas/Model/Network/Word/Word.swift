@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Response {
+public extension Response {
     struct Word: Decodable, Identifiable {
         let _id: String
         /// The word in its main language
@@ -21,10 +21,21 @@ extension Response {
         /// An array of search hit counts per month.
         let searchHits: [SearchHit]
 
-        var id: String {
+        public var id: String {
             word
         }
     }
+}
+
+extension Response.Word: Hashable {
+    public static func == (lhs: Response.Word, rhs: Response.Word) -> Bool {
+        lhs._id == rhs._id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(_id)
+    }
+
 }
 
 #if DEBUG
