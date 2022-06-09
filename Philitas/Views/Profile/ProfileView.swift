@@ -11,14 +11,14 @@ struct ProfileView: View {
     @EnvironmentObject private var session: Session
     @StateObject private var store = ProfileStore()
     @State private var isSheetPresented = false
-
+    let service = SessionService()
+    
     var body: some View {
         VStack {
             if let user = session.user {
                 mainView(user: user)
             } else {
                 Text("Hello,xr world!")
-
                 Button {
                     isSheetPresented = true
                 } label: {
@@ -26,46 +26,49 @@ struct ProfileView: View {
                 }
             }
         }
-        .sheet(isPresented: $isSheetPresented) {
-            LoginView(loader: SessionService())
-        }
+        .sheet(
+            isPresented: $isSheetPresented,
+            content: loginSheet
+        )
         .onAppear {
             isSheetPresented = session.user == nil
+            store.session = session
+            store.checkForFullName()
         }
     }
-    
     
     @ViewBuilder
     private func mainView(user: SessionLoader.User) -> some View {
-        List {
-            Section {
-                Text(user.username)
-                Text(user.email)
-                if let fullName = fullName {
-                    Text(fullName)
+        NavigationView{
+            List {
+                Section {
+                    Text(user.username)
+                    Text(user.email)
+                    if let fullName = store.fullName {
+                        Text(fullName)
+                    }
+                } header: {
+                    Text("Osebni podatki")
                 }
-            } header: {
-                Text("Osebni podatki")
             }
+            .navigationTitle("Profil")
         }
     }
     
-    private var fullName: String? {
-        guard
-            let firstName = session.user?.firstName,
-            let lastName = session.user?.lastName
-        else { return nil }
-        
-        var components = PersonNameComponents()
-        components.givenName = firstName
-        components.familyName = lastName
-
-        return formatter.string(from: components)
+    @ViewBuilder
+    private func loginSheet() -> some View {
+        NavigationView {
+            LoginView(loader: service)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Zapri") {
+                            isSheetPresented.toggle()
+                        }
+                    }
+                }
+        }
     }
-    
-    private let formatter = PersonNameComponentsFormatter()
 }
-
 
 // MARK: - Previews
 struct ProfileView_Previews: PreviewProvider {
@@ -77,7 +80,7 @@ struct ProfileView_Previews: PreviewProvider {
                 jwsToken: UUID().uuidString
             )
         }
-
+        
         func login(username: String, password: String) async throws -> SessionLoader.User {
             .init(
                 username: "Ivan",
@@ -86,7 +89,7 @@ struct ProfileView_Previews: PreviewProvider {
             )
         }
     }
-
+    
     private struct Preview: View {
         @StateObject private var session: Session
         init() {
@@ -103,10 +106,10 @@ struct ProfileView_Previews: PreviewProvider {
         var body: some View {
             ProfileView()
                 .environmentObject(session)
-
+            
         }
     }
-
+    
     static var previews: some View {
         Preview()
             .previewDevice("iPhone 13 Pro")
