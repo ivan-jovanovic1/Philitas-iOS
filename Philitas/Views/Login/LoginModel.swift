@@ -8,39 +8,36 @@
 import Foundation
 
 @MainActor
-class LoginModel: ObservableObject {
+class LoginStore<T: SessionLoader>: ObservableObject {
     @Published var username: String
     @Published var password: String
-    @Published var userData: Response.UserData?
-
+    @Published var userData: T.User?
     @Published var showInvalidInput: Bool = false
-    let service: any UserServiceRepresentable
+    let loader: T
 
     init(
-        service: any UserServiceRepresentable = UserService()
+        loader: T
     ) {
-        self.service = service
+        self.loader = loader
         username = ""
         password = ""
     }
 }
 
-extension LoginModel {
+extension LoginStore {
     @Sendable
     func login() async {
         guard
             validateUsername(),
             validatePassword()
         else {
-            showInvalidInput = true
-            return
+            return showInvalidInput = true
         }
 
-        let payload = Request.User(username: username, password: password)
-
         do {
-            userData = try await service.login(payload: payload).data
-            UserDefaults.standard.jwsToken = userData?.jwsToken
+            let userData = try await loader.login(username: username, password: password)
+            await updateUI(user: userData)
+            UserDefaults.standard.jwsToken = userData.jwsToken
         }
         catch {
             PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
@@ -48,7 +45,12 @@ extension LoginModel {
     }
 }
 
-extension LoginModel {
+private extension LoginStore {
+    @MainActor
+    func updateUI(user: T.User) async {
+        userData = user
+    }
+
     func validateUsername() -> Bool {
         return username.count >= 8
     }
