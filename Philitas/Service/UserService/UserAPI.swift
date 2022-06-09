@@ -9,10 +9,16 @@ import Networking
 
 enum UserAPI {
     static func login(
-        payload: Request.User
+        username: String,
+        password: String
     ) async throws -> Response.BaseResponse<Response.UserData> {
-        try await APIRequest(Endpoint.login, method: .post)
-            .setBody(payload)
+        struct User: Encodable {
+            let username: String
+            let password: String
+        }
+
+        return try await APIRequest(Endpoint.login, method: .post)
+            .setBody(User(username: username, password: password))
             .perform()
     }
 
