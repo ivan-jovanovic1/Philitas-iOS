@@ -8,7 +8,7 @@
 import SwiftUI
 
 class WordDetailsStore: ObservableObject, ViewPresentable {
-    @Published var presented: PresentedView?
+    @Published var presented: PresentedView? = .none
     @Published var state: DataState<ViewModel> = .loading
 
     private let wordId: String

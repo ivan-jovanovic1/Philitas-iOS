@@ -7,7 +7,7 @@
 
 import Networking
 
-enum Endpoint: String, BaseURL {
+enum Endpoint: String {
     case listOfWords = "/words/list/all"
 
     case wordFromId = "/words/byId/{id}"
@@ -19,7 +19,7 @@ enum Endpoint: String, BaseURL {
 
 // MARK: - BaseURL conformation
 
-extension Endpoint {
+extension Endpoint: BaseURL {
     var baseURL: String {
         "http://localhost:3002"
     }

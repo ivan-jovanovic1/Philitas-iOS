@@ -5,6 +5,7 @@
 //  Created by Ivan Jovanović on 01/04/2022.
 //
 
+import Foundation
 import Networking
 
 enum APIConfigure {
@@ -18,7 +19,7 @@ enum APIConfigure {
     }
 
     static func configure() {
-        Networking.setHeaders(Self.headers)
+        APIHeaders.setHeaders(Self.headers)
     }
 
     static var authrozitationToken: String? {

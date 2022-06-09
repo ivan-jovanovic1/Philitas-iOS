@@ -17,7 +17,6 @@ class WordService: WordServiceRepresentable {
             method: .get
         )
         .perform()
-
     }
 
     func singleWord(query: String) async throws -> Response.BaseResponse<Response.Word> {

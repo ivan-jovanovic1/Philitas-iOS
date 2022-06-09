@@ -22,10 +22,10 @@ struct DictionaryView: View {
             switch store.words {
             case .loading:
                 ProgressView()
-            case .error(let error):
+            case let .error(error):
                 Text(error.localizedDescription)
-            case .data(let data):
-                wordsList(data)
+            case let .data(data):
+                wordList(data)
             }
         }
         .navigationViewStyle(.stack)
@@ -39,7 +39,7 @@ struct DictionaryView: View {
     }
 
     @ViewBuilder
-    func wordsList(_ data: [DictionaryStore.ViewModel]) -> some View {
+    func wordList(_ data: [DictionaryStore.ViewModel]) -> some View {
         List(data) { word in
             NavigationLink(destination: WordDetailsView(wordId: word._id)) {
                 WordRow(
