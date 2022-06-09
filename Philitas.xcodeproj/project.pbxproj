@@ -565,7 +565,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format >/dev/null; then\n    swift-format format -i -r \"${HOME}/Developer/Philitas-iOS\"\nelse\n    echo \"warning: swift-format not installed\"\nfi\n";
+			shellScript = "#export PATH=\"$PATH:/opt/homebrew/bin\"\n#\n#if which swift-format >/dev/null; then\n#    swift-format format -i -r \"${HOME}/Developer/Philitas-iOS\"\n#else\n#    echo \"warning: swift-format not installed\"\n#fi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
