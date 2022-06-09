@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct LoginView<T: SessionLoader>: View {
     @EnvironmentObject private var session: Session
     @Environment(\.dismiss) private var dismiss
 
     @State var isValidData = true
-    @StateObject private var model: LoginModel
+    @StateObject private var model: LoginStore<T>
     init(
-        session: Session
+        loader: T
     ) {
-        _model = StateObject(wrappedValue: LoginModel())
+        _model = StateObject(wrappedValue: LoginStore(loader: loader))
     }
 
     var body: some View {
@@ -78,12 +78,39 @@ extension LoginView {
     }
 }
 
+// MARK: - Previews
 struct LoginView_Previews: PreviewProvider {
+    private class SessionServiceMock: SessionLoader {
+        func loadFromToken() async throws -> SessionLoader.User {
+            .init(
+                username: "Ivan",
+                email: "ivan.jovanovic@student.um.si",
+                jwsToken: UUID().uuidString
+            )
+        }
+
+        func login(username: String, password: String) async throws -> SessionLoader.User {
+            .init(
+                username: "Ivan",
+                email: "ivan.jovanovic@student.um.si",
+                jwsToken: UUID().uuidString
+            )
+        }
+    }
+
+    private static let firstService = SessionServiceMock()
+    private static let secondService = SessionServiceMock()
+
+    private static let firstSession = Session(loader: firstService)
+    private static let secondSession = Session(loader: secondService)
+
     static var previews: some View {
-        LoginView(session: Session())
+        LoginView(loader: firstService)
+            .environmentObject(firstSession)
             .previewDevice("iPhone 13 Pro")
 
-        LoginView(session: Session())
+        LoginView(loader: secondService)
+            .environmentObject(secondSession)
             .previewDevice("iPhone 8")
     }
 }

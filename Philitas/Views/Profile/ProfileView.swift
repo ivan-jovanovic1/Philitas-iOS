@@ -28,7 +28,7 @@ struct ProfileView: View {
             }
         }
         .sheet(isPresented: $isSheetPresented) {
-            LoginView(session: session)
+            LoginView(loader: SessionService())
         }
         .onAppear {
             isSheetPresented = session.user == nil
