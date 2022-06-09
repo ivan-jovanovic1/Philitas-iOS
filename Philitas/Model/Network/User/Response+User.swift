@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Response {
-    struct UserData: Decodable {
+    struct UserData: Decodable, Equatable {
         private(set) var username: String
         private(set) var email: String
         private(set) var jwsToken: String
