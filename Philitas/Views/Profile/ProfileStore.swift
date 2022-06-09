@@ -9,14 +9,33 @@ import Foundation
 
 class ProfileStore: ObservableObject {
     weak var session: Session?
+    @Published var fullName: String?
     var presentedSubview: Subview = .none
+    private let formatter = PersonNameComponentsFormatter()
+    
+   
 }
 
 extension ProfileStore {
-    @MainActor func checkIfLogged() {
+    @MainActor
+    func checkIfLogged() {
         if session?.user == nil {
             presentedSubview = .login
         }
+    }
+    
+    @MainActor
+    func checkForFullName() {
+        guard
+            let firstName = session?.user?.firstName,
+            let lastName = session?.user?.lastName
+        else { return }
+        
+        var components = PersonNameComponents()
+        components.givenName = firstName
+        components.familyName = lastName
+
+        fullName = formatter.string(from: components)
     }
 }
 
