@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var model = ProfileModel()
+    @StateObject private var store = ProfileStore()
     @State private var isSheetPresented = false
 
     var body: some View {

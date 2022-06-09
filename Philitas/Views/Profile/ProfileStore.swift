@@ -1,5 +1,5 @@
 //
-//  ProfileModel.swift
+//  ProfileStore.swift
 //  Philitas
 //
 //  Created by Ivan Jovanović on 28/03/2022.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-class ProfileModel: ObservableObject {
+class ProfileStore: ObservableObject {
     weak var session: Session?
     var presentedSubview: Subview = .none
 }
 
-extension ProfileModel {
+extension ProfileStore {
     @MainActor func checkIfLogged() {
         if session?.user == nil {
             presentedSubview = .login
@@ -20,7 +20,7 @@ extension ProfileModel {
     }
 }
 
-extension ProfileModel {
+extension ProfileStore {
     enum Subview: Int {
         case login
         case none
