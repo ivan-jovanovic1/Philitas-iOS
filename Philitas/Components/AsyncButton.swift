@@ -21,17 +21,21 @@ class AsyncButtonStore: ObservableObject {
 struct AsyncButton<Label: View>: View {
     @ViewBuilder let label: () -> Label
     @ObservedObject private var store: AsyncButtonStore
-
+    let role: ButtonRole?
+    
     init(
+        role: ButtonRole? = nil,
         action: @escaping () async -> Void,
         label: @escaping () -> Label
     ) {
         self.label = label
+        self.role = role
         self.store = AsyncButtonStore(action: action)
     }
 
     var body: some View {
         Button(
+            role: role,
             action: {
                 store.isPerformingTask = true
 
