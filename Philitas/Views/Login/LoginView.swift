@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct LoginView<T: SessionLoader & SessionUpdater>: View {
+
     @EnvironmentObject private var session: Session
     @Environment(\.dismiss) private var dismiss
-
-    @State var isValidData = true
     @StateObject private var model: LoginStore<T>
+    @FocusState private var focusedField: Field?
+
     init(
         loader: T
     ) {
@@ -27,10 +28,13 @@ struct LoginView<T: SessionLoader & SessionUpdater>: View {
             LineDivider("ALI")
                 .padding(.horizontal, 16)
                 .padding(.vertical, 40)
-            //                .hidden()
-
-            button("Registriraj se", action: {})
-                .padding(.horizontal, 16)
+            
+            Button {
+                
+            } label: {
+                Text("Registriraj se")
+            }
+            .padding(.horizontal, 16)
         }
         .onReceive(model.$userData) {
             if let value = $0 {
@@ -46,15 +50,14 @@ struct LoginView<T: SessionLoader & SessionUpdater>: View {
 extension LoginView {
     @ViewBuilder
     private func loginSection() -> some View {
-        Section(
-            header: Text("Prijava").font(.largeTitle),
-            footer: button("Prijavi se", action: model.login)
-        ) {
+        Section {
             VStack {
                 TextField("Uporabniško ime", text: $model.username)
+                    .focused($focusedField, equals: .username)
                     .disableAutocorrection(true)
 
                 SecureField("Geslo", text: $model.password)
+                    .focused($focusedField, equals: .password)
                     .disableAutocorrection(true)
 
                 if model.showInvalidInput {
@@ -66,15 +69,34 @@ extension LoginView {
             .textFieldStyle(.roundedBorder)
             .animation(.spring(), value: model.showInvalidInput)
             .padding(.bottom, 80)
+        } header: {
+            Text("Prijava").font(.largeTitle)
+        } footer: {
+            AsyncButton(action: model.login) {
+                Text("Prijava").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+        }
+        .onSubmit(processFocusState)
+    }
+    
+    private func processFocusState() {
+        if focusedField == .username {
+            focusedField = .password
+        }
+        if focusedField == .password {
+            focusedField = nil
+            Task {
+                await model.login()
+            }
         }
     }
+}
 
-    @ViewBuilder
-    private func button(_ text: String, action: @escaping () async -> Void) -> some View {
-        AsyncButton(action: action) {
-            Text(text).frame(maxWidth: .infinity)
-        }
-        .buttonStyle(.bordered)
+private extension LoginView {
+    enum Field: Hashable {
+        case username
+        case password
     }
 }
 
