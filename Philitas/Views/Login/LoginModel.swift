@@ -36,8 +36,8 @@ extension LoginStore {
 
         do {
             let userData = try await loader.login(username: username, password: password)
-            await updateUI(user: userData)
             UserDefaults.standard.jwsToken = userData.jwsToken
+            self.userData = userData
         }
         catch {
             PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
@@ -46,11 +46,6 @@ extension LoginStore {
 }
 
 private extension LoginStore {
-    @MainActor
-    func updateUI(user: T.User) async {
-        userData = user
-    }
-
     func validateUsername() -> Bool {
         return username.count >= 8
     }
