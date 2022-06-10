@@ -28,7 +28,7 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
         case .profile:
             ProfileView()
         case .favorites:
-            DictionaryView(service: DictionaryService(pageSize: 25))
+            FavoriteView(service: FavoriteService(pageSize: 25))
         }
     }
 
