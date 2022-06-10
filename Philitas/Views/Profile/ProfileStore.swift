@@ -12,8 +12,6 @@ class ProfileStore: ObservableObject {
     @Published var fullName: String?
     var presentedSubview: Subview = .none
     private let formatter = PersonNameComponentsFormatter()
-    
-   
 }
 
 extension ProfileStore {
