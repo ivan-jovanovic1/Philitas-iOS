@@ -34,6 +34,11 @@ struct FavoriteView<T: FavoriteLoader>: View {
     .navigationViewStyle(.stack)
     .background(.red)
     .task { await store.loadFavorites() }
+    .onReceive(session.$user) { user in
+        Task {
+          await store.loadFavorites(refreshing: true)
+        }
+    }
   }
   
   @ViewBuilder
