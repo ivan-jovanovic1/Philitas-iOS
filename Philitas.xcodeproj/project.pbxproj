@@ -51,6 +51,7 @@
 		5950D7482853D93C00E5F4C7 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7472853D93C00E5F4C7 /* FavoriteService.swift */; };
 		5950D74A2853DCBD00E5F4C7 /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7492853DCBC00E5F4C7 /* FavoriteStore.swift */; };
 		5950D74C2853DE9C00E5F4C7 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */; };
+		5950D74E2853F06E00E5F4C7 /* SessionUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -130,6 +131,7 @@
 		5950D7472853D93C00E5F4C7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		5950D7492853DCBC00E5F4C7 /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUpdater.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				5986B96C27F79B2600703697 /* APIConfigure.swift */,
 				597A55D527F2658700A92CC9 /* Session.swift */,
 				5941D532285270670006C373 /* SessionLoader.swift */,
+				5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */,
 				5941D5342852706D0006C373 /* SessionService.swift */,
 			);
 			path = App;
@@ -624,6 +627,7 @@
 				597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */,
 				592CABC627F113430093F879 /* WordAPI.swift in Sources */,
 				597A55D627F2658700A92CC9 /* Session.swift in Sources */,
+				5950D74E2853F06E00E5F4C7 /* SessionUpdater.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
 				5910CC3027F0C86C00841351 /* BaseResponse.swift in Sources */,
 				590C519827F64F14003D26F9 /* Logger.swift in Sources */,
