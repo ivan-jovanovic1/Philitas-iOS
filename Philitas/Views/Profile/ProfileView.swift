@@ -50,6 +50,14 @@ struct ProfileView: View {
                 } header: {
                     Text("Osebni podatki")
                 }
+                
+                Section {
+                    AsyncButton(role: .destructive) {
+                        await session.logout()
+                    } label: {
+                        Text("Odjava")
+                    }
+                }
             }
             .navigationTitle("Profil")
         }
@@ -72,7 +80,11 @@ struct ProfileView: View {
 
 // MARK: - Previews
 struct ProfileView_Previews: PreviewProvider {
-    private class SessionServiceMock: SessionLoader {
+    private class SessionServiceMock: SessionLoader, SessionUpdater {
+        func logout() async throws -> Bool {
+            true
+        }
+        
         func loadFromToken() async throws -> SessionLoader.User {
             .init(
                 username: "Ivan",
@@ -93,7 +105,7 @@ struct ProfileView_Previews: PreviewProvider {
     private struct Preview: View {
         @StateObject private var session: Session
         init() {
-            let session = Session(loader: SessionServiceMock())
+            let session = Session(service: SessionServiceMock())
             session.user = .init(
                 username: "Ivan",
                 email: "ivan.jovanovic@student.um.si",
