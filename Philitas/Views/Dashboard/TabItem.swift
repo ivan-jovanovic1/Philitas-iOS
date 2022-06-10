@@ -19,19 +19,7 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
     var zIndex: Double {
         Double(rawValue)
     }
-
-    @ViewBuilder
-    var mainView: some View {
-        switch self {
-        case .dictionary:
-            DictionaryView(service: DictionaryService(pageSize: 25))
-        case .profile:
-            ProfileView()
-        case .favorites:
-            FavoriteView(service: FavoriteService(pageSize: 25))
-        }
-    }
-
+    
     var description: String {
         switch self {
         case .dictionary:
