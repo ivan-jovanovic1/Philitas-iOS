@@ -22,7 +22,7 @@ public extension Response {
         let searchHits: [SearchHit]
 
         public var id: String {
-            word
+            _id
         }
     }
 }
