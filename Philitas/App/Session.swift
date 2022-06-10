@@ -9,7 +9,11 @@ import Foundation
 
 @MainActor
 class Session: ObservableObject {
-    @Published var user: SessionLoader.User?
+    @Published var user: SessionLoader.User? {
+        didSet {
+            APIConfigure.configure()
+        }
+    }
     let service: any SessionLoader & SessionUpdater
 
     init(
