@@ -11,5 +11,4 @@ protocol SessionLoader: AnyObject {
     typealias User = Response.UserData
 
     func loadFromToken() async throws -> User
-    func login(username: String, password: String) async throws -> User
 }
