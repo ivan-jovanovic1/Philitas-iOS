@@ -44,4 +44,19 @@ enum WordAPI {
         )
         .perform()
     }
+    
+    static func favorites(
+        page: Int?,
+        pageSize: Int
+    ) async throws -> Response.BaseResponse<[Response.Word]> {
+        try await APIRequest(
+            Endpoint.wordIdToFavorites,
+            queryItems: [
+                "page": String(page ?? 1),
+                "pageSize": String(pageSize),
+            ],
+            method: .get
+        )
+        .perform()
+    }
 }
