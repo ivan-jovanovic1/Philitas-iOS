@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class LoginStore<T: SessionLoader>: ObservableObject {
+class LoginStore<T: SessionLoader & SessionUpdater>: ObservableObject {
     @Published var username: String
     @Published var password: String
     @Published var userData: T.User?

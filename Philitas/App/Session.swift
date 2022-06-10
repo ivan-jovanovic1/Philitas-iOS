@@ -10,12 +10,12 @@ import Foundation
 @MainActor
 class Session: ObservableObject {
     @Published var user: SessionLoader.User?
-    let loader: any SessionLoader
+    let service: any SessionLoader & SessionUpdater
 
     init(
-        loader: any SessionLoader
+        service: any SessionLoader & SessionUpdater
     ) {
-        self.loader = loader
+        self.service = service
     }
 }
 
@@ -27,10 +27,22 @@ extension Session {
         }
 
         do {
-            user = try await loader.loadFromToken()
+            user = try await service.loadFromToken()
         }
         catch {
             handleError(error)
+        }
+    }
+    
+    @MainActor
+    @Sendable
+    func logout() async {
+        do {
+            if try await service.logout() {
+                user = nil
+            }
+        } catch {
+            print("Ivan error \(error.localizedDescription)")
         }
     }
 

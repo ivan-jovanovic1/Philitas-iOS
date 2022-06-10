@@ -13,7 +13,7 @@ struct PhilitasApp: App {
 
     init() {
         APIConfigure.configure()
-        _session = StateObject(wrappedValue: Session(loader: SessionService()))
+        _session = StateObject(wrappedValue: Session(service: SessionService()))
     }
 
     var body: some Scene {

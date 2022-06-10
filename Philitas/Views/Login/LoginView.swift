@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView<T: SessionLoader>: View {
+struct LoginView<T: SessionLoader & SessionUpdater>: View {
     @EnvironmentObject private var session: Session
     @Environment(\.dismiss) private var dismiss
 
@@ -80,7 +80,11 @@ extension LoginView {
 
 // MARK: - Previews
 struct LoginView_Previews: PreviewProvider {
-    private class SessionServiceMock: SessionLoader {
+    private class SessionServiceMock: SessionLoader, SessionUpdater {
+        func logout() async throws -> Bool {
+            true
+        }
+        
         func loadFromToken() async throws -> SessionLoader.User {
             .init(
                 username: "Ivan",
@@ -96,13 +100,14 @@ struct LoginView_Previews: PreviewProvider {
                 jwsToken: UUID().uuidString
             )
         }
+        
     }
 
     private static let firstService = SessionServiceMock()
     private static let secondService = SessionServiceMock()
 
-    private static let firstSession = Session(loader: firstService)
-    private static let secondSession = Session(loader: secondService)
+    private static let firstSession = Session(service: firstService)
+    private static let secondSession = Session(service: secondService)
 
     static var previews: some View {
         LoginView(loader: firstService)
