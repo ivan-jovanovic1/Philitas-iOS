@@ -21,6 +21,11 @@ enum UserAPI {
             .setBody(User(username: username, password: password))
             .perform()
     }
+    
+    static func logout() async throws -> Response.BaseResponse<Bool> {
+        try await APIRequest(Endpoint.logout, method: .post)
+            .perform()
+    }
 
     static func userFromToken() async throws -> Response.BaseResponse<Response.UserData> {
         try await APIRequest(Endpoint.verifyToken, method: .get)

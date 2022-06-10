@@ -14,6 +14,7 @@ enum Endpoint: String {
     case wordIdToFavorites = "/words/favorites"
 
     case login = "/users/login"
+    case logout = "/users/logout"
     case verifyToken = "/users/me"
 }
 
