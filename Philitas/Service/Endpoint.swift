@@ -9,9 +9,9 @@ import Networking
 
 enum Endpoint: String {
     case listOfWords = "/words/list/all"
-
     case wordFromId = "/words/byId/{id}"
     case wordFromQuery = "/words/{word}"
+    case wordIdToFavorites = "/words/favorites"
 
     case login = "/users/login"
     case verifyToken = "/users/me"

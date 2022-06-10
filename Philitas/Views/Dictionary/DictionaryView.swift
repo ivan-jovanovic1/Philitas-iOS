@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct DictionaryView<T: DictionaryLoader>: View {
+struct DictionaryView<T: DictionaryLoader & DictionaryUpdater>: View {
 
     @Environment(\.isSearching) var isSearching
     @StateObject private var store: DictionaryStore<T>
 
     init(
-        loader: T
+        service: T
     ) {
-        _store = StateObject(wrappedValue: DictionaryStore(loader: loader))
+        _store = StateObject(wrappedValue: DictionaryStore(service: service))
     }
 
     var body: some View {
@@ -50,6 +50,15 @@ struct DictionaryView<T: DictionaryLoader>: View {
                     language: word.language,
                     translated: ""
                 )
+            }
+            .swipeActions {
+                Button {
+                    Task {
+                        store.addToFavorites(word: word)
+                    }
+                } label: {
+                    Text("Dodaj med priljubljene")
+                }
             }
 
             if store.shouldShowNextPage(word: word) {
@@ -87,7 +96,7 @@ struct DictionaryView<T: DictionaryLoader>: View {
 
 #if DEBUG
     struct DictionaryView_Previews: PreviewProvider {
-        private class DictionaryServiceMock: DictionaryLoader {
+        private class DictionaryServiceMock: DictionaryLoader, DictionaryUpdater {
             var pageSize: Int = 25
 
             var pagination: Pagination?
@@ -103,10 +112,14 @@ struct DictionaryView<T: DictionaryLoader>: View {
             func resetPagination() {
                 pagination = nil
             }
+            
+            func addToFavorites(id: String) async throws -> Bool {
+                return true
+            }
         }
 
         static var previews: some View {
-            DictionaryView(loader: DictionaryServiceMock())
+            DictionaryView(service: DictionaryServiceMock())
                 .previewDevice("iPhone 13 Pro")
         }
     }

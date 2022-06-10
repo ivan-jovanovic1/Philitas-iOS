@@ -26,4 +26,17 @@ enum UserAPI {
         try await APIRequest(Endpoint.verifyToken, method: .get)
             .perform()
     }
+    
+    static func addToFavorites(id: String) async throws -> Response.BaseResponse<Bool> {
+        struct WordId: Encodable {
+            let id: String
+        }
+        
+        return try await APIRequest(
+            Endpoint.wordIdToFavorites,
+            method: .post
+        )
+        .setBody(WordId(id: id))
+        .perform()
+    }
 }

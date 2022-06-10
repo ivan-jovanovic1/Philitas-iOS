@@ -7,9 +7,9 @@
 
 import Foundation
 
-class DictionaryService: DictionaryLoader {
+class DictionaryService {
     var pageSize: Int
-    private(set) var pagination: Pagination?
+    var pagination: Pagination?
 
     init(
         pageSize: Int,
@@ -20,11 +20,7 @@ class DictionaryService: DictionaryLoader {
     }
 }
 
-extension DictionaryService {
-    func shouldShowNextPage(isLastWord: Bool) -> Bool {
-        isLastWord && pagination?.hasNextPage() ?? false
-    }
-
+extension DictionaryService: DictionaryLoader {
     func load() async throws -> [DictionaryLoader.Item] {
         let response = try await WordAPI.words(
             page: pagination?.nextPage(),
@@ -35,8 +31,10 @@ extension DictionaryService {
 
         return response.data
     }
+}
 
-    func resetPagination() {
-        pagination = nil
+extension DictionaryService: DictionaryUpdater {
+    func addToFavorites(id: String) async throws -> Bool {
+        try await UserAPI.addToFavorites(id: id).data
     }
 }

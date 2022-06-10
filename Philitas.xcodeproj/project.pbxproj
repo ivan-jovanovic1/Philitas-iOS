@@ -45,6 +45,10 @@
 		5941D53128525FC20006C373 /* DictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D53028525FC20006C373 /* DictionaryService.swift */; };
 		5941D533285270670006C373 /* SessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D532285270670006C373 /* SessionLoader.swift */; };
 		5941D5352852706D0006C373 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D5342852706D0006C373 /* SessionService.swift */; };
+		5950D7412853AD8B00E5F4C7 /* DictionaryUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7402853AD8B00E5F4C7 /* DictionaryUpdater.swift */; };
+		5950D7442853D7F800E5F4C7 /* FavoriteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */; };
+		5950D7462853D86F00E5F4C7 /* Paginatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7452853D86F00E5F4C7 /* Paginatable.swift */; };
+		5950D7482853D93C00E5F4C7 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7472853D93C00E5F4C7 /* FavoriteService.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -118,6 +122,10 @@
 		5941D53028525FC20006C373 /* DictionaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryService.swift; sourceTree = "<group>"; };
 		5941D532285270670006C373 /* SessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLoader.swift; sourceTree = "<group>"; };
 		5941D5342852706D0006C373 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		5950D7402853AD8B00E5F4C7 /* DictionaryUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryUpdater.swift; sourceTree = "<group>"; };
+		5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLoader.swift; sourceTree = "<group>"; };
+		5950D7452853D86F00E5F4C7 /* Paginatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paginatable.swift; sourceTree = "<group>"; };
+		5950D7472853D93C00E5F4C7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -198,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				5903FC8227F9CADC00ED0D67 /* ViewPresentable.swift */,
+				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				5910CC4627F0CB1C00841351 /* Dashboard */,
+				5950D7422853D7DD00E5F4C7 /* Favorite */,
 				5910CC4027F0CA3E00841351 /* Dictionary */,
 				59C890C427F2318A008956B3 /* Login */,
 				5903FC7027F935B600ED0D67 /* Profile */,
@@ -312,6 +322,7 @@
 				5910CC2A27F0C83A00841351 /* DictionaryView.swift */,
 				5910CC4127F0CA6500841351 /* DictionaryStore.swift */,
 				5941D52E28525D650006C373 /* DictionaryLoader.swift */,
+				5950D7402853AD8B00E5F4C7 /* DictionaryUpdater.swift */,
 				5941D53028525FC20006C373 /* DictionaryService.swift */,
 			);
 			path = Dictionary;
@@ -381,6 +392,15 @@
 				59C890B527F21DC7008956B3 /* UserService */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		5950D7422853D7DD00E5F4C7 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */,
+				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		597A55CF27F25F5E00A92CC9 /* WordService */ = {
@@ -575,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5910CC4527F0CAEA00841351 /* WordDetailsStore.swift in Sources */,
+				5950D7482853D93C00E5F4C7 /* FavoriteService.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
 				592850B527F250E7007DD160 /* RawRepresentable+isPresented.swift in Sources */,
 				59BCF78127F8D59400B1DE8D /* DataState.swift in Sources */,
@@ -588,6 +609,7 @@
 				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,
 				59BCF78727F8D68500B1DE8D /* WordDetailsStore+PresentedView.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
+				5950D7442853D7F800E5F4C7 /* FavoriteLoader.swift in Sources */,
 				592850B327F24AD5007DD160 /* ProfileStore.swift in Sources */,
 				5903FC8327F9CADC00ED0D67 /* ViewPresentable.swift in Sources */,
 				592CABC427F112760093F879 /* Endpoint.swift in Sources */,
@@ -615,9 +637,11 @@
 				5941D5352852706D0006C373 /* SessionService.swift in Sources */,
 				59C890C327F2220E008956B3 /* UserAPI.swift in Sources */,
 				590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */,
+				5950D7412853AD8B00E5F4C7 /* DictionaryUpdater.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
 				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
 				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
+				5950D7462853D86F00E5F4C7 /* Paginatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

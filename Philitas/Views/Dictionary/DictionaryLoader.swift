@@ -7,15 +7,8 @@
 
 import Foundation
 
-protocol DictionaryLoader: AnyObject {
+protocol DictionaryLoader: Paginatable {
     typealias Item = Response.Word
-
-    var pageSize: Int { get }
-    var pagination: Pagination? { get }
-
-    func shouldShowNextPage(isLastWord: Bool) -> Bool
-
+    
     func load() async throws -> [Item]
-
-    func resetPagination()
 }

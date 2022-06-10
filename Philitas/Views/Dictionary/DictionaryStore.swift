@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class DictionaryStore<T: DictionaryLoader>: ObservableObject {
+class DictionaryStore<T: DictionaryLoader & DictionaryUpdater>: ObservableObject {
 
     // MARK: - State
     @Published var words: DataState<[T.Item]> = .loading
@@ -16,12 +16,12 @@ class DictionaryStore<T: DictionaryLoader>: ObservableObject {
     @Published var searchString = ""
     @Published var wordFromSearch: DataState<T.Item>? = .none
 
-    private let loader: T
+    private let service: T
 
     init(
-        loader: T
+        service: T
     ) {
-        self.loader = loader
+        self.service = service
     }
 }
 
@@ -31,11 +31,11 @@ extension DictionaryStore {
     @Sendable
     func loadWords(refreshing: Bool = false) async {
         if refreshing {
-            loader.resetPagination()
+            service.resetPagination()
         }
 
         do {
-            let result = try await loader.load()
+            let result = try await service.load()
             if refreshing {
                 words = .loading
             }
@@ -46,6 +46,12 @@ extension DictionaryStore {
         }
         catch {
             words = .error(error)
+        }
+    }
+    
+    func addToFavorites(word: T.Item) {
+        Task {
+            try await service.addToFavorites(id: word._id)
         }
     }
 
@@ -68,6 +74,6 @@ extension DictionaryStore {
     }
 
     func shouldShowNextPage(word: T.Item) -> Bool {
-        loader.shouldShowNextPage(isLastWord: word.id == words.value?.last?.id)
+        service.shouldShowNextPage(isLastWord: word.id == words.value?.last?.id)
     }
 }
