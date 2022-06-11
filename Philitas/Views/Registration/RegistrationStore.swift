@@ -28,12 +28,10 @@ extension RegistrationStore {
     func process(focusedField: inout Field?) {
         guard shouldChangeFocusToNext(field: focusedField) else { return }
         focusedField = focusedField?.next()
-        
-        [Field.firstName, .lastName, nil].forEach {
-            if $0 == focusedField {
-                isCompleteRegistrationEnabled = true
-            }
-        }
+    }
+    
+    func updateCompleteButton() {
+        isCompleteRegistrationEnabled =  isEmailValid && isUsernameValid && isPasswordValid
     }
     
     private func shouldChangeFocusToNext(field: Field?) -> Bool {
@@ -46,16 +44,27 @@ extension RegistrationStore {
     }
     
     private func invalidInput(from field: Field) -> InvalidInput? {
-        let currentValue = inputs[field.rawValue]
         switch field {
         case .username:
-            return service.isUsernameValid(username: currentValue) ? nil : .invalidUsername
+            return isUsernameValid ? nil : .invalidUsername
         case .password:
-            return service.isPasswordValid(password: currentValue) ? nil : .invalidPassword
+            return isPasswordValid ? nil : .invalidPassword
         case .email:
-            return service.isEmailValid(email: currentValue) ? nil : .invalidEmail
+            return isEmailValid ? nil : .invalidEmail
         default:
             return nil
         }
+    }
+    
+    private var isEmailValid: Bool {
+        service.isEmailValid(email: inputs[Field.email.rawValue])
+    }
+    
+    private var isUsernameValid: Bool {
+        service.isUsernameValid(username: inputs[Field.username.rawValue])
+    }
+    
+    private var isPasswordValid: Bool {
+        service.isPasswordValid(password: inputs[Field.password.rawValue])
     }
 }
