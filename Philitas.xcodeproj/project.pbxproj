@@ -203,15 +203,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5903FC8127F9CAC400ED0D67 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
-				5903FC8227F9CADC00ED0D67 /* ViewPresentable.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		5910CBE327F0C68D00841351 = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +283,7 @@
 		5910CC3F27F0CA3200841351 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5903FC8227F9CADC00ED0D67 /* ViewPresentable.swift */,
 				5910CC4627F0CB1C00841351 /* Dashboard */,
 				5910CC4027F0CA3E00841351 /* Dictionary */,
 				5950D7422853D7DD00E5F4C7 /* Favorite */,
@@ -394,7 +386,6 @@
 			children = (
 				5910CC3A27F0C93A00841351 /* Extensions */,
 				597A55D227F2602300A92CC9 /* Managers */,
-				5903FC8127F9CAC400ED0D67 /* Protocols */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -402,6 +393,7 @@
 		5950D7532854A93300E5F4C7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
 				5950D7542854A94500E5F4C7 /* Dictionary */,
 				5950D7552854A95800E5F4C7 /* Favorite */,
 				5950D7572854AAF400E5F4C7 /* Session */,
