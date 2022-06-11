@@ -11,6 +11,7 @@ import Foundation
 class Session: ObservableObject {
     @Published var user: SessionLoader.User? {
         didSet {
+            UserDefaults.standard.jwsToken = user?.authToken
             APIConfigure.configure()
         }
     }
