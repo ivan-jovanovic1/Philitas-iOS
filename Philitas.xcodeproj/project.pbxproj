@@ -173,7 +173,6 @@
 		5903FC6F27F9357B00ED0D67 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				5986B96C27F79B2600703697 /* APIConfigure.swift */,
 				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
 				597A55D527F2658700A92CC9 /* Session.swift */,
 			);
@@ -452,6 +451,7 @@
 		597A55D227F2602300A92CC9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5986B96C27F79B2600703697 /* APIConfigure.swift */,
 				597A55D327F2605500A92CC9 /* UserDefaults.swift */,
 				590C519727F64F14003D26F9 /* Logger.swift */,
 			);
