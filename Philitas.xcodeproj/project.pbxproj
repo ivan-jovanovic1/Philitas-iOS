@@ -14,7 +14,6 @@
 		590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590C519F27F67627003D26F9 /* AsyncButton.swift */; };
 		5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CBEF27F0C68D00841351 /* PhilitasApp.swift */; };
 		5910CBF427F0C68D00841351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5910CBF327F0C68D00841351 /* Assets.xcassets */; };
-		5910CBF727F0C68D00841351 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5910CBF627F0C68D00841351 /* Preview Assets.xcassets */; };
 		5910CC0127F0C68E00841351 /* PhilitasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0027F0C68E00841351 /* PhilitasTests.swift */; };
 		5910CC0B27F0C68E00841351 /* PhilitasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0A27F0C68E00841351 /* PhilitasUITests.swift */; };
 		5910CC0D27F0C68E00841351 /* PhilitasUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC0C27F0C68E00841351 /* PhilitasUITestsLaunchTests.swift */; };
@@ -92,7 +91,6 @@
 		5910CBEC27F0C68D00841351 /* Philitas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Philitas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5910CBEF27F0C68D00841351 /* PhilitasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasApp.swift; sourceTree = "<group>"; };
 		5910CBF327F0C68D00841351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5910CBF627F0C68D00841351 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5910CBFC27F0C68E00841351 /* PhilitasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhilitasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5910CC0027F0C68E00841351 /* PhilitasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasTests.swift; sourceTree = "<group>"; };
 		5910CC0627F0C68E00841351 /* PhilitasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhilitasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,18 +210,10 @@
 		5903FC8127F9CAC400ED0D67 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				5903FC8227F9CADC00ED0D67 /* ViewPresentable.swift */,
 				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
+				5903FC8227F9CADC00ED0D67 /* ViewPresentable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		590C518D27F63454003D26F9 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				59C890BE27F220D0008956B3 /* Response+User.swift */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		5910CBE327F0C68D00841351 = {
@@ -251,26 +241,15 @@
 		5910CBEE27F0C68D00841351 /* Philitas */ = {
 			isa = PBXGroup;
 			children = (
-				5903FC6F27F9357B00ED0D67 /* App */,
-				5910CC5327F0CD0900841351 /* Components */,
-				5910CC3A27F0C93A00841351 /* Extensions */,
-				597A55D227F2602300A92CC9 /* Managers */,
-				5910CC2C27F0C84B00841351 /* Model */,
-				5903FC8127F9CAC400ED0D67 /* Protocols */,
-				592CABC227F111F90093F879 /* Service */,
-				5910CC3F27F0CA3200841351 /* Views */,
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
-				5910CBF527F0C68D00841351 /* Preview Content */,
+				5903FC6F27F9357B00ED0D67 /* App */,
+				5950D7512854A83F00E5F4C7 /* Data */,
+				5950D7522854A88300E5F4C7 /* Helpers */,
+				5950D7532854A93300E5F4C7 /* Service */,
+				5910CC5327F0CD0900841351 /* ViewComponents */,
+				5910CC3F27F0CA3200841351 /* Views */,
 			);
 			path = Philitas;
-			sourceTree = "<group>";
-		};
-		5910CBF527F0C68D00841351 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5910CBF627F0C68D00841351 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5910CBFF27F0C68E00841351 /* PhilitasTests */ = {
@@ -293,9 +272,13 @@
 		5910CC2C27F0C84B00841351 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5910CC4727F0CB3C00841351 /* Network */,
-				5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */,
+				5910CC2F27F0C86C00841351 /* BaseResponse.swift */,
 				59BCF78027F8D59400B1DE8D /* DataState.swift */,
+				5910CC4827F0CB4900841351 /* Pagination.swift */,
+				59C890BC27F21EF0008956B3 /* Response.swift */,
+				59C890BE27F220D0008956B3 /* Response+User.swift */,
+				5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */,
+				5910CC4E27F0CC7700841351 /* Word */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,10 +297,11 @@
 			isa = PBXGroup;
 			children = (
 				5910CC4627F0CB1C00841351 /* Dashboard */,
-				5950D7422853D7DD00E5F4C7 /* Favorite */,
 				5910CC4027F0CA3E00841351 /* Dictionary */,
+				5950D7422853D7DD00E5F4C7 /* Favorite */,
 				59C890C427F2318A008956B3 /* Login */,
 				5903FC7027F935B600ED0D67 /* Profile */,
+				5950D7502854A7CB00E5F4C7 /* Registration */,
 				5910CC4327F0CACA00841351 /* WordDetails */,
 			);
 			path = Views;
@@ -328,9 +312,6 @@
 			children = (
 				5910CC2A27F0C83A00841351 /* DictionaryView.swift */,
 				5910CC4127F0CA6500841351 /* DictionaryStore.swift */,
-				5941D52E28525D650006C373 /* DictionaryLoader.swift */,
-				5950D7402853AD8B00E5F4C7 /* DictionaryUpdater.swift */,
-				5941D53028525FC20006C373 /* DictionaryService.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -339,8 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				5910CC3527F0C8C700841351 /* WordDetailsView.swift */,
-				5941D52A28524BD80006C373 /* WordDetailsLoader.swift */,
-				5941D52C28524C8A0006C373 /* WordDetailsService.swift */,
 				5910CC4427F0CAEA00841351 /* WordDetailsStore.swift */,
 				59BCF78227F8D5E100B1DE8D /* WordDetailsStore+ViewModel.swift */,
 				59BCF78627F8D68500B1DE8D /* WordDetailsStore+PresentedView.swift */,
@@ -358,66 +337,108 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		5910CC4727F0CB3C00841351 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				59C890BC27F21EF0008956B3 /* Response.swift */,
-				590C518D27F63454003D26F9 /* User */,
-				5910CC4E27F0CC7700841351 /* Word */,
-				5910CC4827F0CB4900841351 /* Pagination.swift */,
-				5910CC2F27F0C86C00841351 /* BaseResponse.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		5910CC4E27F0CC7700841351 /* Word */ = {
 			isa = PBXGroup;
 			children = (
-				5910CC3327F0C87D00841351 /* Word.swift */,
 				5910CC4F27F0CC8600841351 /* DictionaryExplanation.swift */,
 				5910CC5127F0CCA400841351 /* SearchHit.swift */,
 				590C518E27F63606003D26F9 /* Translation.swift */,
+				5910CC3327F0C87D00841351 /* Word.swift */,
 			);
 			path = Word;
 			sourceTree = "<group>";
 		};
-		5910CC5327F0CD0900841351 /* Components */ = {
+		5910CC5327F0CD0900841351 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
 				5910CC5427F0CD2000841351 /* WordRow.swift */,
 				59C890C927F23663008956B3 /* LineDivider.swift */,
 				590C519F27F67627003D26F9 /* AsyncButton.swift */,
 			);
-			path = Components;
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
-		592CABC227F111F90093F879 /* Service */ = {
+		592CABC227F111F90093F879 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				592CABC327F112760093F879 /* Endpoint.swift */,
-				597A55CF27F25F5E00A92CC9 /* WordService */,
-				59C890B527F21DC7008956B3 /* UserService */,
+				592CABC527F113430093F879 /* WordAPI.swift */,
+				59C890C227F2220E008956B3 /* UserAPI.swift */,
 			);
-			path = Service;
+			path = API;
 			sourceTree = "<group>";
 		};
 		5950D7422853D7DD00E5F4C7 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */,
 				5950D7492853DCBC00E5F4C7 /* FavoriteStore.swift */,
-				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
 				5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
 		};
-		597A55CF27F25F5E00A92CC9 /* WordService */ = {
+		5950D7502854A7CB00E5F4C7 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				592CABC527F113430093F879 /* WordAPI.swift */,
 			);
-			path = WordService;
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		5950D7512854A83F00E5F4C7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				592CABC227F111F90093F879 /* API */,
+				5910CC2C27F0C84B00841351 /* Model */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5950D7522854A88300E5F4C7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5910CC3A27F0C93A00841351 /* Extensions */,
+				597A55D227F2602300A92CC9 /* Managers */,
+				5903FC8127F9CAC400ED0D67 /* Protocols */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5950D7532854A93300E5F4C7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5950D7542854A94500E5F4C7 /* Dictionary */,
+				5950D7552854A95800E5F4C7 /* Favorite */,
+				5950D7562854A96D00E5F4C7 /* WordDetails */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5950D7542854A94500E5F4C7 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				5941D52E28525D650006C373 /* DictionaryLoader.swift */,
+				5941D53028525FC20006C373 /* DictionaryService.swift */,
+				5950D7402853AD8B00E5F4C7 /* DictionaryUpdater.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		5950D7552854A95800E5F4C7 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */,
+				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		5950D7562854A96D00E5F4C7 /* WordDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5941D52A28524BD80006C373 /* WordDetailsLoader.swift */,
+				5941D52C28524C8A0006C373 /* WordDetailsService.swift */,
+			);
+			path = WordDetails;
 			sourceTree = "<group>";
 		};
 		597A55D227F2602300A92CC9 /* Managers */ = {
@@ -427,14 +448,6 @@
 				590C519727F64F14003D26F9 /* Logger.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		59C890B527F21DC7008956B3 /* UserService */ = {
-			isa = PBXGroup;
-			children = (
-				59C890C227F2220E008956B3 /* UserAPI.swift */,
-			);
-			path = UserService;
 			sourceTree = "<group>";
 		};
 		59C890C427F2318A008956B3 /* Login */ = {
@@ -556,7 +569,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5910CBF727F0C68D00841351 /* Preview Assets.xcassets in Resources */,
 				5910CBF427F0C68D00841351 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -812,7 +824,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Philitas/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -841,7 +853,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Philitas/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
