@@ -12,6 +12,7 @@ struct LoginView<T: SessionLoader & SessionUpdater>: View {
     @EnvironmentObject private var session: Session
     @Environment(\.dismiss) private var dismiss
     @StateObject private var model: LoginStore<T>
+    @State private var isRegistrationPresented = false
     @FocusState private var focusedField: Field?
 
     init(
@@ -29,12 +30,17 @@ struct LoginView<T: SessionLoader & SessionUpdater>: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 40)
             
-            Button {
-                
+            NavigationLink(isActive: $isRegistrationPresented) {
+                RegistrationView(service: RegistrationService())
             } label: {
-                Text("Registriraj se")
+                HStack {
+                    Spacer()
+                    Text("Registriraj se")
+                    Spacer()
+                }
             }
             .padding(.horizontal, 16)
+
         }
         .onReceive(model.$userData) {
             if let value = $0 {
