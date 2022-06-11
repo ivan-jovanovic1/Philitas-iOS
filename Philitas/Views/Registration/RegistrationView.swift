@@ -51,6 +51,9 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
             .onSubmit {
                 store.process(focusedField: &focusedField)
             }
+            .onReceive(store.$inputs.debounce(for: 0.5, scheduler: DispatchQueue.main)) { _ in
+                store.updateCompleteButton()
+            }
             .navigationTitle("Registracija")
         }
     }
