@@ -15,7 +15,7 @@ enum Endpoint: String {
 
     case login = "/users/login"
     case logout = "/users/logout"
-    case register = "users/register"
+    case register = "/users/register"
     case verifyToken = "/users/me"
 }
 
