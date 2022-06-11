@@ -14,8 +14,8 @@ class RegistrationService: RegistrationValidator {
     )
     
     private let passwordPredicate = NSPredicate(
-        format: "SELF MATCHES %@ ",
-        "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$"
+        format: "SELF MATCHES %@",
+        "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$"
     )
 
     func isUsernameValid(username: String) -> Bool {
