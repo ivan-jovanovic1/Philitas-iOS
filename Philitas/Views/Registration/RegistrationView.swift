@@ -35,10 +35,11 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
                             .foregroundColor(.red)
                     }
                 } footer: {
-                    AsyncButton(action: {}) {
+                    AsyncButton(action: store.register) {
                         Text("Registriraj se").frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
+                    .disabled(!store.isCompleteRegistrationEnabled)
                     .padding(.top, 40)
                 }
                 .textFieldStyle(.roundedBorder)
