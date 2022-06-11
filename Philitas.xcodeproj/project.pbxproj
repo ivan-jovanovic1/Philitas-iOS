@@ -51,7 +51,7 @@
 		5950D74A2853DCBD00E5F4C7 /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7492853DCBC00E5F4C7 /* FavoriteStore.swift */; };
 		5950D74C2853DE9C00E5F4C7 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */; };
 		5950D74E2853F06E00E5F4C7 /* SessionUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */; };
-		5950D7592854AC4B00E5F4C7 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7582854AC4B00E5F4C7 /* Registration.swift */; };
+		5950D7592854AC4B00E5F4C7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7582854AC4B00E5F4C7 /* RegistrationView.swift */; };
 		5950D75B2854C6BD00E5F4C7 /* RegistrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D75A2854C6BD00E5F4C7 /* RegistrationStore.swift */; };
 		5950D75D2854C6E000E5F4C7 /* RegistrationStore+Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D75C2854C6E000E5F4C7 /* RegistrationStore+Field.swift */; };
 		5950D75F2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D75E2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift */; };
@@ -136,7 +136,7 @@
 		5950D7492853DCBC00E5F4C7 /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUpdater.swift; sourceTree = "<group>"; };
-		5950D7582854AC4B00E5F4C7 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		5950D7582854AC4B00E5F4C7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		5950D75A2854C6BD00E5F4C7 /* RegistrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStore.swift; sourceTree = "<group>"; };
 		5950D75C2854C6E000E5F4C7 /* RegistrationStore+Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationStore+Field.swift"; sourceTree = "<group>"; };
 		5950D75E2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationStore+InvalidInput.swift"; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 		5950D7502854A7CB00E5F4C7 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				5950D7582854AC4B00E5F4C7 /* Registration.swift */,
+				5950D7582854AC4B00E5F4C7 /* RegistrationView.swift */,
 				5950D75A2854C6BD00E5F4C7 /* RegistrationStore.swift */,
 				5950D75C2854C6E000E5F4C7 /* RegistrationStore+Field.swift */,
 				5950D75E2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift */,
@@ -672,7 +672,7 @@
 				590C519827F64F14003D26F9 /* Logger.swift in Sources */,
 				5941D53128525FC20006C373 /* DictionaryService.swift in Sources */,
 				5950D75F2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift in Sources */,
-				5950D7592854AC4B00E5F4C7 /* Registration.swift in Sources */,
+				5950D7592854AC4B00E5F4C7 /* RegistrationView.swift in Sources */,
 				5950D74C2853DE9C00E5F4C7 /* FavoriteView.swift in Sources */,
 				5910CC4227F0CA6500841351 /* DictionaryStore.swift in Sources */,
 				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
