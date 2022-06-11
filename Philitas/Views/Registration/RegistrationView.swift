@@ -43,18 +43,14 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
                 }
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, 16)
+                .animation(.spring(), value: store.invalidInput)
                 
                 Spacer()
-//                    .animation(.spring(), value: store.invalidInput)
             }
             .onSubmit {
-                focusedField = focusedField?.next()
-                if focusedField == nil {
-                    // register
-                }
+                store.process(focusedField: &focusedField)
             }
             .navigationTitle("Registracija")
-            
         }
     }
     
@@ -70,6 +66,8 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
                 .disableAutocorrection(true)
         }
     }
+    
+
 }
 
 struct RegistrationView_Previews: PreviewProvider {
