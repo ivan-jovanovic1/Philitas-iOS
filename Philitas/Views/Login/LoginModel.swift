@@ -36,7 +36,7 @@ extension LoginStore {
 
         do {
             let userData = try await loader.login(username: username, password: password)
-            UserDefaults.standard.jwsToken = userData.jwsToken
+            UserDefaults.standard.jwsToken = userData.authToken
             self.userData = userData
         }
         catch {
