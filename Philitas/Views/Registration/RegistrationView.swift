@@ -18,34 +18,8 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
     var body: some View {
         NavigationView {
             VStack {
-                Text("Vnesite podatke. Polja **označena z zvezdico** so obvezna polja.")
-                    .padding(.horizontal, 15)
-                    .font(.body)
-                    .foregroundColor(.accentColor)
-                    .padding(.vertical, 24)
-                
-                Section {
-                    ForEach(RegistrationStore<T>.Field.allCases) { field in
-                        inputField(for: field)
-                    }
-                    
-                    if let invalidInput = store.invalidInput {
-                        Text(invalidInput.localizedDescription)
-                            .font(.footnote)
-                            .foregroundColor(.red)
-                    }
-                } footer: {
-                    AsyncButton(action: store.register) {
-                        Text("Registriraj se").frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-                    .disabled(!store.isCompleteRegistrationEnabled)
-                    .padding(.top, 40)
-                }
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 16)
-                .animation(.spring(), value: store.invalidInput)
-                
+                instructions
+                section
                 Spacer()
             }
             .onSubmit {
@@ -56,6 +30,38 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
             }
             .navigationTitle("Registracija")
         }
+    }
+    
+    private var instructions: some View {
+        Text("Vnesite podatke. Polja **označena z zvezdico** so obvezna polja.")
+            .padding(.horizontal, 15)
+            .font(.body)
+            .foregroundColor(.accentColor)
+            .padding(.vertical, 24)
+    }
+    
+    private var section: some View {
+        Section {
+            ForEach(RegistrationStore<T>.Field.allCases) { field in
+                inputField(for: field)
+            }
+            
+            if let invalidInput = store.invalidInput {
+                Text(invalidInput.localizedDescription)
+                    .font(.footnote)
+                    .foregroundColor(.red)
+            }
+        } footer: {
+            AsyncButton(action: store.register) {
+                Text("Registriraj se").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .disabled(!store.isCompleteRegistrationEnabled)
+            .padding(.top, 40)
+        }
+        .textFieldStyle(.roundedBorder)
+        .padding(.horizontal, 16)
+        .animation(.spring(), value: store.invalidInput)
     }
     
     @ViewBuilder
