@@ -173,12 +173,9 @@
 		5903FC6F27F9357B00ED0D67 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
 				5986B96C27F79B2600703697 /* APIConfigure.swift */,
+				5910CBEF27F0C68D00841351 /* PhilitasApp.swift */,
 				597A55D527F2658700A92CC9 /* Session.swift */,
-				5941D532285270670006C373 /* SessionLoader.swift */,
-				5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */,
-				5941D5342852706D0006C373 /* SessionService.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -408,6 +405,7 @@
 			children = (
 				5950D7542854A94500E5F4C7 /* Dictionary */,
 				5950D7552854A95800E5F4C7 /* Favorite */,
+				5950D7572854AAF400E5F4C7 /* Session */,
 				5950D7562854A96D00E5F4C7 /* WordDetails */,
 			);
 			path = Service;
@@ -439,6 +437,16 @@
 				5941D52C28524C8A0006C373 /* WordDetailsService.swift */,
 			);
 			path = WordDetails;
+			sourceTree = "<group>";
+		};
+		5950D7572854AAF400E5F4C7 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				5941D532285270670006C373 /* SessionLoader.swift */,
+				5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */,
+				5941D5342852706D0006C373 /* SessionService.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 		597A55D227F2602300A92CC9 /* Managers */ = {
