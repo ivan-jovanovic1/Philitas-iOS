@@ -10,7 +10,7 @@ import SwiftUI
 struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View {
     @FocusState private var focusedField: RegistrationStore<T>.Field?
     @StateObject private var store: RegistrationStore<T>
-
+    
     init(service: T) {
         _store = StateObject(wrappedValue: RegistrationStore(service: service))
     }
@@ -76,8 +76,6 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
                 .disableAutocorrection(true)
         }
     }
-    
-
 }
 
 struct RegistrationView_Previews: PreviewProvider {
