@@ -10,28 +10,21 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject private var session: Session
     @StateObject private var store = ProfileStore()
-    @State private var isSheetPresented = false
-    let service = SessionService()
     
     var body: some View {
-        VStack {
-            if let user = session.user {
-                mainView(user: user)
-            } else {
-                Text("Hello,xr world!")
-                Button {
-                    isSheetPresented = true
-                } label: {
-                    Text("Prijava")
+        NavigationView {
+            VStack {
+                if let user = session.user {
+                    mainView(user: user)
+                } else {
+                    loginOrRegister
                 }
             }
+            .animation(.easeInOut, value: session.user)
+            .navigationTitle("Profil")
         }
-        .sheet(
-            isPresented: $isSheetPresented,
-            content: loginSheet
-        )
+        .navigationViewStyle(.stack)
         .onAppear {
-            isSheetPresented = session.user == nil
             store.session = session
             store.checkForFullName()
         }
@@ -39,42 +32,106 @@ struct ProfileView: View {
     
     @ViewBuilder
     private func mainView(user: SessionLoader.User) -> some View {
-        NavigationView{
-            List {
+        VStack {
+            
+            Image(systemName: "person.crop.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 160, height: 160)
+            
+            Form {
                 Section {
-                    Text(user.username)
-                    Text(user.email)
+                    HStack {
+                        Text("Uporabniško ime")
+                        Spacer()
+                        Text(user.username)
+                    }
+                    
                     if let fullName = store.fullName {
-                        Text(fullName)
+                        HStack {
+                            Text("Ime in priimek")
+                            Spacer()
+                            Text(fullName)
+                        }
                     }
                 } header: {
-                    Text("Osebni podatki")
+                    header(imageName: "person", description: "Ime")
+                }
+                
+                Section {
+                    Text(user.email)
+                } header: {
+                    header(imageName: "envelope", description: "E-naslov")
+                }
+                
+                
+                Section {
+                    HStack {
+                        Text("Število")
+                        Spacer()
+                        Text("\(user.favoriteWordIds.count)")
+                    }
+                } header: {
+                    header(imageName: "star", description: "Priljubljene besede")
                 }
                 
                 Section {
                     AsyncButton(role: .destructive) {
                         await session.logout()
                     } label: {
-                        Text("Odjava")
+                        HStack {
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                            Text("Odjava")
+                        }
                     }
                 }
             }
-            .navigationTitle("Profil")
+        }
+    }
+    
+    private func header(imageName: String, description: String) -> some View {
+        HStack {
+            Text("\(Image(systemName: imageName))")
+                .font(.title2)
+            
+            Text(description)
+                .font(.body)
         }
     }
     
     @ViewBuilder
-    private func loginSheet() -> some View {
-        NavigationView {
-            LoginView(loader: service)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("Zapri") {
-                            isSheetPresented.toggle()
-                        }
-                    }
-                }
+    private var loginOrRegister: some View {
+        Text("""
+        Za ogled profila se morate prijaviti.
+        V primeru da še nimate računa, Vam je na voljo registracija.
+        Račun Vam omogoča dodajanje priljubljenih besed ter zgodovino iskanja besed.
+        """
+        )
+        .font(.title3)
+        .padding(.horizontal, 16)
+        .padding(.bottom, 40)
+        
+        NavigationLink(isActive: $store.isLoginPresented) {
+            LoginView(loader: SessionService())
+        } label: {
+            Button("Prijava") { store.isLoginPresented.toggle() }
+                .buttonStyle(.bordered)
         }
+        .padding(.horizontal, 16)
+        
+        LineDivider("ALI")
+            .padding(.horizontal, 16)
+            .padding(.vertical, 40)
+        
+        NavigationLink(isActive: $store.isRegistrationPresented) {
+            RegistrationView(service: RegistrationService())
+        } label: {
+            Button("Registracija") { store.isRegistrationPresented.toggle() }
+                .buttonStyle(.bordered)
+        }
+        .padding(.horizontal, 16)
+        
+        Spacer()
     }
 }
 
@@ -85,11 +142,13 @@ struct ProfileView_Previews: PreviewProvider {
         init() {
             let session = Session(service: SessionServiceMock())
             session.user = .init(
+                id: UUID().uuidString,
                 username: "Ivan",
                 email: "ivan.jovanovic@student.um.si",
-                jwsToken: UUID().uuidString,
+                authToken: UUID().uuidString,
                 firstName: "Ivan",
-                lastName: "Jovanović"
+                lastName: "Jovanović",
+                favoriteWordIds: []
             )
             _session = StateObject(wrappedValue: session)
         }

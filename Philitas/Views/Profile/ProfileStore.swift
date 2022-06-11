@@ -10,6 +10,8 @@ import Foundation
 class ProfileStore: ObservableObject {
     weak var session: Session?
     @Published var fullName: String?
+    @Published var isRegistrationPresented = false
+    @Published var isLoginPresented = false
     var presentedSubview: Subview = .none
     private let formatter = PersonNameComponentsFormatter()
 }
