@@ -55,6 +55,9 @@
 		5950D75B2854C6BD00E5F4C7 /* RegistrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D75A2854C6BD00E5F4C7 /* RegistrationStore.swift */; };
 		5950D75D2854C6E000E5F4C7 /* RegistrationStore+Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D75C2854C6E000E5F4C7 /* RegistrationStore+Field.swift */; };
 		5950D75F2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D75E2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift */; };
+		5950D7622854C82200E5F4C7 /* RegistrationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */; };
+		5950D7642854C8D400E5F4C7 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7632854C8D400E5F4C7 /* RegistrationService.swift */; };
+		5950D7662854CC2E00E5F4C7 /* RegistrationFormSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -137,6 +140,9 @@
 		5950D75A2854C6BD00E5F4C7 /* RegistrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStore.swift; sourceTree = "<group>"; };
 		5950D75C2854C6E000E5F4C7 /* RegistrationStore+Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationStore+Field.swift"; sourceTree = "<group>"; };
 		5950D75E2854C75600E5F4C7 /* RegistrationStore+InvalidInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationStore+InvalidInput.swift"; sourceTree = "<group>"; };
+		5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationValidator.swift; sourceTree = "<group>"; };
+		5950D7632854C8D400E5F4C7 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormSender.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -405,6 +411,7 @@
 				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
 				5950D7542854A94500E5F4C7 /* Dictionary */,
 				5950D7552854A95800E5F4C7 /* Favorite */,
+				5950D7602854C80B00E5F4C7 /* Registration */,
 				5950D7572854AAF400E5F4C7 /* Session */,
 				5950D7562854A96D00E5F4C7 /* WordDetails */,
 			);
@@ -447,6 +454,16 @@
 				5941D5342852706D0006C373 /* SessionService.swift */,
 			);
 			path = Session;
+			sourceTree = "<group>";
+		};
+		5950D7602854C80B00E5F4C7 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */,
+				5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */,
+				5950D7632854C8D400E5F4C7 /* RegistrationService.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		597A55D227F2602300A92CC9 /* Managers */ = {
@@ -640,6 +657,7 @@
 				59BCF78727F8D68500B1DE8D /* WordDetailsStore+PresentedView.swift in Sources */,
 				5910CC5227F0CCA400841351 /* SearchHit.swift in Sources */,
 				5950D7442853D7F800E5F4C7 /* FavoriteLoader.swift in Sources */,
+				5950D7662854CC2E00E5F4C7 /* RegistrationFormSender.swift in Sources */,
 				592850B327F24AD5007DD160 /* ProfileStore.swift in Sources */,
 				5903FC8327F9CADC00ED0D67 /* ViewPresentable.swift in Sources */,
 				592CABC427F112760093F879 /* Endpoint.swift in Sources */,
@@ -667,10 +685,12 @@
 				5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */,
 				5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */,
 				5941D533285270670006C373 /* SessionLoader.swift in Sources */,
+				5950D7622854C82200E5F4C7 /* RegistrationValidator.swift in Sources */,
 				590C518F27F63606003D26F9 /* Translation.swift in Sources */,
 				5941D5352852706D0006C373 /* SessionService.swift in Sources */,
 				59C890C327F2220E008956B3 /* UserAPI.swift in Sources */,
 				590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */,
+				5950D7642854C8D400E5F4C7 /* RegistrationService.swift in Sources */,
 				5950D74A2853DCBD00E5F4C7 /* FavoriteStore.swift in Sources */,
 				5950D75D2854C6E000E5F4C7 /* RegistrationStore+Field.swift in Sources */,
 				5950D7412853AD8B00E5F4C7 /* DictionaryUpdater.swift in Sources */,
