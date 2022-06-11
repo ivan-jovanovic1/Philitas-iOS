@@ -24,6 +24,7 @@ struct LoginView<T: SessionLoader & SessionUpdater>: View {
         VStack(alignment: .leading) {
             loginSection()
                 .padding(.horizontal, 16)
+            Spacer()
         }
         .onReceive(model.$userData) {
             if let value = $0 {
