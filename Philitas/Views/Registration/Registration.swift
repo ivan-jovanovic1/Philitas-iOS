@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct RegistrationView: View {    
-    @FocusState private var focusedField: RegistrationStore.Field?
-    @StateObject private var store: RegistrationStore
+struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View {
+    @FocusState private var focusedField: RegistrationStore<T>.Field?
+    @StateObject private var store: RegistrationStore<T>
 
-    init() {
-        _store = StateObject(wrappedValue: RegistrationStore())
+    init(service: T) {
+        _store = StateObject(wrappedValue: RegistrationStore(service: service))
     }
     
     var body: some View {
@@ -25,7 +25,7 @@ struct RegistrationView: View {
                     .padding(.vertical, 24)
                 
                 Section {
-                    ForEach(RegistrationStore.Field.allCases) { field in
+                    ForEach(RegistrationStore<T>.Field.allCases) { field in
                         inputField(for: field)
                     }
                     
@@ -59,7 +59,7 @@ struct RegistrationView: View {
     }
     
     @ViewBuilder
-    private func inputField(for field: RegistrationStore.Field) -> some View {
+    private func inputField(for field: RegistrationStore<T>.Field) -> some View {
         if field.isSecureField {
             SecureField(field.description, text: $store.inputs[field.rawValue])
                 .focused($focusedField, equals: field)
@@ -74,7 +74,7 @@ struct RegistrationView: View {
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        RegistrationView(service: RegistrationService())
             .previewDevice("iPhone 13 Pro")
     }
 }
