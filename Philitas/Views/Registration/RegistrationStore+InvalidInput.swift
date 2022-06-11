@@ -9,21 +9,18 @@ import Foundation
 
 extension RegistrationStore {
     enum InvalidInput: Error, LocalizedError {
-        case requiredUsername
-        case requiredPassword
-        case requiredEmail
-        case weakPassword
+        case invalidUsername
+        case invalidPassword
+        case invalidEmail
         
         var errorDescription: String? {
             switch self {
-            case .requiredUsername:
-                return "Prosimo vnesite uporabniško ime."
-            case .requiredPassword:
-                return "Prosimo vnesite geslo."
-            case .requiredEmail:
-                return "Prosimo vnesite e-naslov."
-            case .weakPassword:
-                return "Geslo je prešibko. Prosimo, da vnesete geslo z vsaj 8 znakov."
+            case .invalidUsername:
+                return "Prosimo vnesite uporabniško ime. Dolžina uporabniškega imena mora biti od 3 do 64 znakov."
+            case .invalidPassword:
+                return "Prosimo vnesite geslo. Geslo mora imeti vsaj eno veliko črko in vsaj eno številko."
+            case .invalidEmail:
+                return "Prosimo vnesite veljaven e-naslov."
             }
         }
     }
