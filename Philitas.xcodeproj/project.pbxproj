@@ -58,6 +58,8 @@
 		5950D7622854C82200E5F4C7 /* RegistrationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */; };
 		5950D7642854C8D400E5F4C7 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7632854C8D400E5F4C7 /* RegistrationService.swift */; };
 		5950D7662854CC2E00E5F4C7 /* RegistrationFormSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */; };
+		5950D7682854FD0800E5F4C7 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D7672854FD0800E5F4C7 /* Request.swift */; };
+		5950D76B2854FD3500E5F4C7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950D76A2854FD3500E5F4C7 /* RegistrationForm.swift */; };
 		597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D327F2605500A92CC9 /* UserDefaults.swift */; };
 		597A55D627F2658700A92CC9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A55D527F2658700A92CC9 /* Session.swift */; };
 		5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986B96C27F79B2600703697 /* APIConfigure.swift */; };
@@ -143,6 +145,8 @@
 		5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationValidator.swift; sourceTree = "<group>"; };
 		5950D7632854C8D400E5F4C7 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormSender.swift; sourceTree = "<group>"; };
+		5950D7672854FD0800E5F4C7 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		5950D76A2854FD3500E5F4C7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		597A55D327F2605500A92CC9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		597A55D527F2658700A92CC9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5986B96C27F79B2600703697 /* APIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigure.swift; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 		5950D7512854A83F00E5F4C7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5950D7692854FD2100E5F4C7 /* RequestModels */,
 				592CABC227F111F90093F879 /* API */,
 				5910CC2C27F0C84B00841351 /* Model */,
 			);
@@ -464,6 +469,15 @@
 				5950D7632854C8D400E5F4C7 /* RegistrationService.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		5950D7692854FD2100E5F4C7 /* RequestModels */ = {
+			isa = PBXGroup;
+			children = (
+				5950D7672854FD0800E5F4C7 /* Request.swift */,
+				5950D76A2854FD3500E5F4C7 /* RegistrationForm.swift */,
+			);
+			path = RequestModels;
 			sourceTree = "<group>";
 		};
 		597A55D227F2602300A92CC9 /* Managers */ = {
@@ -676,6 +690,7 @@
 				5950D74C2853DE9C00E5F4C7 /* FavoriteView.swift in Sources */,
 				5910CC4227F0CA6500841351 /* DictionaryStore.swift in Sources */,
 				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
+				5950D7682854FD0800E5F4C7 /* Request.swift in Sources */,
 				59C890C827F231B1008956B3 /* LoginModel.swift in Sources */,
 				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
 				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
@@ -696,6 +711,7 @@
 				5950D7412853AD8B00E5F4C7 /* DictionaryUpdater.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
 				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
+				5950D76B2854FD3500E5F4C7 /* RegistrationForm.swift in Sources */,
 				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
 				5950D7462853D86F00E5F4C7 /* Paginatable.swift in Sources */,
 			);
