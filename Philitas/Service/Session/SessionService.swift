@@ -32,17 +32,21 @@ class SessionServiceMock: SessionLoader, SessionUpdater {
     
     func loadFromToken() async throws -> SessionLoader.User {
         .init(
+            id: UUID().uuidString,
             username: "Ivan",
             email: "ivan.jovanovic@student.um.si",
-            jwsToken: UUID().uuidString
+            authToken: UUID().uuidString,
+            favoriteWordIds: []
         )
     }
     
     func login(username: String, password: String) async throws -> SessionLoader.User {
         .init(
+            id: UUID().uuidString,
             username: "Ivan",
             email: "ivan.jovanovic@student.um.si",
-            jwsToken: UUID().uuidString
+            authToken: UUID().uuidString,
+            favoriteWordIds: []
         )
     }
 }
