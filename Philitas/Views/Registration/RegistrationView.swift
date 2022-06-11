@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View {
-    @FocusState private var focusedField: RegistrationStore<T>.Field?
+    @EnvironmentObject private var session: Session
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var store: RegistrationStore<T>
+    @FocusState private var focusedField: RegistrationStore<T>.Field?
     
     init(service: T) {
         _store = StateObject(wrappedValue: RegistrationStore(service: service))
@@ -22,11 +24,20 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
                 section
                 Spacer()
             }
+            .alert("Napaka pri registraciji", isPresented: $store.showErrorAlert) {
+                Button("V redu", role: .cancel) { }
+            }
             .onSubmit {
                 store.process(focusedField: &focusedField)
             }
             .onReceive(store.$inputs.debounce(for: 0.5, scheduler: DispatchQueue.main)) { _ in
                 store.updateCompleteButton()
+            }
+            .onReceive(store.$userData) {
+                if let userData = $0 {
+                    session.user = userData
+                    dismiss()
+                }
             }
             .navigationTitle("Registracija")
         }
