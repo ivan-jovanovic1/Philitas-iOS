@@ -26,6 +26,12 @@ enum UserAPI {
         try await APIRequest(Endpoint.logout, method: .post)
             .perform()
     }
+    
+    static func register(form: Request.RegistrationForm) async throws -> Response.BaseResponse<Response.UserData> {
+        try await APIRequest(Endpoint.register, method: .post)
+            .setBody(form)
+            .perform()
+    }
 
     static func userFromToken() async throws -> Response.BaseResponse<Response.UserData> {
         try await APIRequest(Endpoint.verifyToken, method: .get)
