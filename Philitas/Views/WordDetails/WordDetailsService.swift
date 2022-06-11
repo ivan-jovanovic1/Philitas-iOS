@@ -20,3 +20,12 @@ class WordDetailsService: WordDetailsLoader {
         try await WordAPI.singleFromId(id: wordId).data
     }
 }
+
+// MARK: - Fake WordDetailsServiceb
+#if DEBUG
+class WordDetailsServiceMock: WordDetailsLoader {
+    func load() async throws -> WordDetailsLoader.Item {
+        return WordDetailsLoader.Item.dummy
+    }
+}
+#endif

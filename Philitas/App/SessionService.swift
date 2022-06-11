@@ -22,3 +22,28 @@ extension SessionService: SessionUpdater {
         try await UserAPI.logout().data        
     }
 }
+
+// MARK: - Fake SessionService
+#if DEBUG
+class SessionServiceMock: SessionLoader, SessionUpdater {
+    func logout() async throws -> Bool {
+        true
+    }
+    
+    func loadFromToken() async throws -> SessionLoader.User {
+        .init(
+            username: "Ivan",
+            email: "ivan.jovanovic@student.um.si",
+            jwsToken: UUID().uuidString
+        )
+    }
+    
+    func login(username: String, password: String) async throws -> SessionLoader.User {
+        .init(
+            username: "Ivan",
+            email: "ivan.jovanovic@student.um.si",
+            jwsToken: UUID().uuidString
+        )
+    }
+}
+#endif

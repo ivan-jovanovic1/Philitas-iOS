@@ -143,16 +143,8 @@ extension WordDetailsView {
 }
 
 // MARK: - Previews
-
 #if DEBUG
-
     struct WordDetailsView_Previews: PreviewProvider {
-        private class WordDetailsServiceMock: WordDetailsLoader {
-            func load() async throws -> WordDetailsLoader.Item {
-                return WordDetailsLoader.Item.dummy
-            }
-        }
-
         private static let service = WordDetailsServiceMock()
 
         static var previews: some View {

@@ -102,29 +102,6 @@ private extension LoginView {
 
 // MARK: - Previews
 struct LoginView_Previews: PreviewProvider {
-    private class SessionServiceMock: SessionLoader, SessionUpdater {
-        func logout() async throws -> Bool {
-            true
-        }
-        
-        func loadFromToken() async throws -> SessionLoader.User {
-            .init(
-                username: "Ivan",
-                email: "ivan.jovanovic@student.um.si",
-                jwsToken: UUID().uuidString
-            )
-        }
-
-        func login(username: String, password: String) async throws -> SessionLoader.User {
-            .init(
-                username: "Ivan",
-                email: "ivan.jovanovic@student.um.si",
-                jwsToken: UUID().uuidString
-            )
-        }
-        
-    }
-
     private static let firstService = SessionServiceMock()
     private static let secondService = SessionServiceMock()
 

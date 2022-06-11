@@ -95,32 +95,10 @@ struct DictionaryView<T: DictionaryLoader & DictionaryUpdater>: View {
 }
 
 #if DEBUG
-    struct DictionaryView_Previews: PreviewProvider {
-        private class DictionaryServiceMock: DictionaryLoader, DictionaryUpdater {
-            var pageSize: Int = 25
-
-            var pagination: Pagination?
-
-            func shouldShowNextPage(isLastWord: Bool) -> Bool {
-                true
-            }
-
-            func load() async throws -> [DictionaryLoader.Item] {
-                [.dummy, .dummy, .dummy, .dummy]
-            }
-
-            func resetPagination() {
-                pagination = nil
-            }
-            
-            func addToFavorites(id: String) async throws -> Bool {
-                return true
-            }
-        }
-
-        static var previews: some View {
-            DictionaryView(service: DictionaryServiceMock())
-                .previewDevice("iPhone 13 Pro")
-        }
+struct DictionaryView_Previews: PreviewProvider {
+    static var previews: some View {
+        DictionaryView(service: DictionaryServiceMock())
+            .previewDevice("iPhone 13 Pro")
     }
+}
 #endif

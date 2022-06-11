@@ -79,29 +79,7 @@ struct ProfileView: View {
 }
 
 // MARK: - Previews
-struct ProfileView_Previews: PreviewProvider {
-    private class SessionServiceMock: SessionLoader, SessionUpdater {
-        func logout() async throws -> Bool {
-            true
-        }
-        
-        func loadFromToken() async throws -> SessionLoader.User {
-            .init(
-                username: "Ivan",
-                email: "ivan.jovanovic@student.um.si",
-                jwsToken: UUID().uuidString
-            )
-        }
-        
-        func login(username: String, password: String) async throws -> SessionLoader.User {
-            .init(
-                username: "Ivan",
-                email: "ivan.jovanovic@student.um.si",
-                jwsToken: UUID().uuidString
-            )
-        }
-    }
-    
+struct ProfileView_Previews: PreviewProvider {    
     private struct Preview: View {
         @StateObject private var session: Session
         init() {

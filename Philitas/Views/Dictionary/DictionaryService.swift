@@ -38,3 +38,28 @@ extension DictionaryService: DictionaryUpdater {
         try await UserAPI.addToFavorites(id: id).data
     }
 }
+
+// MARK: - Fake DictionaryService
+#if DEBUG
+class DictionaryServiceMock: DictionaryLoader, DictionaryUpdater {
+    var pageSize: Int = 25
+
+    var pagination: Pagination?
+
+    func shouldShowNextPage(isLastWord: Bool) -> Bool {
+        true
+    }
+
+    func load() async throws -> [DictionaryLoader.Item] {
+        [.dummy, .dummy, .dummy, .dummy]
+    }
+
+    func resetPagination() {
+        pagination = nil
+    }
+    
+    func addToFavorites(id: String) async throws -> Bool {
+        return true
+    }
+}
+#endif
