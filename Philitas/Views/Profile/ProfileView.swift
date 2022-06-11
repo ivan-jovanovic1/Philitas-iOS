@@ -21,7 +21,7 @@ struct ProfileView: View {
                 }
             }
             .animation(.easeInOut, value: session.user)
-            .navigationTitle("Profil")
+            .navigationBarHidden(session.user != nil)
         }
         .navigationViewStyle(.stack)
         .onAppear {
@@ -30,14 +30,12 @@ struct ProfileView: View {
         }
     }
     
-    @ViewBuilder
     private func mainView(user: SessionLoader.User) -> some View {
         VStack {
-            
             Image(systemName: "person.crop.circle")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 160, height: 160)
+                .frame(width: 80, height: 80)
             
             Form {
                 Section {
@@ -64,7 +62,6 @@ struct ProfileView: View {
                     header(imageName: "envelope", description: "E-naslov")
                 }
                 
-                
                 Section {
                     HStack {
                         Text("Število")
@@ -80,10 +77,13 @@ struct ProfileView: View {
                         await session.logout()
                     } label: {
                         HStack {
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
                             Text("Odjava")
                         }
                     }
+                } header: {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .font(.title2)
+                        .foregroundColor(.red)
                 }
             }
         }
@@ -102,9 +102,9 @@ struct ProfileView: View {
     @ViewBuilder
     private var loginOrRegister: some View {
         Text("""
-        Za ogled profila se morate prijaviti.
+        \(Image(systemName: "info.circle")) Za ogled profila se morate prijaviti.
         V primeru da še nimate računa, Vam je na voljo registracija.
-        Račun Vam omogoča dodajanje priljubljenih besed ter zgodovino iskanja besed.
+        Račun Vam omogoča dodajanje priljubljenih besed ter pregled zgodovine iskanja besed.
         """
         )
         .font(.title3)
