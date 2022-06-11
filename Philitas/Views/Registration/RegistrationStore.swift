@@ -9,7 +9,9 @@ import Foundation
 
 class RegistrationStore<T: RegistrationValidator & RegistrationFormSender>: ObservableObject {
     @Published var inputs: [String] = [String](repeating: "", count: Field.allCases.count)
-    @Published var invalidInput: InvalidInput? = nil
+    @Published var invalidInput: InvalidInput?
+    @Published var userData: RegistrationFormSender.User?
+    @Published var showErrorAlert = false
     @Published var isCompleteRegistrationEnabled: Bool = false
     
     private let service: T
@@ -20,9 +22,14 @@ class RegistrationStore<T: RegistrationValidator & RegistrationFormSender>: Obse
 }
 
 extension RegistrationStore {
+    @MainActor
     @Sendable
     func register() async {
-        try? await Task.sleep(nanoseconds: 5_000_000_000)
+        do {
+            userData = try await service.register(form: form)
+        } catch {
+            showErrorAlert = true
+        }
     }
     
     func process(focusedField: inout Field?) {
@@ -66,5 +73,15 @@ extension RegistrationStore {
     
     private var isPasswordValid: Bool {
         service.isPasswordValid(password: inputs[Field.password.rawValue])
+    }
+    
+    private var form: T.Form {
+        T.Form(
+            username: inputs[Field.username.rawValue],
+            password: inputs[Field.password.rawValue],
+            email: inputs[Field.email.rawValue],
+            firstName: inputs[Field.firstName.rawValue],
+            lastName: inputs[Field.lastName.rawValue]
+        )
     }
 }
