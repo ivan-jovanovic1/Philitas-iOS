@@ -32,7 +32,7 @@ class RegistrationService: RegistrationValidator {
 }
 
 extension RegistrationService: RegistrationFormSender {
-    func register(form: RegistrationForm) async throws -> RegistrationFormSender.User {
-        .init(username: "", email: "", jwsToken: "")
+    func register(form: RegistrationFormSender.Form) async throws -> RegistrationFormSender.User {
+        try await UserAPI.register(form: form).data
     }
 }
