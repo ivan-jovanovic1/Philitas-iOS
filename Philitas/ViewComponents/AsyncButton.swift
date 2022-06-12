@@ -58,3 +58,44 @@ struct AsyncButton<Label: View>: View {
         .disabled(store.isPerformingTask)
     }
 }
+
+struct AsyncButton_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        VStack {
+            AsyncButton {
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+            } label: {
+                Text("Click me")
+            }
+                       
+            AsyncButton(role: .destructive) {
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+            } label: {
+                Text("Delete")
+            }
+            
+            AsyncButton {
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+            } label: {
+                Image(systemName: "star.fill")
+            }
+            
+            AsyncButton {
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+            } label: {
+                Text("Click me")
+            }
+            .buttonStyle(.bordered)
+
+            AsyncButton {
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+            } label: {
+                Text("Click me")
+            }
+            .buttonStyle(.borderedProminent)
+
+            
+        }
+    }
+}
