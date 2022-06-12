@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DictionaryService {
+class DictionaryService: FavoriteUpdater {
     var pageSize: Int
     var pagination: Pagination?
     
@@ -30,12 +30,6 @@ extension DictionaryService: DictionaryLoader {
         pagination = response.pagination
         
         return response.data
-    }
-}
-
-extension DictionaryService: FavoriteUpdater {
-    func addToFavorites(id: String) async throws -> Bool {
-        try await UserAPI.addToFavorites(id: id).data
     }
 }
 
