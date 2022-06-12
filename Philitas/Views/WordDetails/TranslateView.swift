@@ -35,17 +35,17 @@ struct TranslateView: View {
             HStack {
                 Button {
                 } label: {
-                    Text(model.from.sloveneTranslate)
+                    Text(store.from.sloveneTranslate)
                 }
                 .frame(maxWidth: .infinity)
                 .disabled(true)
 
                 Image(systemName: "arrow.right")
 
-                Picker(model.to.sloveneTranslate, selection: $model.to) {
-                    ForEach(model.availableLanguages) { code in
+                Picker(store.to.sloveneTranslate, selection: $store.to) {
+                    ForEach(store.availableLanguages) { code in
                         Text(code.sloveneTranslate)
-                            .disabled(model.from.id == code.id)
+                            .disabled(store.from.id == code.id)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -53,7 +53,7 @@ struct TranslateView: View {
 
             Spacer()
 
-            WordRow(word: model.word.word, language: model.word.language)
+            WordRow(word: store.word.word, language: store.word.language)
         }
         .padding(.horizontal, 16)
     }
