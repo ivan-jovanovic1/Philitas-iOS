@@ -136,7 +136,7 @@
 		5950D7452853D86F00E5F4C7 /* Paginatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paginatable.swift; sourceTree = "<group>"; };
 		5950D7472853D93C00E5F4C7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		5950D7492853DCBC00E5F4C7 /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
-		5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		5950D74B2853DE9C00E5F4C7 /* FavoriteView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUpdater.swift; sourceTree = "<group>"; };
 		5950D7582854AC4B00E5F4C7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		5950D75A2854C6BD00E5F4C7 /* RegistrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStore.swift; sourceTree = "<group>"; };
