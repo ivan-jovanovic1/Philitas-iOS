@@ -33,7 +33,7 @@ extension DictionaryService: DictionaryLoader {
     }
 }
 
-extension DictionaryService: DictionaryUpdater {
+extension DictionaryService: FavoriteUpdater {
     func addToFavorites(id: String) async throws -> Bool {
         try await UserAPI.addToFavorites(id: id).data
     }
@@ -41,7 +41,7 @@ extension DictionaryService: DictionaryUpdater {
 
 // MARK: - Fake DictionaryService
 #if DEBUG
-class DictionaryServiceMock: DictionaryLoader, DictionaryUpdater {
+class DictionaryServiceMock: DictionaryLoader, FavoriteUpdater {
     var pageSize: Int = 25
     
     var pagination: Pagination?

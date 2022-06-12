@@ -1,5 +1,5 @@
 //
-//  DictionaryUpdater.swift
+//  FavoriteUpdater.swift
 //  Philitas
 //
 //  Created by Ivan Jovanović on 10/06/2022.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol DictionaryUpdater: AnyObject {    
+protocol FavoriteUpdater: AnyObject {
     func addToFavorites(id: String) async throws -> Bool
 }

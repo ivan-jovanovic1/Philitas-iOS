@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class DictionaryStore<T: DictionaryLoader & DictionaryUpdater>: ObservableObject {
+class DictionaryStore<T: DictionaryLoader & FavoriteUpdater>: ObservableObject {
     @Published var words: DataState<[T.Item]> = .loading
     @Published var wordsFromSearch = false
     @Published var searchString = ""

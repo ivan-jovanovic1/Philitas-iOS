@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DictionaryView<T: DictionaryLoader & DictionaryUpdater>: View {
+struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
     @StateObject private var store: DictionaryStore<T>
     let wordDetails: (String) -> WordDetailsView<WordDetailsService>
 
