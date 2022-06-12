@@ -10,3 +10,9 @@ import Foundation
 protocol FavoriteUpdater: AnyObject {
     func addToFavorites(id: String) async throws -> Bool
 }
+
+extension FavoriteUpdater {
+    func addToFavorites(id: String) async throws -> Bool {
+        try await UserAPI.addToFavorites(id: id).data
+    }
+}
