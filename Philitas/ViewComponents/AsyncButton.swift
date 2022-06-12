@@ -59,8 +59,8 @@ struct AsyncButton<Label: View>: View {
     }
 }
 
+// MARK: - Previews
 struct AsyncButton_Previews: PreviewProvider {
-    
     static var previews: some View {
         VStack {
             AsyncButton {
@@ -94,8 +94,6 @@ struct AsyncButton_Previews: PreviewProvider {
                 Text("Click me")
             }
             .buttonStyle(.borderedProminent)
-
-            
         }
     }
 }
