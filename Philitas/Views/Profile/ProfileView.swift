@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject private var session: Session
     @StateObject private var store = ProfileStore()
+    @Environment(\.currentTab) private var currentTab
     
     var body: some View {
         NavigationView {
@@ -26,7 +27,9 @@ struct ProfileView: View {
         .navigationViewStyle(.stack)
         .onAppear {
             store.session = session
-            store.checkForFullName()
+        }
+        .onChange(of: currentTab) {
+            store.checkForUpdate(tabItem: $0)
         }
     }
 }

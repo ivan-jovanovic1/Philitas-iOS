@@ -18,13 +18,6 @@ class ProfileStore: ObservableObject {
 
 extension ProfileStore {
     @MainActor
-    func checkIfLogged() {
-        if session?.user == nil {
-            presentedSubview = .login
-        }
-    }
-    
-    @MainActor
     func checkForFullName() {
         guard
             let firstName = session?.user?.firstName,
@@ -36,6 +29,15 @@ extension ProfileStore {
         components.familyName = lastName
 
         fullName = formatter.string(from: components)
+    }
+    
+    @MainActor
+    func checkForUpdate(tabItem: TabItem) {
+        guard tabItem == .profile else { return }
+        Task {
+            await session?.verifyJWSToken()
+            checkForFullName()
+        }
     }
 }
 
