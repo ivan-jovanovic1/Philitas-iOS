@@ -10,9 +10,7 @@ import Foundation
 class WordDetailsService: WordDetailsLoader {
     let wordId: String
 
-    init(
-        wordId: String
-    ) {
+    init(wordId: String) {
         self.wordId = wordId
     }
 

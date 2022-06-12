@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct LoginView<T: SessionLoader & SessionUpdater>: View {
-
     @EnvironmentObject private var session: Session
+    @StateObject private var store: LoginStore<T>
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var model: LoginStore<T>
     @FocusState private var focusedField: Field?
 
-    init(
-        loader: T
-    ) {
-        _model = StateObject(wrappedValue: LoginStore(loader: loader))
+    init(loader: T) {
+        _store = StateObject(wrappedValue: LoginStore(loader: loader))
     }
 
     var body: some View {
@@ -26,43 +23,42 @@ struct LoginView<T: SessionLoader & SessionUpdater>: View {
                 .padding(.horizontal, 16)
             Spacer()
         }
-        .onReceive(model.$userData) {
+        .onReceive(store.$userData) {
             if let value = $0 {
                 session.user = value
                 dismiss()
             }
         }
-        .onReceive(model.$username) { _ in model.showInvalidInput = false }
-        .onReceive(model.$password) { _ in model.showInvalidInput = false }
+        .onReceive(store.$username) { _ in store.showInvalidInput = false }
+        .onReceive(store.$password) { _ in store.showInvalidInput = false }
     }
 }
 
 extension LoginView {
-    @ViewBuilder
     private func loginSection() -> some View {
         Section {
             VStack {
-                TextField("Uporabniško ime", text: $model.username)
+                TextField("Uporabniško ime", text: $store.username)
                     .focused($focusedField, equals: .username)
                     .disableAutocorrection(true)
 
-                SecureField("Geslo", text: $model.password)
+                SecureField("Geslo", text: $store.password)
                     .focused($focusedField, equals: .password)
                     .disableAutocorrection(true)
 
-                if model.showInvalidInput {
+                if store.showInvalidInput {
                     Text("Vneseno uporabniško ime ali geslo ni pravilno.")
                         .font(.footnote)
                         .foregroundColor(.red)
                 }
             }
             .textFieldStyle(.roundedBorder)
-            .animation(.spring(), value: model.showInvalidInput)
+            .animation(.spring(), value: store.showInvalidInput)
             .padding(.bottom, 80)
         } header: {
             Text("Prijava").font(.largeTitle)
         } footer: {
-            AsyncButton(action: model.login) {
+            AsyncButton(action: store.login) {
                 Text("Prijava").frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
@@ -77,7 +73,7 @@ extension LoginView {
         if focusedField == .password {
             focusedField = nil
             Task {
-                await model.login()
+                await store.login()
             }
         }
     }

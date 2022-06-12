@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View {
     @EnvironmentObject private var session: Session
-    @Environment(\.dismiss) private var dismiss
     @StateObject private var store: RegistrationStore<T>
+    @Environment(\.dismiss) private var dismiss
     @FocusState private var focusedField: RegistrationStore<T>.Field?
     
     init(service: T) {

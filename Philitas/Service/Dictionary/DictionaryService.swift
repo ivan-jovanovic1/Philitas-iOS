@@ -10,7 +10,7 @@ import Foundation
 class DictionaryService {
     var pageSize: Int
     var pagination: Pagination?
-
+    
     init(
         pageSize: Int,
         pagination: Pagination? = nil
@@ -26,9 +26,9 @@ extension DictionaryService: DictionaryLoader {
             page: pagination?.nextPage(),
             pageSize: pageSize
         )
-
+        
         pagination = response.pagination
-
+        
         return response.data
     }
 }
@@ -43,17 +43,17 @@ extension DictionaryService: DictionaryUpdater {
 #if DEBUG
 class DictionaryServiceMock: DictionaryLoader, DictionaryUpdater {
     var pageSize: Int = 25
-
+    
     var pagination: Pagination?
-
+    
     func shouldShowNextPage(isLastWord: Bool) -> Bool {
         true
     }
-
+    
     func load() async throws -> [DictionaryLoader.Item] {
         [.dummy, .dummy, .dummy, .dummy]
     }
-
+    
     func resetPagination() {
         pagination = nil
     }

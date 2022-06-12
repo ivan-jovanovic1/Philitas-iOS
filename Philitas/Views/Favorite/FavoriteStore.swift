@@ -12,9 +12,7 @@ class FavoriteStore<T: FavoriteLoader>: ObservableObject {
     @Published var favorites: DataState<[T.Item]> = .loading
     private let service: T
     
-    init(
-        service: T
-    ) {
+    init(service: T) {
         self.service = service
     }
 }

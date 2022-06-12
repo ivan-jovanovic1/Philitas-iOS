@@ -24,7 +24,7 @@ struct PhilitasApp: App {
     }
 }
 
-fileprivate extension PhilitasApp {
+private extension PhilitasApp {
     struct AppContainer: View {
         @EnvironmentObject private var session: Session
 

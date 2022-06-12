@@ -13,7 +13,6 @@ class RegistrationStore<T: RegistrationValidator & RegistrationFormSender>: Obse
     @Published var userData: RegistrationFormSender.User?
     @Published var showErrorAlert = false
     @Published var isCompleteRegistrationEnabled: Bool = false
-    
     private let service: T
     
     init(service: T) {
@@ -40,17 +39,20 @@ extension RegistrationStore {
     func updateCompleteButton() {
         isCompleteRegistrationEnabled =  isEmailValid && isUsernameValid && isPasswordValid
     }
-    
-    private func shouldChangeFocusToNext(field: Field?) -> Bool {
+}
+
+// MARK: - Private
+private extension RegistrationStore {
+    func shouldChangeFocusToNext(field: Field?) -> Bool {
         guard let field = field else {
             return false
         }
         invalidInput = invalidInput(from: field)
-                
+        
         return invalidInput == nil
     }
     
-    private func invalidInput(from field: Field) -> InvalidInput? {
+    func invalidInput(from field: Field) -> InvalidInput? {
         switch field {
         case .username:
             return isUsernameValid ? nil : .invalidUsername
@@ -63,19 +65,19 @@ extension RegistrationStore {
         }
     }
     
-    private var isEmailValid: Bool {
+    var isEmailValid: Bool {
         service.isEmailValid(email: inputs[Field.email.rawValue])
     }
     
-    private var isUsernameValid: Bool {
+    var isUsernameValid: Bool {
         service.isUsernameValid(username: inputs[Field.username.rawValue])
     }
     
-    private var isPasswordValid: Bool {
+    var isPasswordValid: Bool {
         service.isPasswordValid(password: inputs[Field.password.rawValue])
     }
     
-    private var form: T.Form {
+    var form: T.Form {
         T.Form(
             username: inputs[Field.username.rawValue],
             password: inputs[Field.password.rawValue],

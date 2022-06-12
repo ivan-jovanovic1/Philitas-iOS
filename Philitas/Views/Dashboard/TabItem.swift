@@ -15,10 +15,6 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
     var id: Int {
         rawValue
     }
-
-    var zIndex: Double {
-        Double(rawValue)
-    }
     
     var description: String {
         switch self {

@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-class TranslationModel: ObservableObject {
-    var from: TranslateCountryCode
+class TranslationStore: ObservableObject {
     @Published var to: TranslateCountryCode
+    var from: TranslateCountryCode
     let word: Response.Word
 
-    init(
-        word: Response.Word
-    ) {
+    init(word: Response.Word) {
         self.word = word
         from = TranslateCountryCode(rawValue: word.language) ?? .sl
         to = .en
@@ -26,12 +24,10 @@ class TranslationModel: ObservableObject {
 }
 
 struct TranslateView: View {
-    @StateObject private var model: TranslationModel
+    @StateObject private var store: TranslationStore
 
-    init(
-        word: Response.Word
-    ) {
-        _model = StateObject(wrappedValue: TranslationModel(word: word))
+    init(word: Response.Word) {
+        _store = StateObject(wrappedValue: TranslationStore(word: word))
     }
 
     var body: some View {
@@ -63,6 +59,7 @@ struct TranslateView: View {
     }
 }
 
+// MARK: - Previews
 struct TranslateView_Previews: PreviewProvider {
     static var previews: some View {
         TranslateView(word: .dummy)

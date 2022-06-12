@@ -17,9 +17,7 @@ class Session: ObservableObject {
     }
     let service: any SessionLoader & SessionUpdater
 
-    init(
-        service: any SessionLoader & SessionUpdater
-    ) {
+    init(service: any SessionLoader & SessionUpdater) {
         self.service = service
     }
 }
@@ -39,7 +37,6 @@ extension Session {
         }
     }
     
-    @MainActor
     @Sendable
     func logout() async {
         do {

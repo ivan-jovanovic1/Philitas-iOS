@@ -139,23 +139,15 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {    
     private struct Preview: View {
         @StateObject private var session: Session
+        
         init() {
             let session = Session(service: SessionServiceMock())
-            session.user = .init(
-                id: UUID().uuidString,
-                username: "Ivan",
-                email: "ivan.jovanovic@student.um.si",
-                authToken: UUID().uuidString,
-                firstName: "Ivan",
-                lastName: "Jovanović",
-                favoriteWordIds: []
-            )
+            session.user = .dummy
             _session = StateObject(wrappedValue: session)
         }
         var body: some View {
             ProfileView()
                 .environmentObject(session)
-            
         }
     }
     

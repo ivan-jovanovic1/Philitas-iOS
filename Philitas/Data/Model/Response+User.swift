@@ -18,3 +18,19 @@ public extension Response {
         private(set) var favoriteWordIds: [String]
     }
 }
+
+#if DEBUG
+public extension Response.UserData {
+    static var dummy: Self {
+        .init(
+            id: UUID().uuidString,
+            username: "Ivan",
+            email: "ivan.jovanovic@student.um.si",
+            authToken: UUID().uuidString,
+            firstName: "Ivan",
+            lastName: "Jovanović",
+            favoriteWordIds: []
+        )
+    }
+}
+#endif

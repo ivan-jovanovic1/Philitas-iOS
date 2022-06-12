@@ -15,8 +15,7 @@ extension Response {
     }
 }
 
-// MARK: Identifiable conformation
-
+// MARK: - Identifiable conformation
 extension Response.DictionaryExplanation: Identifiable {
     var id: Int {
         var hasher = Hasher()

@@ -9,15 +9,16 @@ import SwiftUI
 
 
 struct FavoriteView<T: FavoriteLoader>: View {
-  
   @EnvironmentObject private var session: Session
   @StateObject private var store: FavoriteStore<T>
-  
+  let wordDetails: (String) -> WordDetailsView<WordDetailsService>
+
   init(
     service: T,
     selectedTab: Binding<TabItem>
   ) {
     _store = StateObject(wrappedValue: FavoriteStore(service: service))
+    wordDetails = { WordDetailsView(loader: WordDetailsService(wordId: $0)) }
   }
   
   var body: some View {
@@ -35,18 +36,16 @@ struct FavoriteView<T: FavoriteLoader>: View {
     .background(.red)
     .task { await store.loadFavorites() }
     .onReceive(session.$user) { user in
-        Task {
-          await store.loadFavorites(refreshing: true)
-        }
+      Task {
+        await store.loadFavorites(refreshing: true)
+      }
     }
   }
   
   @ViewBuilder
   func wordList(_ data: [T.Item]) -> some View {
     List(data) { word in
-      NavigationLink(
-        destination: WordDetailsView(loader: WordDetailsService(wordId: word._id))
-      ) {
+      NavigationLink(destination: wordDetails(word.id)) {
         WordRow(
           word: word.word,
           language: word.language,
@@ -59,15 +58,6 @@ struct FavoriteView<T: FavoriteLoader>: View {
       }
     }
     .refreshable { await store.loadFavorites(refreshing: true) }
-    //        .searchable(
-    //            text: $store.searchString,
-    //            placement: .navigationBarDrawer(displayMode: .always),
-    //            prompt: "Iskanje",
-    //            suggestions: searchView
-    //        )
-    //        .onSubmit(of: .search) {
-    //            //            Task { await store.searchForWord() }
-    //        }
     .navigationTitle("Priljubljeno")
   }
 }

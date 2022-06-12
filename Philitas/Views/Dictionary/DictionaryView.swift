@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct DictionaryView<T: DictionaryLoader & DictionaryUpdater>: View {
-
-    @Environment(\.isSearching) var isSearching
     @StateObject private var store: DictionaryStore<T>
+    let wordDetails: (String) -> WordDetailsView<WordDetailsService>
 
-    init(
-        service: T
-    ) {
+    init(service: T) {
         _store = StateObject(wrappedValue: DictionaryStore(service: service))
+        wordDetails = { WordDetailsView(loader: WordDetailsService(wordId: $0)) }
     }
 
     var body: some View {
@@ -32,19 +30,13 @@ struct DictionaryView<T: DictionaryLoader & DictionaryUpdater>: View {
         .navigationViewStyle(.stack)
         .background(.red)
         .task { await store.loadWords() }
-        .onChange(of: isSearching) {
-            if !$0 {
-                store.resetSearchState()
-            }
-        }
+
     }
 
     @ViewBuilder
     func wordList(_ data: [T.Item]) -> some View {
         List(data) { word in
-            NavigationLink(
-                destination: WordDetailsView(loader: WordDetailsService(wordId: word._id))
-            ) {
+            NavigationLink(destination: wordDetails(word.id)) {
                 WordRow(
                     word: word.word,
                     language: word.language,
