@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WordDetailsService: WordDetailsLoader {
+class WordDetailsService: WordDetailsLoader, FavoriteUpdater {
     let wordId: String
 
     init(wordId: String) {
@@ -19,11 +19,15 @@ class WordDetailsService: WordDetailsLoader {
     }
 }
 
-// MARK: - Fake WordDetailsServiceb
+// MARK: - Fake WordDetailsService
 #if DEBUG
-class WordDetailsServiceMock: WordDetailsLoader {
+class WordDetailsServiceMock: WordDetailsLoader, FavoriteUpdater {
     func load() async throws -> WordDetailsLoader.Item {
         return WordDetailsLoader.Item.dummy
+    }
+
+    func addToFavorites(id: String) async throws -> Bool {
+        return true
     }
 }
 #endif
