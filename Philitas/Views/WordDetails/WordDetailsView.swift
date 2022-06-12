@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct WordDetailsView<T: WordDetailsLoader>: View {
+struct WordDetailsView<T: WordDetailsLoader & FavoriteUpdater>: View {
+    @EnvironmentObject private var session: Session
     @StateObject private var store: WordDetailsStore<T>
     @State private var isAlertPresented = false
     @State private var error: Error? = nil
@@ -48,6 +49,9 @@ struct WordDetailsView<T: WordDetailsLoader>: View {
                 dismissButton: .cancel(Text("Zapri"), action: {})
             )
         }
+        .onAppear {
+            store.processUser(user: session.user)
+        }
         .task(store.loadWordDetails)
     }
 }
@@ -86,12 +90,28 @@ private extension WordDetailsView {
         .listStyle(.insetGrouped)
         .navigationTitle(viewModel.word.capitalized)
         .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                favoriteButton()
+            }
+            
             ToolbarItem(placement: .status) {
                 Button {
                     store.presented = .translate
                 } label: {
                     Text("Prevedi")
                 }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func favoriteButton() -> some View {
+        if store.showFavoriteButton {
+            AsyncButton {
+                await store.addToFavorites()
+            } label: {
+                Image(systemName: store.isFavoriteWord ? "star.fill" : "star")
+                    .animation(.spring(), value: store.isFavoriteWord)
             }
         }
     }
