@@ -104,7 +104,7 @@
 		5910CC0627F0C68E00841351 /* PhilitasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhilitasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5910CC0A27F0C68E00841351 /* PhilitasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasUITests.swift; sourceTree = "<group>"; };
 		5910CC0C27F0C68E00841351 /* PhilitasUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilitasUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		5910CC2827F0C82000841351 /* DashboardView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		5910CC2827F0C82000841351 /* DashboardView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		5910CC2A27F0C83A00841351 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		5910CC2D27F0C85A00841351 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		5910CC2F27F0C86C00841351 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };

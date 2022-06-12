@@ -38,3 +38,16 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
         }
     }
 }
+
+// MARK: - Environment value 
+extension TabItem: EnvironmentKey {
+    static let defaultValue: TabItem = .dictionary
+}
+
+extension EnvironmentValues {
+    var currentTab: TabItem {
+        get { self[TabItem.self] }
+        set { self[TabItem.self] = newValue }
+    }
+}
+

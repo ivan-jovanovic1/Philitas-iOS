@@ -17,6 +17,7 @@ struct DashboardView: View {
                 tabView(item)
             }
         }
+        .environment(\.currentTab, selection)
     }
 }
 
@@ -27,10 +28,13 @@ extension DashboardView {
             switch item {
             case .dictionary:
                 DictionaryView(service: DictionaryService(pageSize: 25))
+                    .tag(item)
             case .profile:
                 ProfileView()
+                    .tag(item)
             case .favorites:
                 FavoriteView(service: FavoriteService(pageSize: 25), selectedTab: $selection)
+                    .tag(item)
             }
         }
         .tabItem {
