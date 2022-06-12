@@ -9,6 +9,7 @@ import Foundation
 
 @MainActor
 class FavoriteStore<T: FavoriteLoader>: ObservableObject {
+    weak var session: Session?
     @Published var favorites: DataState<[T.Item]> = .loading
     private let service: T
     
@@ -22,7 +23,6 @@ extension FavoriteStore {
     func loadFavorites(refreshing: Bool = false) async {
         if refreshing {
             service.resetPagination()
-            favorites = .loading
         }
         
         do {
@@ -34,5 +34,12 @@ extension FavoriteStore {
     
     func shouldShowNextPage(word: T.Item) -> Bool {
         service.shouldShowNextPage(isLastWord: word.id == favorites.value?.last?.id)
+    }
+    
+    @MainActor
+    func processStateAfterWordDetailsDisappear(id: String) {
+        Task {
+            await loadFavorites(refreshing: true)
+         }
     }
 }

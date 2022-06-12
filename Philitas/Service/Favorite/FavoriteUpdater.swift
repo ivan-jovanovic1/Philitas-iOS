@@ -8,11 +8,18 @@
 import Foundation
 
 protocol FavoriteUpdater: AnyObject {
-    func addToFavorites(id: String) async throws -> Bool
+    func updateFavorites(id: String, shouldBeInFavorites: Bool) async throws -> Bool
 }
 
 extension FavoriteUpdater {
-    func addToFavorites(id: String) async throws -> Bool {
-        try await UserAPI.addToFavorites(id: id).data
+    func updateFavorites(id: String, shouldBeInFavorites: Bool) async throws -> Bool {
+        switch shouldBeInFavorites {
+        case true:
+            let selected = try await UserAPI.addToFavorites(id: id).data
+            return selected
+        case false:
+            let deselected = try await UserAPI.removeFromFavorites(id: id).data
+            return !deselected
+        }
     }
 }

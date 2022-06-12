@@ -50,4 +50,17 @@ enum UserAPI {
         .setBody(WordId(id: id))
         .perform()
     }
+    
+    static func removeFromFavorites(id: String) async throws -> Response.BaseResponse<Bool> {
+        struct WordId: Encodable {
+            let id: String
+        }
+        
+        return try await APIRequest(
+            Endpoint.wordIdToFavorites,
+            method: .delete
+        )
+        .setBody(WordId(id: id))
+        .perform()
+    }
 }

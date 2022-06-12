@@ -40,7 +40,7 @@ extension WordDetailsStore {
     func addToFavorites() async {
         do {
             guard let id = state.value?.id else { return }
-            isFavoriteWord = try await service.addToFavorites(id: id)
+            isFavoriteWord = try await service.updateFavorites(id: id, shouldBeInFavorites: !isFavoriteWord)
         } catch {
             PHLogger.networking.error("\(error.localizedDescription)")
         }
@@ -50,5 +50,4 @@ extension WordDetailsStore {
         showFavoriteButton = user != nil
         favoriteIds = user?.favoriteWordIds ?? []
     }
-    
 }

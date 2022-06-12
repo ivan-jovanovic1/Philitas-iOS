@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
+    @EnvironmentObject private var session: Session
     @StateObject private var store: DictionaryStore<T>
-    let wordDetails: (String) -> WordDetailsView<WordDetailsService>
 
     init(service: T) {
         _store = StateObject(wrappedValue: DictionaryStore(service: service))
-        wordDetails = { WordDetailsView(loader: WordDetailsService(wordId: $0)) }
     }
 
     var body: some View {
@@ -36,7 +35,7 @@ struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
     @ViewBuilder
     func wordList(_ data: [T.Item]) -> some View {
         List(data) { word in
-            NavigationLink(destination: wordDetails(word.id)) {
+            NavigationLink(destination: wordDetails(id: word.id)) {
                 WordRow(
                     word: word.word,
                     language: word.language,
@@ -68,6 +67,15 @@ struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
             //            Task { await store.searchForWord() }
         }
         .navigationTitle("Slovar")
+    }
+    
+    func wordDetails(id: String) -> some View {
+        WordDetailsView(loader: WordDetailsService(wordId: id))
+            .onDisappear() {
+                Task {
+                    await session.verifyJWSToken()
+                }
+            }
     }
 }
 

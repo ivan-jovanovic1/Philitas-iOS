@@ -45,7 +45,7 @@ extension DictionaryStore {
     
     func addToFavorites(word: T.Item) {
         Task {
-            try await service.addToFavorites(id: word._id)
+            try await service.updateFavorites(id: word.id, shouldBeInFavorites: true)
         }
     }
     
