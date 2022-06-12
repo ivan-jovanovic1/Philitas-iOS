@@ -69,7 +69,7 @@
 		59C890BF27F220D0008956B3 /* Response+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BE27F220D0008956B3 /* Response+User.swift */; };
 		59C890C327F2220E008956B3 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C227F2220E008956B3 /* UserAPI.swift */; };
 		59C890C627F231A9008956B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C527F231A9008956B3 /* LoginView.swift */; };
-		59C890C827F231B1008956B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C727F231B1008956B3 /* LoginModel.swift */; };
+		59C890C827F231B1008956B3 /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C727F231B1008956B3 /* LoginStore.swift */; };
 		59C890CA27F23663008956B3 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C927F23663008956B3 /* LineDivider.swift */; };
 /* End PBXBuildFile section */
 
@@ -156,7 +156,7 @@
 		59C890BE27F220D0008956B3 /* Response+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+User.swift"; sourceTree = "<group>"; };
 		59C890C227F2220E008956B3 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		59C890C527F231A9008956B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		59C890C727F231B1008956B3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		59C890C727F231B1008956B3 /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		59C890C927F23663008956B3 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -494,7 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				59C890C527F231A9008956B3 /* LoginView.swift */,
-				59C890C727F231B1008956B3 /* LoginModel.swift */,
+				59C890C727F231B1008956B3 /* LoginStore.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -691,7 +691,7 @@
 				5910CC4227F0CA6500841351 /* DictionaryStore.swift in Sources */,
 				5910CC2E27F0C85A00841351 /* TabItem.swift in Sources */,
 				5950D7682854FD0800E5F4C7 /* Request.swift in Sources */,
-				59C890C827F231B1008956B3 /* LoginModel.swift in Sources */,
+				59C890C827F231B1008956B3 /* LoginStore.swift in Sources */,
 				59C890BD27F21EF0008956B3 /* Response.swift in Sources */,
 				59C890C627F231A9008956B3 /* LoginView.swift in Sources */,
 				5910CBF027F0C68D00841351 /* PhilitasApp.swift in Sources */,
