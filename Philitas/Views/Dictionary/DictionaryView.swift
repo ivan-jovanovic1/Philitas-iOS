@@ -62,27 +62,12 @@ struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
         .searchable(
             text: $store.searchString,
             placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "Iskanje",
-            suggestions: searchView
+            prompt: "Iskanje"
         )
         .onSubmit(of: .search) {
             //            Task { await store.searchForWord() }
         }
         .navigationTitle("Slovar")
-    }
-
-    @ViewBuilder
-    func searchView() -> some View {
-        switch store.wordFromSearch {
-        case .loading:
-            ProgressView()
-        case .error(let error):
-            Text(error.localizedDescription)
-        case .data(let data):
-            Text(data.word)
-        case .none:
-            EmptyView()
-        }
     }
 }
 
