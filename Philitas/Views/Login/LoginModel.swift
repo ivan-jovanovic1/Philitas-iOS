@@ -14,10 +14,8 @@ class LoginStore<T: SessionLoader & SessionUpdater>: ObservableObject {
     @Published var userData: T.User?
     @Published var showInvalidInput: Bool = false
     let loader: T
-
-    init(
-        loader: T
-    ) {
+    
+    init(loader: T) {
         self.loader = loader
         username = ""
         password = ""
@@ -33,7 +31,7 @@ extension LoginStore {
         else {
             return showInvalidInput = true
         }
-
+        
         do {
             let userData = try await loader.login(username: username, password: password)
             UserDefaults.standard.jwsToken = userData.authToken
@@ -43,13 +41,32 @@ extension LoginStore {
             PHLogger.networking.error("Unknown error: \(error.localizedDescription)")
         }
     }
+    
+    func process(focusedField: inout Field?) {
+        if focusedField == .username {
+            focusedField = .password
+        }
+        if focusedField == .password {
+            focusedField = nil
+            Task {
+                await login()
+            }
+        }
+    }
+}
+
+extension LoginStore {
+    enum Field: Hashable {
+        case username
+        case password
+    }
 }
 
 private extension LoginStore {
     func validateUsername() -> Bool {
         return username.count >= 8
     }
-
+    
     func validatePassword() -> Bool {
         return password.count >= 8
     }
