@@ -36,7 +36,7 @@ extension DictionaryStore {
             guard let values = words.value else {
                 return words = .data(result)
             }
-            words = .data(values.update(with: result))
+            words = .data(values + result)
         }
         catch {
             words = .error(error)
