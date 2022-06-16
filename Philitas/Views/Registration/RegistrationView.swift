@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View {
+struct RegistrationView: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var store: RegistrationStore<T>
+    @StateObject private var store: RegistrationStore
     @Environment(\.dismiss) private var dismiss
-    @FocusState private var focusedField: RegistrationStore<T>.Field?
+    @FocusState private var focusedField: RegistrationStore.Field?
     
-    init(service: T) {
+    init(service: RegistrationValidator & RegistrationFormSender) {
         _store = StateObject(wrappedValue: RegistrationStore(service: service))
     }
     
@@ -53,7 +53,7 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
     
     private var section: some View {
         Section {
-            ForEach(RegistrationStore<T>.Field.allCases) { field in
+            ForEach(RegistrationStore.Field.allCases) { field in
                 inputField(for: field)
             }
             
@@ -76,7 +76,7 @@ struct RegistrationView<T: RegistrationValidator & RegistrationFormSender>: View
     }
     
     @ViewBuilder
-    private func inputField(for field: RegistrationStore<T>.Field) -> some View {
+    private func inputField(for field: RegistrationStore.Field) -> some View {
         if field.isSecureField {
             SecureField(field.description, text: $store.inputs[field.rawValue])
                 .focused($focusedField, equals: field)

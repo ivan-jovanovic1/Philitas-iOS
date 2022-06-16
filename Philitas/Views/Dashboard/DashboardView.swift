@@ -32,7 +32,7 @@ extension DashboardView {
                 ProfileView()
                     .tag(item)
             case .favorites:
-                FavoriteView(service: FavoriteService(pageSize: 25), selectedTab: $selection)
+                FavoriteView(service: FavoriteService(pageSize: 25))
                     .tag(item)
             }
         }

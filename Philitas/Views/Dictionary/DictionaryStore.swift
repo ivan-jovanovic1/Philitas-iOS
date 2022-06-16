@@ -8,14 +8,14 @@
 import Foundation
 
 @MainActor
-class DictionaryStore<T: DictionaryLoader & FavoriteUpdater>: ObservableObject {
-    @Published var words: DataState<[T.Item]> = .loading
+class DictionaryStore: ObservableObject {
+    @Published var words: DataState<[DictionaryLoader.Item]> = .loading
     @Published var wordsFromSearch = false
     @Published var searchString = ""
-    @Published var wordFromSearch: DataState<T.Item>? = .none
-    private let service: T
+    @Published var wordFromSearch: DataState<DictionaryLoader.Item>? = .none
+    private let service: DictionaryLoader & FavoriteUpdater
 
-    init(service: T) {
+    init(service: DictionaryLoader & FavoriteUpdater) {
         self.service = service
     }
 }
@@ -43,13 +43,13 @@ extension DictionaryStore {
         }
     }
     
-    func addToFavorites(word: T.Item) {
+    func addToFavorites(word: DictionaryLoader.Item) {
         Task {
             try await service.updateFavorites(id: word.id, shouldBeInFavorites: true)
         }
     }
     
-    func shouldShowNextPage(word: T.Item) -> Bool {
+    func shouldShowNextPage(word: DictionaryLoader.Item) -> Bool {
         service.shouldShowNextPage(isLastWord: word.id == words.value?.last?.id)
     }
 }

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
+struct DictionaryView: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var store: DictionaryStore<T>
+    @StateObject private var store: DictionaryStore
 
-    init(service: T) {
+    init(service: any DictionaryLoader & FavoriteUpdater) {
         _store = StateObject(wrappedValue: DictionaryStore(service: service))
     }
 
@@ -33,7 +33,7 @@ struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
     }
 
     @ViewBuilder
-    func wordList(_ data: [T.Item]) -> some View {
+    func wordList(_ data: [DictionaryLoader.Item]) -> some View {
         List(data) { word in
             NavigationLink(destination: wordDetails(id: word.id)) {
                 WordRow(
@@ -70,7 +70,7 @@ struct DictionaryView<T: DictionaryLoader & FavoriteUpdater>: View {
     }
     
     func wordDetails(id: String) -> some View {
-        WordDetailsView(loader: WordDetailsService(wordId: id))
+        WordDetailsView(service: WordDetailsService(wordId: id))
             .onDisappear() {
                 Task {
                     await session.verifyJWSToken()

@@ -7,15 +7,15 @@
 
 import Foundation
 
-class RegistrationStore<T: RegistrationValidator & RegistrationFormSender>: ObservableObject {
+class RegistrationStore: ObservableObject {
     @Published var inputs: [String] = [String](repeating: "", count: Field.allCases.count)
     @Published var invalidInput: InvalidInput?
     @Published var userData: RegistrationFormSender.User?
     @Published var showErrorAlert = false
     @Published var isCompleteRegistrationEnabled: Bool = false
-    private let service: T
+    private let service: RegistrationValidator & RegistrationFormSender
     
-    init(service: T) {
+    init(service: RegistrationValidator & RegistrationFormSender) {
         self.service = service
     }
 }
@@ -77,8 +77,8 @@ private extension RegistrationStore {
         service.isPasswordValid(password: inputs[Field.password.rawValue])
     }
     
-    var form: T.Form {
-        T.Form(
+    var form: RegistrationFormSender.Form {
+        RegistrationFormSender.Form(
             username: inputs[Field.username.rawValue],
             password: inputs[Field.password.rawValue],
             email: inputs[Field.email.rawValue],

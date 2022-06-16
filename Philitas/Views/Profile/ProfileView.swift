@@ -49,7 +49,7 @@ private extension ProfileView {
         .padding(.bottom, 40)
         
         NavigationLink(isActive: $store.isLoginPresented) {
-            LoginView(loader: SessionService())
+            LoginView(service: SessionService())
         } label: {
             Button("Prijava") { store.isLoginPresented.toggle() }
                 .buttonStyle(.bordered)

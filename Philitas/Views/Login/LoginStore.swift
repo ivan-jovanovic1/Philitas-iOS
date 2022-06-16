@@ -8,17 +8,15 @@
 import Foundation
 
 @MainActor
-class LoginStore<T: SessionLoader & SessionUpdater>: ObservableObject {
-    @Published var username: String
-    @Published var password: String
-    @Published var userData: T.User?
+class LoginStore: ObservableObject {
+    @Published var username: String = ""
+    @Published var password: String = ""
+    @Published var userData: SessionLoader.User?
     @Published var showInvalidInput: Bool = false
-    let loader: T
+    let service: SessionUpdater
     
-    init(loader: T) {
-        self.loader = loader
-        username = ""
-        password = ""
+    init(service: SessionUpdater) {
+        self.service = service
     }
 }
 
@@ -33,7 +31,7 @@ extension LoginStore {
         }
         
         do {
-            let userData = try await loader.login(username: username, password: password)
+            let userData = try await service.login(username: username, password: password)
             UserDefaults.standard.jwsToken = userData.authToken
             self.userData = userData
         }

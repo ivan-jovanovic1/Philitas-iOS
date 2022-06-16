@@ -7,16 +7,16 @@
 
 import Foundation
 
-class WordDetailsStore<T: WordDetailsLoader & FavoriteUpdater>: ObservableObject, ViewPresentable {
+class WordDetailsStore: ObservableObject, ViewPresentable {
     @Published var presented: PresentedView? = .none
-    @Published var state: DataState<T.Item> = .loading
+    @Published var state: DataState<WordDetailsLoader.Item> = .loading
     @Published var showFavoriteButton = false
     @Published var isFavoriteWord = false
     private var favoriteIds: [String] = []
-    private let service: T
+    private let service: WordDetailsLoader & FavoriteUpdater
 
-    init(loader: T) {
-        self.service = loader
+    init(service: WordDetailsLoader & FavoriteUpdater) {
+        self.service = service
     }
 }
 
@@ -26,7 +26,7 @@ extension WordDetailsStore {
     func loadWordDetails() async {
         state = .loading
         do {
-            let wordFromResponse: T.Item = try await service.load()
+            let wordFromResponse = try await service.load()
             state = .data(wordFromResponse)
             isFavoriteWord = favoriteIds.contains(wordFromResponse.id)
         }

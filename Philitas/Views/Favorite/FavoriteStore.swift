@@ -8,12 +8,12 @@
 import Foundation
 
 @MainActor
-class FavoriteStore<T: FavoriteLoader>: ObservableObject {
+class FavoriteStore: ObservableObject {
     weak var session: Session?
-    @Published var favorites: DataState<[T.Item]> = .loading
-    private let service: T
+    @Published var favorites: DataState<[FavoriteLoader.Item]> = .loading
+    private let service: FavoriteLoader
     
-    init(service: T) {
+    init(service: FavoriteLoader) {
         self.service = service
     }
 }
@@ -32,7 +32,7 @@ extension FavoriteStore {
         }
     }
     
-    func shouldShowNextPage(word: T.Item) -> Bool {
+    func shouldShowNextPage(word: FavoriteLoader.Item) -> Bool {
         service.shouldShowNextPage(isLastWord: word.id == favorites.value?.last?.id)
     }
     

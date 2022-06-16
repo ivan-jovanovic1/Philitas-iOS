@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct LoginView<T: SessionLoader & SessionUpdater>: View {
+struct LoginView: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var store: LoginStore<T>
+    @StateObject private var store: LoginStore
     @Environment(\.dismiss) private var dismiss
-    @FocusState private var focusedField: LoginStore<T>.Field?
+    @FocusState private var focusedField: LoginStore.Field?
     
-    init(loader: T) {
-        _store = StateObject(wrappedValue: LoginStore(loader: loader))
+    init(service: SessionUpdater) {
+        _store = StateObject(wrappedValue: LoginStore(service: service))
     }
     
     var body: some View {
@@ -80,11 +80,11 @@ struct LoginView_Previews: PreviewProvider {
     private static let secondSession = Session(service: secondService)
     
     static var previews: some View {
-        LoginView(loader: firstService)
+        LoginView(service: firstService)
             .environmentObject(firstSession)
             .previewDevice("iPhone 13 Pro")
         
-        LoginView(loader: secondService)
+        LoginView(service: secondService)
             .environmentObject(secondSession)
             .previewDevice("iPhone 8")
     }

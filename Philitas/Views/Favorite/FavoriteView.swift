@@ -7,14 +7,11 @@
 
 import SwiftUI
 
-struct FavoriteView<T: FavoriteLoader>: View {
+struct FavoriteView: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var store: FavoriteStore<T>
+    @StateObject private var store: FavoriteStore
     
-    init(
-        service: T,
-        selectedTab: Binding<TabItem>
-    ) {
+    init(service: FavoriteLoader) {
         _store = StateObject(wrappedValue: FavoriteStore(service: service))
     }
     
@@ -40,7 +37,7 @@ struct FavoriteView<T: FavoriteLoader>: View {
     }
     
     @ViewBuilder
-    func wordList(_ data: [T.Item]) -> some View {
+    func wordList(_ data: [FavoriteLoader.Item]) -> some View {
         List(data) { word in
             NavigationLink(destination: wordDetails(id: word.id)) {
                 WordRow(
@@ -60,7 +57,7 @@ struct FavoriteView<T: FavoriteLoader>: View {
     }
     
     func wordDetails(id: String) -> some View {
-        WordDetailsView(loader: WordDetailsService(wordId: id))
+        WordDetailsView(service: WordDetailsService(wordId: id))
             .onDisappear() {
                 Task {
                     await session.verifyJWSToken()

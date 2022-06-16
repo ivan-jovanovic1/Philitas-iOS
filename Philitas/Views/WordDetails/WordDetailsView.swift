@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct WordDetailsView<T: WordDetailsLoader & FavoriteUpdater>: View {
+struct WordDetailsView: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var store: WordDetailsStore<T>
+    @StateObject private var store: WordDetailsStore
     @State private var isAlertPresented = false
     @State private var error: Error? = nil
     
-    init(loader: T) {
-        _store = StateObject(wrappedValue: WordDetailsStore(loader: loader))
+    init(service: WordDetailsLoader & FavoriteUpdater) {
+        _store = StateObject(wrappedValue: WordDetailsStore(service: service))
     }
     
     var body: some View {
@@ -57,7 +57,7 @@ struct WordDetailsView<T: WordDetailsLoader & FavoriteUpdater>: View {
 
 // MARK: - Private
 private extension WordDetailsView {
-    func wordList(_ viewModel: T.Item) -> some View {
+    func wordList(_ viewModel: WordDetailsLoader.Item) -> some View {
         List {
             Section(header: Text("Beseda v izvirni obliki").font(.headline)) {
                 WordRow(word: viewModel.word, language: viewModel.language)
@@ -160,7 +160,7 @@ struct WordDetailsView_Previews: PreviewProvider {
     private static let service = WordDetailsServiceMock()
     
     static var previews: some View {
-        WordDetailsView(loader: service)
+        WordDetailsView(service: service)
             .environmentObject(Session(service: SessionServiceMock()))
             .previewDevice("iPhone 13 Pro")
     }
