@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @EnvironmentObject private var session: Session
     @State private var selection: TabItem = .dictionary
     
     var body: some View {
