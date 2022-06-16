@@ -30,8 +30,8 @@ struct LoginView: View {
                     dismiss()
                 }
             }
-            .onReceive(store.$username) { _ in store.showInvalidInput = false }
-            .onReceive(store.$password) { _ in store.showInvalidInput = false }
+            .onReceive(store.$username) { _ in store.loginError = .none }
+            .onReceive(store.$password) { _ in store.loginError = .none }
         }
     }
 }
@@ -48,14 +48,14 @@ extension LoginView {
                     .focused($focusedField, equals: .password)
                     .disableAutocorrection(true)
                 
-                if store.showInvalidInput {
-                    Text("Vneseno uporabniško ime ali geslo ni pravilno.")
+                if let error = store.loginError {
+                    Text(error.localizedDescription)
                         .font(.footnote)
                         .foregroundColor(.red)
                 }
             }
             .textFieldStyle(.roundedBorder)
-            .animation(.spring(), value: store.showInvalidInput)
+            .animation(.spring(), value: store.loginError)
             .padding(.bottom, 80)
         } header: {
             Text("Prijava").font(.largeTitle)
