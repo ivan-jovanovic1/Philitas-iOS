@@ -24,7 +24,6 @@
 		5910CC3427F0C87D00841351 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3327F0C87D00841351 /* Word.swift */; };
 		5910CC3627F0C8C700841351 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3527F0C8C700841351 /* WordDetailsView.swift */; };
 		5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3B27F0C95200841351 /* String+urlEncoded.swift */; };
-		5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */; };
 		5910CC4227F0CA6500841351 /* DictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4127F0CA6500841351 /* DictionaryStore.swift */; };
 		5910CC4527F0CAEA00841351 /* WordDetailsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4427F0CAEA00841351 /* WordDetailsStore.swift */; };
 		5910CC4927F0CB4900841351 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC4827F0CB4900841351 /* Pagination.swift */; };
@@ -111,7 +110,6 @@
 		5910CC3327F0C87D00841351 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		5910CC3527F0C8C700841351 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 		5910CC3B27F0C95200841351 /* String+urlEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+urlEncoded.swift"; sourceTree = "<group>"; };
-		5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UpdateWord.swift"; sourceTree = "<group>"; };
 		5910CC4127F0CA6500841351 /* DictionaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStore.swift; sourceTree = "<group>"; };
 		5910CC4427F0CAEA00841351 /* WordDetailsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsStore.swift; sourceTree = "<group>"; };
 		5910CC4827F0CB4900841351 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				5910CC3B27F0C95200841351 /* String+urlEncoded.swift */,
-				5910CC3D27F0CA0E00841351 /* Array+UpdateWord.swift */,
 				592850B427F250E7007DD160 /* RawRepresentable+isPresented.swift */,
 			);
 			path = Extensions;
@@ -710,7 +707,6 @@
 				5950D75D2854C6E000E5F4C7 /* RegistrationStore+Field.swift in Sources */,
 				5950D7412853AD8B00E5F4C7 /* FavoriteUpdater.swift in Sources */,
 				5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */,
-				5910CC3E27F0CA0E00841351 /* Array+UpdateWord.swift in Sources */,
 				5950D76B2854FD3500E5F4C7 /* RegistrationForm.swift in Sources */,
 				5910CC5027F0CC8600841351 /* DictionaryExplanation.swift in Sources */,
 				5950D7462853D86F00E5F4C7 /* Paginatable.swift in Sources */,
