@@ -33,7 +33,6 @@ struct WordDetailsView<T: WordDetailsLoader & FavoriteUpdater>: View {
                         isAlertPresented.toggle()
                         self.error = error
                     }
-                
             case .data(let viewModel):
                 wordList(viewModel)
             }
@@ -162,6 +161,7 @@ struct WordDetailsView_Previews: PreviewProvider {
     
     static var previews: some View {
         WordDetailsView(loader: service)
+            .environmentObject(Session(service: SessionServiceMock()))
             .previewDevice("iPhone 13 Pro")
     }
 }
