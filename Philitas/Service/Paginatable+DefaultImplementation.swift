@@ -13,6 +13,6 @@ extension Paginatable {
     }
     
     func resetPagination() {
-        pagination = nil
+        pagination = .none
     }
 }

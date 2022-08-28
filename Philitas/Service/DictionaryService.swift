@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Networking
 
 class DictionaryService: FavoriteUpdater {
     var pageSize: Int
@@ -13,19 +14,25 @@ class DictionaryService: FavoriteUpdater {
     
     init(
         pageSize: Int,
-        pagination: Pagination? = nil
+        pagination: Pagination? = .none
     ) {
         self.pageSize = pageSize
         self.pagination = pagination
     }
 }
 
+// MARK: - DictionaryLoader conformation
 extension DictionaryService: DictionaryLoader {
     func load() async throws -> [DictionaryLoader.Item] {
-        let response = try await WordAPI.words(
-            page: pagination?.nextPage(),
-            pageSize: pageSize
+        let response = try await APIRequest(
+            Endpoint.listOfWords,
+            queryItems: [
+                "page": String(pagination?.nextPage() ?? 1),
+                "pageSize": String(pageSize),
+            ],
+            method: .get
         )
+            .perform(Response.BaseResponse<[Response.Word]>.self)
         
         pagination = response.pagination
         

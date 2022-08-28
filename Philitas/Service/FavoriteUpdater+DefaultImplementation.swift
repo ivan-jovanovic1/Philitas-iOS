@@ -6,16 +6,21 @@
 //
 
 import Foundation
+import Networking
 
 extension FavoriteUpdater {
     func updateFavorites(id: String, shouldBeInFavorites: Bool) async throws -> Bool {
-        switch shouldBeInFavorites {
-        case true:
-            let selected = try await UserAPI.addToFavorites(id: id).data
-            return selected
-        case false:
-            let deselected = try await UserAPI.removeFromFavorites(id: id).data
-            return !deselected
-        }
+        let response = try await APIRequest(
+            Endpoint.wordIdToFavorites,
+            method: shouldBeInFavorites ? .post : .delete
+        )
+        .setBody(WordId(id: id))
+        .perform(Response.BaseResponse<Bool>.self)
+        
+        return shouldBeInFavorites ? response.data : !response.data
     }
+}
+
+fileprivate struct WordId: Encodable {
+    let id: String
 }

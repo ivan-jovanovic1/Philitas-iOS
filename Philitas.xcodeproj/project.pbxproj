@@ -37,7 +37,6 @@
 		592850B127F2499E007DD160 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B027F2499E007DD160 /* ProfileView.swift */; };
 		592850B327F24AD5007DD160 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B227F24AD5007DD160 /* ProfileStore.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
-		592CABC627F113430093F879 /* WordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC527F113430093F879 /* WordAPI.swift */; };
 		5941D52B28524BD80006C373 /* WordDetailsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52A28524BD80006C373 /* WordDetailsLoader.swift */; };
 		5941D52D28524C8A0006C373 /* WordDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52C28524C8A0006C373 /* WordDetailsService.swift */; };
 		5941D52F28525D650006C373 /* DictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941D52E28525D650006C373 /* DictionaryLoader.swift */; };
@@ -67,7 +66,6 @@
 		59BCF78727F8D68500B1DE8D /* WordDetailsStore+PresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BCF78627F8D68500B1DE8D /* WordDetailsStore+PresentedView.swift */; };
 		59C890BD27F21EF0008956B3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BC27F21EF0008956B3 /* Response.swift */; };
 		59C890BF27F220D0008956B3 /* Response+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890BE27F220D0008956B3 /* Response+User.swift */; };
-		59C890C327F2220E008956B3 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C227F2220E008956B3 /* UserAPI.swift */; };
 		59C890C627F231A9008956B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C527F231A9008956B3 /* LoginView.swift */; };
 		59C890C827F231B1008956B3 /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C727F231B1008956B3 /* LoginStore.swift */; };
 		59C890CA27F23663008956B3 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C890C927F23663008956B3 /* LineDivider.swift */; };
@@ -124,7 +122,6 @@
 		592850B027F2499E007DD160 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		592850B227F24AD5007DD160 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		592CABC527F113430093F879 /* WordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAPI.swift; sourceTree = "<group>"; };
 		5941D52A28524BD80006C373 /* WordDetailsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsLoader.swift; sourceTree = "<group>"; };
 		5941D52C28524C8A0006C373 /* WordDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsService.swift; sourceTree = "<group>"; };
 		5941D52E28525D650006C373 /* DictionaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryLoader.swift; sourceTree = "<group>"; };
@@ -154,7 +151,6 @@
 		59BCF78627F8D68500B1DE8D /* WordDetailsStore+PresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordDetailsStore+PresentedView.swift"; sourceTree = "<group>"; };
 		59C890BC27F21EF0008956B3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		59C890BE27F220D0008956B3 /* Response+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+User.swift"; sourceTree = "<group>"; };
-		59C890C227F2220E008956B3 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		59C890C527F231A9008956B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		59C890C727F231B1008956B3 /* LoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStore.swift; sourceTree = "<group>"; };
 		59C890C927F23663008956B3 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
@@ -375,16 +371,6 @@
 			path = Interfaces;
 			sourceTree = "<group>";
 		};
-		592CABC227F111F90093F879 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				592CABC327F112760093F879 /* Endpoint.swift */,
-				592CABC527F113430093F879 /* WordAPI.swift */,
-				59C890C227F2220E008956B3 /* UserAPI.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		5950D7422853D7DD00E5F4C7 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,7 +413,7 @@
 		5950D7532854A93300E5F4C7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				592CABC227F111F90093F879 /* API */,
+				592CABC327F112760093F879 /* Endpoint.swift */,
 				5941D53028525FC20006C373 /* DictionaryService.swift */,
 				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
 				5950D7632854C8D400E5F4C7 /* RegistrationService.swift */,
@@ -647,7 +633,6 @@
 				5910CC5527F0CD2000841351 /* WordRow.swift in Sources */,
 				5910CC3C27F0C95200841351 /* String+urlEncoded.swift in Sources */,
 				597A55D427F2605500A92CC9 /* UserDefaults.swift in Sources */,
-				592CABC627F113430093F879 /* WordAPI.swift in Sources */,
 				597A55D627F2658700A92CC9 /* Session.swift in Sources */,
 				5950D74E2853F06E00E5F4C7 /* SessionUpdater.swift in Sources */,
 				5910CC2927F0C82000841351 /* DashboardView.swift in Sources */,
@@ -672,7 +657,6 @@
 				5950D7622854C82200E5F4C7 /* RegistrationValidator.swift in Sources */,
 				590C518F27F63606003D26F9 /* Translation.swift in Sources */,
 				5941D5352852706D0006C373 /* SessionService.swift in Sources */,
-				59C890C327F2220E008956B3 /* UserAPI.swift in Sources */,
 				590C51A027F67627003D26F9 /* AsyncButton.swift in Sources */,
 				5950D7642854C8D400E5F4C7 /* RegistrationService.swift in Sources */,
 				5950D74A2853DCBD00E5F4C7 /* FavoriteStore.swift in Sources */,
