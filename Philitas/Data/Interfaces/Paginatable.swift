@@ -15,12 +15,3 @@ protocol Paginatable: AnyObject {
     func resetPagination()
 }
 
-extension Paginatable {
-    func shouldShowNextPage(isLastWord: Bool) -> Bool {
-        isLastWord && pagination?.hasNextPage() ?? false
-    }
-    
-    func resetPagination() {
-        pagination = nil
-    }
-}

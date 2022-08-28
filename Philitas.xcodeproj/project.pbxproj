@@ -32,6 +32,8 @@
 		5910CC5527F0CD2000841351 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5427F0CD2000841351 /* WordRow.swift */; };
 		5910CC5727F0E7B200841351 /* TranslateCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */; };
 		5910CC5927F0F14F00841351 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5910CC5827F0F14F00841351 /* TranslateView.swift */; };
+		5922B98328BBB68A00C90899 /* Paginatable+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922B98228BBB68A00C90899 /* Paginatable+DefaultImplementation.swift */; };
+		5922B98528BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922B98428BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift */; };
 		592850B127F2499E007DD160 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B027F2499E007DD160 /* ProfileView.swift */; };
 		592850B327F24AD5007DD160 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592850B227F24AD5007DD160 /* ProfileStore.swift */; };
 		592CABC427F112760093F879 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CABC327F112760093F879 /* Endpoint.swift */; };
@@ -117,6 +119,8 @@
 		5910CC5427F0CD2000841351 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		5910CC5627F0E7B200841351 /* TranslateCountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCountryCode.swift; sourceTree = "<group>"; };
 		5910CC5827F0F14F00841351 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		5922B98228BBB68A00C90899 /* Paginatable+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Paginatable+DefaultImplementation.swift"; sourceTree = "<group>"; };
+		5922B98428BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteUpdater+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		592850B027F2499E007DD160 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		592850B227F24AD5007DD160 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		592CABC327F112760093F879 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -243,10 +247,10 @@
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
 				5903FC6F27F9357B00ED0D67 /* App */,
 				5950D7512854A83F00E5F4C7 /* Data */,
-				5950D7522854A88300E5F4C7 /* Helpers */,
 				5950D7532854A93300E5F4C7 /* Service */,
+				5910CC3F27F0CA3200841351 /* Presentation */,
+				5950D7522854A88300E5F4C7 /* Helpers */,
 				5910CC5327F0CD0900841351 /* ViewComponents */,
-				5910CC3F27F0CA3200841351 /* Views */,
 			);
 			path = Philitas;
 			sourceTree = "<group>";
@@ -290,7 +294,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		5910CC3F27F0CA3200841351 /* Views */ = {
+		5910CC3F27F0CA3200841351 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				5903FC8227F9CADC00ED0D67 /* ViewPresentable.swift */,
@@ -302,7 +306,7 @@
 				5950D7502854A7CB00E5F4C7 /* Registration */,
 				5910CC4327F0CACA00841351 /* WordDetails */,
 			);
-			path = Views;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		5910CC4027F0CA3E00841351 /* Dictionary */ = {
@@ -355,6 +359,22 @@
 			path = ViewComponents;
 			sourceTree = "<group>";
 		};
+		5922B98128BBB4B800C90899 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				5941D52E28525D650006C373 /* DictionaryLoader.swift */,
+				5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */,
+				5950D7402853AD8B00E5F4C7 /* FavoriteUpdater.swift */,
+				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
+				5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */,
+				5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */,
+				5941D532285270670006C373 /* SessionLoader.swift */,
+				5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */,
+				5941D52A28524BD80006C373 /* WordDetailsLoader.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
 		592CABC227F111F90093F879 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,8 +408,8 @@
 		5950D7512854A83F00E5F4C7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5922B98128BBB4B800C90899 /* Interfaces */,
 				5950D7692854FD2100E5F4C7 /* RequestModels */,
-				592CABC227F111F90093F879 /* API */,
 				5910CC2C27F0C84B00841351 /* Model */,
 			);
 			path = Data;
@@ -407,62 +427,16 @@
 		5950D7532854A93300E5F4C7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				5950D7452853D86F00E5F4C7 /* Paginatable.swift */,
-				5950D7542854A94500E5F4C7 /* Dictionary */,
-				5950D7552854A95800E5F4C7 /* Favorite */,
-				5950D7602854C80B00E5F4C7 /* Registration */,
-				5950D7572854AAF400E5F4C7 /* Session */,
-				5950D7562854A96D00E5F4C7 /* WordDetails */,
+				592CABC227F111F90093F879 /* API */,
+				5941D53028525FC20006C373 /* DictionaryService.swift */,
+				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
+				5950D7632854C8D400E5F4C7 /* RegistrationService.swift */,
+				5941D5342852706D0006C373 /* SessionService.swift */,
+				5941D52C28524C8A0006C373 /* WordDetailsService.swift */,
+				5922B98228BBB68A00C90899 /* Paginatable+DefaultImplementation.swift */,
+				5922B98428BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		5950D7542854A94500E5F4C7 /* Dictionary */ = {
-			isa = PBXGroup;
-			children = (
-				5941D52E28525D650006C373 /* DictionaryLoader.swift */,
-				5941D53028525FC20006C373 /* DictionaryService.swift */,
-			);
-			path = Dictionary;
-			sourceTree = "<group>";
-		};
-		5950D7552854A95800E5F4C7 /* Favorite */ = {
-			isa = PBXGroup;
-			children = (
-				5950D7432853D7F800E5F4C7 /* FavoriteLoader.swift */,
-				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
-				5950D7402853AD8B00E5F4C7 /* FavoriteUpdater.swift */,
-			);
-			path = Favorite;
-			sourceTree = "<group>";
-		};
-		5950D7562854A96D00E5F4C7 /* WordDetails */ = {
-			isa = PBXGroup;
-			children = (
-				5941D52A28524BD80006C373 /* WordDetailsLoader.swift */,
-				5941D52C28524C8A0006C373 /* WordDetailsService.swift */,
-			);
-			path = WordDetails;
-			sourceTree = "<group>";
-		};
-		5950D7572854AAF400E5F4C7 /* Session */ = {
-			isa = PBXGroup;
-			children = (
-				5941D532285270670006C373 /* SessionLoader.swift */,
-				5950D74D2853F06E00E5F4C7 /* SessionUpdater.swift */,
-				5941D5342852706D0006C373 /* SessionService.swift */,
-			);
-			path = Session;
-			sourceTree = "<group>";
-		};
-		5950D7602854C80B00E5F4C7 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-				5950D7612854C82200E5F4C7 /* RegistrationValidator.swift */,
-				5950D7652854CC2E00E5F4C7 /* RegistrationFormSender.swift */,
-				5950D7632854C8D400E5F4C7 /* RegistrationService.swift */,
-			);
-			path = Registration;
 			sourceTree = "<group>";
 		};
 		5950D7692854FD2100E5F4C7 /* RequestModels */ = {
@@ -653,11 +627,13 @@
 				5950D7482853D93C00E5F4C7 /* FavoriteService.swift in Sources */,
 				5950D75B2854C6BD00E5F4C7 /* RegistrationStore.swift in Sources */,
 				5910CC2B27F0C83A00841351 /* DictionaryView.swift in Sources */,
+				5922B98528BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift in Sources */,
 				59BCF78127F8D59400B1DE8D /* DataState.swift in Sources */,
 				5941D52D28524C8A0006C373 /* WordDetailsService.swift in Sources */,
 				5910CC3427F0C87D00841351 /* Word.swift in Sources */,
 				5941D52B28524BD80006C373 /* WordDetailsLoader.swift in Sources */,
 				5910CC4927F0CB4900841351 /* Pagination.swift in Sources */,
+				5922B98328BBB68A00C90899 /* Paginatable+DefaultImplementation.swift in Sources */,
 				5986B96D27F79B2600703697 /* APIConfigure.swift in Sources */,
 				59C890CA27F23663008956B3 /* LineDivider.swift in Sources */,
 				59C890BF27F220D0008956B3 /* Response+User.swift in Sources */,

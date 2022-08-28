@@ -31,6 +31,36 @@ private extension PhilitasApp {
         var body: some View {
             DashboardView()
                 .task(session.verifyJWSToken)
+                .onAppear {
+                    print(sumAll([1,2,3], [1, 3, 4], [3, 4, 6]))
+                }
         }
+        
+        func sumAll2(_ arrays: [Int]...) -> Int {
+            arrays.reduce(into: .zero) {
+                $0 += $1.reduce(into: .zero) {
+                    $0 += $1
+                }
+            }
+        }
+        
+        func sumImperative(_ arrays: [Int]...) -> Int {
+            var sum = 0
+            for array in arrays {
+                for value in array {
+                    sum += value
+                }
+            }
+            
+            return sum
+        }
+        
+        func sumAll(_ arrays: [Int]...) -> Int {
+            arrays.reduce(into: .zero) {
+                $0 += $1.reduce(into: .zero, +=)
+            }
+        }
+
     }
+    
 }

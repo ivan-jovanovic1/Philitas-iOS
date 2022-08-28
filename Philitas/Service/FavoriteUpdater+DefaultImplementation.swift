@@ -1,15 +1,11 @@
 //
-//  FavoriteUpdater.swift
+//  FavoriteUpdater+DefaultImplementation.swift
 //  Philitas
 //
-//  Created by Ivan Jovanović on 10/06/2022.
+//  Created by Ivan Jovanović on 28/08/2022.
 //
 
 import Foundation
-
-protocol FavoriteUpdater: AnyObject {
-    func updateFavorites(id: String, shouldBeInFavorites: Bool) async throws -> Bool
-}
 
 extension FavoriteUpdater {
     func updateFavorites(id: String, shouldBeInFavorites: Bool) async throws -> Bool {
