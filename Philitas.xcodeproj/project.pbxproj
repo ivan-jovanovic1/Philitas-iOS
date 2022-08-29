@@ -242,8 +242,8 @@
 			children = (
 				5910CBF327F0C68D00841351 /* Assets.xcassets */,
 				5903FC6F27F9357B00ED0D67 /* App */,
-				5950D7512854A83F00E5F4C7 /* Data */,
-				5950D7532854A93300E5F4C7 /* Service */,
+				5950D7512854A83F00E5F4C7 /* Domain */,
+				5950D7532854A93300E5F4C7 /* Data */,
 				5910CC3F27F0CA3200841351 /* Presentation */,
 				5950D7522854A88300E5F4C7 /* Helpers */,
 				5910CC5327F0CD0900841351 /* ViewComponents */,
@@ -391,14 +391,14 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
-		5950D7512854A83F00E5F4C7 /* Data */ = {
+		5950D7512854A83F00E5F4C7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				5922B98128BBB4B800C90899 /* Interfaces */,
 				5950D7692854FD2100E5F4C7 /* RequestModels */,
 				5910CC2C27F0C84B00841351 /* Model */,
 			);
-			path = Data;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		5950D7522854A88300E5F4C7 /* Helpers */ = {
@@ -410,7 +410,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		5950D7532854A93300E5F4C7 /* Service */ = {
+		5950D7532854A93300E5F4C7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				592CABC327F112760093F879 /* Endpoint.swift */,
@@ -422,7 +422,7 @@
 				5922B98228BBB68A00C90899 /* Paginatable+DefaultImplementation.swift */,
 				5922B98428BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift */,
 			);
-			path = Service;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		5950D7692854FD2100E5F4C7 /* RequestModels */ = {
