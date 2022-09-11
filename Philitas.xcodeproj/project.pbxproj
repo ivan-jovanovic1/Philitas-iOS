@@ -371,6 +371,15 @@
 			path = Interfaces;
 			sourceTree = "<group>";
 		};
+		5922B98B28BD533500C90899 /* DefaultImplementation */ = {
+			isa = PBXGroup;
+			children = (
+				5922B98228BBB68A00C90899 /* Paginatable+DefaultImplementation.swift */,
+				5922B98428BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift */,
+			);
+			path = DefaultImplementation;
+			sourceTree = "<group>";
+		};
 		5950D7422853D7DD00E5F4C7 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,14 +422,13 @@
 		5950D7532854A93300E5F4C7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5922B98B28BD533500C90899 /* DefaultImplementation */,
 				592CABC327F112760093F879 /* Endpoint.swift */,
 				5941D53028525FC20006C373 /* DictionaryService.swift */,
 				5950D7472853D93C00E5F4C7 /* FavoriteService.swift */,
 				5950D7632854C8D400E5F4C7 /* RegistrationService.swift */,
 				5941D5342852706D0006C373 /* SessionService.swift */,
 				5941D52C28524C8A0006C373 /* WordDetailsService.swift */,
-				5922B98228BBB68A00C90899 /* Paginatable+DefaultImplementation.swift */,
-				5922B98428BBB6C900C90899 /* FavoriteUpdater+DefaultImplementation.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
