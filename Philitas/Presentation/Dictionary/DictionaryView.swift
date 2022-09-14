@@ -10,28 +10,38 @@ import SwiftUI
 struct DictionaryView: View {
     @EnvironmentObject private var session: Session
     @StateObject private var store: DictionaryStore
-
+    
     init(service: any DictionaryLoader & FavoriteUpdater) {
         _store = StateObject(wrappedValue: DictionaryStore(service: service))
     }
-
+    
     var body: some View {
         NavigationView {
-            switch store.words {
+            switch (store.searchWords ?? store.allWords) {
             case .loading:
                 ProgressView()
             case let .error(error):
-                Text(error.localizedDescription)
+                List {
+                    Text(error.localizedDescription)
+                        .font(.title2)
+                        .foregroundColor(.red)
+                }
+                .refreshable {
+                    await store.loadWords(refreshing: true)
+                }
             case let .data(data):
                 wordList(data)
             }
         }
         .navigationViewStyle(.stack)
         .background(.red)
+        .onChange(of: store.searchString) {
+            guard $0.isEmpty else { return }
+            store.searchWords = .none
+        }
         .task { await store.loadWords() }
-
     }
-
+    
     @ViewBuilder
     func wordList(_ data: [DictionaryLoader.Item]) -> some View {
         List(data) { word in
@@ -51,12 +61,13 @@ struct DictionaryView: View {
                     Text("Dodaj med priljubljene")
                 }
             }
-
+            
             if store.shouldShowNextPage(word: word) {
                 ProgressView()
                     .task { await store.loadWords() }
             }
         }
+        .navigationTitle("Slovar")
         .refreshable { await store.loadWords(refreshing: true) }
         .searchable(
             text: $store.searchString,
@@ -64,9 +75,8 @@ struct DictionaryView: View {
             prompt: "Iskanje"
         )
         .onSubmit(of: .search) {
-            //            Task { await store.searchForWord() }
+            Task { await store.performSearch() }
         }
-        .navigationTitle("Slovar")
     }
     
     func wordDetails(id: String) -> some View {

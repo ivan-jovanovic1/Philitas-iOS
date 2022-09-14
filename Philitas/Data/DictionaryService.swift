@@ -38,6 +38,19 @@ extension DictionaryService: DictionaryLoader {
         
         return response.data
     }
+    
+    func loadFromSearch(query: String) async throws -> [DictionaryLoader.Item] {
+        try await APIRequest(
+            Endpoint.searchWord,
+            params: [
+                "query": query
+            ],
+            method: .get
+        )
+        .perform(Response.BaseResponse<[Response.Word]>.self)
+        .data
+    }
+
 }
 
 // MARK: - Fake DictionaryService
@@ -53,6 +66,10 @@ class DictionaryServiceMock: DictionaryLoader, FavoriteUpdater {
     
     func load() async throws -> [DictionaryLoader.Item] {
         [.dummy, .dummy, .dummy, .dummy]
+    }
+    
+    func loadFromSearch(query: String) async throws -> [DictionaryLoader.Item] {
+        [.dummy, .dummy]
     }
     
     func resetPagination() {

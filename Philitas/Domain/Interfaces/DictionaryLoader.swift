@@ -11,4 +11,6 @@ protocol DictionaryLoader: Paginatable {
     typealias Item = Response.Word
     
     func load() async throws -> [Item]
+    
+    func loadFromSearch(query: String) async throws -> [Item]
 }

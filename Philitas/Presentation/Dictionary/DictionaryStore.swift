@@ -9,10 +9,14 @@ import Foundation
 
 @MainActor
 class DictionaryStore: ObservableObject {
-    @Published var words: DataState<[DictionaryLoader.Item]> = .loading
-    @Published var wordsFromSearch = false
+    @Published var allWords: DataState<[DictionaryLoader.Item]> = .loading
+    @Published var searchWords: DataState<[DictionaryLoader.Item]>?
     @Published var searchString = ""
-    @Published var wordFromSearch: DataState<DictionaryLoader.Item>? = .none
+    @Published var wordFromSearch: DataState<DictionaryLoader.Item>? = .none {
+        didSet  {
+            
+        }
+    }
     private let service: DictionaryLoader & FavoriteUpdater
 
     init(service: DictionaryLoader & FavoriteUpdater) {
@@ -31,15 +35,27 @@ extension DictionaryStore {
         do {
             let result = try await service.load()
             if refreshing {
-                words = .loading
+                allWords = .loading
             }
-            guard let values = words.value else {
-                return words = .data(result)
+            guard let values = allWords.value else {
+                return allWords = .data(result)
             }
-            words = .data(values + result)
+            allWords = .data(values + result)
         }
         catch {
-            words = .error(error)
+            allWords = .error(error)
+        }
+    }
+    
+    @Sendable
+    func performSearch() async {
+        guard !searchString.isEmpty else { return searchWords = .none }
+        
+        do {
+            let wordsss = try await service.loadFromSearch(query: searchString)
+            searchWords = .data(wordsss)
+        } catch {
+            searchWords = .error(error)
         }
     }
     
@@ -50,6 +66,9 @@ extension DictionaryStore {
     }
     
     func shouldShowNextPage(word: DictionaryLoader.Item) -> Bool {
-        service.shouldShowNextPage(isLastWord: word.id == words.value?.last?.id)
+        
+        service.shouldShowNextPage(isLastWord: word.id == allWords.value?.last?.id) && searchWords == .none
     }
+    
+
 }
