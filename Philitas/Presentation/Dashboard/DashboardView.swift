@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @EnvironmentObject private var session: Session
     @State private var selection: TabItem = .dictionary
     
     var body: some View {
@@ -32,8 +33,12 @@ extension DashboardView {
                 ProfileView()
                     .tag(item)
             case .favorites:
+                if session.user != .none {
                 FavoriteView(service: FavoriteService(pageSize: 25))
                     .tag(item)
+                } else {
+                    EmptyView()
+                }
             }
         }
         .tabItem {
