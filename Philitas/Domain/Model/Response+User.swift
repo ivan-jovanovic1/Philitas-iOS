@@ -12,7 +12,7 @@ public extension Response {
         private(set) var id: String
         private(set) var username: String
         private(set) var email: String
-        private(set) var authToken: String
+        private(set) var jwsToken: String
         private(set) var firstName: String?
         private(set) var lastName: String?
         private(set) var favoriteWordIds: [String]
@@ -26,7 +26,7 @@ public extension Response.UserData {
             id: UUID().uuidString,
             username: "Ivan",
             email: "ivan.jovanovic@student.um.si",
-            authToken: UUID().uuidString,
+            jwsToken: UUID().uuidString,
             firstName: "Ivan",
             lastName: "Jovanović",
             favoriteWordIds: []
