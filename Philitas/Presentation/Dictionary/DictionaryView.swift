@@ -34,7 +34,6 @@ struct DictionaryView: View {
             }
         }
         .navigationViewStyle(.stack)
-        .background(.red)
         .onChange(of: store.searchString) {
             guard $0.isEmpty else { return }
             store.searchWords = .none
@@ -44,25 +43,25 @@ struct DictionaryView: View {
     
     @ViewBuilder
     func wordList(_ data: [DictionaryLoader.Item]) -> some View {
-        List(data) { word in
-            NavigationLink(destination: wordDetails(id: word.id)) {
+        List(data) { item in
+            NavigationLink(destination: wordDetails(id: item.id)) {
                 WordRow(
-                    word: word.word,
-                    language: word.language,
-                    translated: ""
+                    word: item.word,
+                    language: item.language,
+                    translated: item.translations?.first?.word ?? ""
                 )
             }
             .swipeActions {
                 Button {
                     Task {
-                        store.addToFavorites(word: word)
+                        store.addToFavorites(word: item)
                     }
                 } label: {
                     Text("Dodaj med priljubljene")
                 }
             }
             
-            if store.shouldShowNextPage(word: word) {
+            if store.shouldShowNextPage(word: item) {
                 ProgressView()
                     .task { await store.loadWords() }
             }
