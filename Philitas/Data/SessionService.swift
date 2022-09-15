@@ -53,7 +53,7 @@ class SessionServiceMock: SessionLoader, SessionUpdater {
             id: UUID().uuidString,
             username: "Ivan",
             email: "ivan.jovanovic@student.um.si",
-            authToken: UUID().uuidString,
+            jwsToken: UUID().uuidString,
             favoriteWordIds: []
         )
     }
@@ -63,7 +63,7 @@ class SessionServiceMock: SessionLoader, SessionUpdater {
             id: UUID().uuidString,
             username: "Ivan",
             email: "ivan.jovanovic@student.um.si",
-            authToken: UUID().uuidString,
+            jwsToken: UUID().uuidString,
             favoriteWordIds: []
         )
     }

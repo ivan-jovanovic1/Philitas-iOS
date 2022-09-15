@@ -27,6 +27,7 @@ extension RegistrationStore {
         do {
             userData = try await service.register(form: form)
         } catch {
+            print("ivan error \(error.localizedDescription)")
             showErrorAlert = true
         }
     }

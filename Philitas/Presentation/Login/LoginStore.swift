@@ -28,7 +28,7 @@ extension LoginStore {
         
         do {
             let userData = try await service.login(username: username, password: password)
-            UserDefaults.standard.jwsToken = userData.authToken
+            UserDefaults.standard.jwsToken = userData.jwsToken
             self.userData = userData
         } catch {
             loginError = .networkingError
