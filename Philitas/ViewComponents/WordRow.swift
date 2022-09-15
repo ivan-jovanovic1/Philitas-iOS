@@ -9,19 +9,9 @@ import SwiftUI
 
 struct WordRow: View {
     let word: String
-    let translated: String?
     let language: String
-
-    init(
-        word: String,
-        language: String,
-        translated: String? = nil
-    ) {
-        self.word = word
-        self.language = language
-        self.translated = translated
-    }
-
+    let translated: String?
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -34,14 +24,11 @@ struct WordRow: View {
                         .foregroundColor(.gray)
                 }
             }
-
             Spacer()
-
             ZStack(alignment: .center) {
                 Circle().fill()
                     .frame(width: 30, height: 30)
                     .foregroundColor(.blue.opacity(0.2))
-
                 Text(language.prefix(2))
             }
         }
