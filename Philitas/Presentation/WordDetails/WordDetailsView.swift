@@ -60,13 +60,13 @@ private extension WordDetailsView {
     func wordList(_ viewModel: WordDetailsLoader.Item) -> some View {
         List {
             Section(header: Text("Beseda v izvirni obliki").font(.headline)) {
-                WordRow(word: viewModel.word, language: viewModel.language)
+                WordRow(word: viewModel.word, language: viewModel.language, translated: .none)
             }
             
             if viewModel.translations?.isEmpty != true {
                 Section(header: Text("PREVODI").font(.headline)) {
                     ForEach(viewModel.translations ?? []) { translation in
-                        WordRow(word: translation.word, language: translation.language)
+                        WordRow(word: translation.word, language: translation.language, translated: .none)
                     }
                 }
             }
