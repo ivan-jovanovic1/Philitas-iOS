@@ -4,6 +4,7 @@ This repository represents Philitas iOS app.
 
 # Installation
  - Create free developer account on [Apple Developer Website](https://developer.apple.com/). You need free account to download Xcode.
+ - Make sure you updated macOS to macOS 12 (Monterey). 
  - Download Xcode from [Apple Developer Resources page](https://developer.apple.com/download/all/?q=xcode) (**Downloading Xcode via Apple Developer webiste is way faster than downloading Xcode via App Store**).
  - Unzip and install Xcode.
  - Clone [Philitas-Networking](https://github.com/ivan-jovanovic1/Philitas-Networking)
