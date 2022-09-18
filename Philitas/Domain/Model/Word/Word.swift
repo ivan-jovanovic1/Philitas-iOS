@@ -11,16 +11,12 @@ public extension Response {
     struct Word: Decodable, Identifiable {
         let _id: String
         /// The word in its main language
-        let word: String
+        let name: String
         /// The word translated to other languages.
-        let translations: [Translation]?
+        let translation: Translation?
         /// The word main language
         let language: String
-        /// An array of all dictionaries with their explanations
-        let dictionaryExplanations: [DictionaryExplanation]
-        /// An array of search hit counts per month.
-        let searchHits: [SearchHit]
-
+        
         public var id: String {
             _id
         }
@@ -36,8 +32,6 @@ public extension Response {
         let language: String
         /// An array of all dictionaries with their explanations
         let dictionaryExplanations: [DictionaryExplanation]
-        /// An array of search hit counts per month.
-        let searchHits: [SearchHit]
         
         let isFavorite: Bool
 
@@ -46,11 +40,11 @@ public extension Response {
 
 extension Response.Word: Hashable {
     public static func == (lhs: Response.Word, rhs: Response.Word) -> Bool {
-        lhs._id == rhs._id
+        lhs.id == rhs.id
     }
 
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(_id)
+        hasher.combine(id)
     }
 
 }
@@ -73,14 +67,9 @@ extension Response.WordDetails: Hashable {
         static var dummy: Response.Word {
             Response.Word(
                 _id: UUID().uuidString,
-                word: UUID().uuidString,
-                translations: [
-                    Translation(language: "en", word: UUID().uuidString),
-                    Translation(language: "de", word: UUID().uuidString),
-                ],
-                language: "sl",
-                dictionaryExplanations: [.dummy, .dummy, .dummy],
-                searchHits: []
+                name: UUID().uuidString,
+                translation: Translation(language: "de", word: UUID().uuidString),
+                language: "sl"
             )
         }
     }
@@ -96,7 +85,6 @@ extension Response.WordDetails {
             ],
             language: "sl",
             dictionaryExplanations: [.dummy, .dummy, .dummy],
-            searchHits: [],
             isFavorite: false
         )
     }

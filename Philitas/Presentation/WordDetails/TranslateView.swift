@@ -53,7 +53,7 @@ struct TranslateView: View {
 
             Spacer()
 
-            WordRow(word: store.word.word, language: store.word.language, translated: .none)
+            WordRow(word: store.word.name, language: store.word.language, translated: .none)
         }
         .padding(.horizontal, 16)
     }

@@ -46,9 +46,9 @@ struct DictionaryView: View {
         List(data) { item in
             NavigationLink(destination: wordDetails(id: item.id)) {
                 WordRow(
-                    word: item.word,
+                    word: item.name,
                     language: item.language,
-                    translated: item.translations?.first?.word ?? ""
+                    translated: item.translation?.word ?? ""
                 )
             }
             .swipeActions {

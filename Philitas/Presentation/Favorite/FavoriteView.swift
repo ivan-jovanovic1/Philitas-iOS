@@ -41,7 +41,7 @@ struct FavoriteView: View {
         List(data) { word in
             NavigationLink(destination: wordDetails(id: word.id)) {
                 WordRow(
-                    word: word.word,
+                    word: word.name,
                     language: word.language,
                     translated: ""
                 )
