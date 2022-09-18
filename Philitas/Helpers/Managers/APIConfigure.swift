@@ -18,8 +18,13 @@ enum APIConfigure {
         .compactMapValues { $0 }
     }
 
-    static func configure() {
-        APIHeaders.setHeaders(Self.headers)
+    static func configure(userId: String?) {
+        var headers = Self.headers
+        if let userId {
+            headers["User-Id"] = userId
+        }
+        
+        APIHeaders.setHeaders(headers)
     }
 
     static var authrozitationToken: String? {
@@ -27,5 +32,5 @@ enum APIConfigure {
             return "Bearer \(token)"
         }
         return nil
-    }
+    }    
 }

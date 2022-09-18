@@ -12,7 +12,7 @@ struct PhilitasApp: App {
     @StateObject private var session: Session
 
     init() {
-        APIConfigure.configure()
+        APIConfigure.configure(userId: .none)
         _session = StateObject(wrappedValue: Session(service: SessionService()))
     }
 

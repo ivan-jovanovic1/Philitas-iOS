@@ -12,7 +12,7 @@ class Session: ObservableObject {
     @Published var user: SessionLoader.User? {
         didSet {
             UserDefaults.standard.jwsToken = user?.jwsToken
-            APIConfigure.configure()
+            APIConfigure.configure(userId: user?.id)
         }
     }
     let service: any SessionLoader & SessionUpdater
