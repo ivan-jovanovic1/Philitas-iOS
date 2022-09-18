@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WordDetailsLoader: AnyObject {
-    typealias Item = Response.Word
+    typealias Item = Response.WordDetails
     
     func load() async throws -> Item
 }

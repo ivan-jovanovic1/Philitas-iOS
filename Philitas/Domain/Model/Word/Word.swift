@@ -25,6 +25,23 @@ public extension Response {
             _id
         }
     }
+    
+    struct WordDetails: Decodable, Identifiable {
+        public let id: String
+        /// The word in its main language
+        let word: String
+        /// The word translated to other languages.
+        let translations: [Translation]?
+        /// The word main language
+        let language: String
+        /// An array of all dictionaries with their explanations
+        let dictionaryExplanations: [DictionaryExplanation]
+        /// An array of search hit counts per month.
+        let searchHits: [SearchHit]
+        
+        let isFavorite: Bool
+
+    }
 }
 
 extension Response.Word: Hashable {
@@ -37,6 +54,19 @@ extension Response.Word: Hashable {
     }
 
 }
+
+
+extension Response.WordDetails: Hashable {
+    public static func == (lhs: Response.WordDetails, rhs: Response.WordDetails) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+}
+
 
 #if DEBUG
     extension Response.Word {
@@ -54,4 +84,21 @@ extension Response.Word: Hashable {
             )
         }
     }
+
+extension Response.WordDetails {
+    static var dummy: Response.WordDetails {
+        Response.WordDetails(
+            id: UUID().uuidString,
+            word: UUID().uuidString,
+            translations: [
+                Translation(language: "en", word: UUID().uuidString),
+                Translation(language: "de", word: UUID().uuidString),
+            ],
+            language: "sl",
+            dictionaryExplanations: [.dummy, .dummy, .dummy],
+            searchHits: [],
+            isFavorite: false
+        )
+    }
+}
 #endif

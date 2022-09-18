@@ -109,8 +109,8 @@ private extension WordDetailsView {
             AsyncButton {
                 await store.addToFavorites()
             } label: {
-                Image(systemName: store.isFavoriteWord ? "star.fill" : "star")
-                    .animation(.spring(), value: store.isFavoriteWord)
+                Image(systemName: store.state.value?.isFavorite == true ? "star.fill" : "star")
+                    .animation(.spring(), value: store.state.value?.isFavorite)
             }
         }
     }

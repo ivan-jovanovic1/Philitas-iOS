@@ -26,7 +26,7 @@ extension WordDetailsService: WordDetailsLoader {
             ],
             method: .get
         )
-        .perform(Response.BaseResponse<Response.Word>.self)
+        .perform(Response.BaseResponse<WordDetailsLoader.Item>.self)
         .data
     }
 }
@@ -35,7 +35,7 @@ extension WordDetailsService: WordDetailsLoader {
 #if DEBUG
 class WordDetailsServiceMock: WordDetailsLoader, FavoriteUpdater {
     func load() async throws -> WordDetailsLoader.Item {
-        return Response.Word.dummy
+        return Response.WordDetails.dummy
     }
 
     func addToFavorites(id: String) async throws -> Bool {

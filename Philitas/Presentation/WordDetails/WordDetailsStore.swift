@@ -11,7 +11,6 @@ class WordDetailsStore: ObservableObject, ViewPresentable {
     @Published var presented: PresentedView? = .none
     @Published var state: DataState<WordDetailsLoader.Item> = .loading
     @Published var showFavoriteButton = false
-    @Published var isFavoriteWord = false
     private var favoriteIds: [String] = []
     private let service: WordDetailsLoader & FavoriteUpdater
 
@@ -28,7 +27,6 @@ extension WordDetailsStore {
         do {
             let wordFromResponse = try await service.load()
             state = .data(wordFromResponse)
-            isFavoriteWord = favoriteIds.contains(wordFromResponse.id)
         }
         catch {
             state = .error(error)
@@ -39,8 +37,9 @@ extension WordDetailsStore {
     @Sendable
     func addToFavorites() async {
         do {
-            guard let id = state.value?.id else { return }
-            isFavoriteWord = try await service.updateFavorites(id: id, shouldBeInFavorites: !isFavoriteWord)
+            guard let word = state.value else { return }
+            _ = try await service.updateFavorites(id: word.id, shouldBeInFavorites: !word.isFavorite)
+            await loadWordDetails()
         } catch {
             PHLogger.networking.error("\(error.localizedDescription)")
         }
