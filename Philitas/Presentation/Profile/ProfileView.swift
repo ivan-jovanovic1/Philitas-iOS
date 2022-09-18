@@ -84,7 +84,7 @@ private extension ProfileView {
             Form {
                 section(username: user.username, fullName: store.fullName)
                 section(email: user.email)
-                section(favorites: user.favoriteWordIds.count)
+//                section(favorites: user.favoriteWordIds.count)
                 logout {
                     await session.logout()
                 }

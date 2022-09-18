@@ -14,9 +14,7 @@ public extension Response {
         private(set) var email: String
         private(set) var jwsToken: String
         private(set) var firstName: String?
-        private(set) var lastName: String?
-        private(set) var favoriteWordIds: [String]
-    }
+        private(set) var lastName: String?    }
 }
 
 #if DEBUG
@@ -28,8 +26,7 @@ public extension Response.UserData {
             email: "ivan.jovanovic@student.um.si",
             jwsToken: UUID().uuidString,
             firstName: "Ivan",
-            lastName: "Jovanović",
-            favoriteWordIds: []
+            lastName: "Jovanović"
         )
     }
 }

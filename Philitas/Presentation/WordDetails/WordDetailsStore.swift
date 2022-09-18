@@ -11,7 +11,6 @@ class WordDetailsStore: ObservableObject, ViewPresentable {
     @Published var presented: PresentedView? = .none
     @Published var state: DataState<WordDetailsLoader.Item> = .loading
     @Published var showFavoriteButton = false
-    private var favoriteIds: [String] = []
     private let service: WordDetailsLoader & FavoriteUpdater
 
     init(service: WordDetailsLoader & FavoriteUpdater) {
@@ -47,6 +46,5 @@ extension WordDetailsStore {
     
     func processUser(user: SessionLoader.User?) {
         showFavoriteButton = user != nil
-        favoriteIds = user?.favoriteWordIds ?? []
     }
 }
