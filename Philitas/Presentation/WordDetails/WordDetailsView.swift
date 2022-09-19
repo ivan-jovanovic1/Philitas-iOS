@@ -109,7 +109,7 @@ private extension WordDetailsView {
             AsyncButton {
                 await store.addToFavorites()
             } label: {
-                Image(systemName: store.state.value?.isFavorite == true ? "star.fill" : "star")
+                Image(systemName: store.isFavorite ? "star.fill" : "star")
                     .animation(.spring(), value: store.state.value?.isFavorite)
             }
         }
