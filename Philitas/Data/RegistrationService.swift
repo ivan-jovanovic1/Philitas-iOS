@@ -37,10 +37,10 @@ extension RegistrationService: RegistrationValidator {
 
 // MARK: - RegistrationFormSender conformation
 extension RegistrationService: RegistrationFormSender {
-    func register(form: RegistrationFormSender.Form) async throws -> Response.UserData {
+    func register(form: RegistrationFormSender.Form) async throws -> RegistrationFormSender.User {
         try await APIRequest(Endpoint.register, method: .post)
             .setBody(form)
-            .perform(Response.BaseResponse<Response.UserData>.self)
+            .perform(Response.BaseResponse<RegistrationFormSender.User>.self)
             .data
     }
 }
