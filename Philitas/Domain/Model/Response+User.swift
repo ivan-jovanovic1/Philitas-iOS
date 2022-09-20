@@ -14,7 +14,9 @@ public extension Response {
         private(set) var email: String
         private(set) var jwsToken: String
         private(set) var firstName: String?
-        private(set) var lastName: String?    }
+        private(set) var lastName: String?
+        private(set) var favoritesCount: Int?        
+    }
 }
 
 #if DEBUG
