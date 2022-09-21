@@ -26,9 +26,7 @@ class WordListService {
 
 // MARK: - FavoriteLoader conformation
 extension WordListService: WordListLoader {
-    func load() async throws-> [WordListLoader.Item] {
-        print("ivan url \(list.url.rawValue)")
-        
+    func load() async throws-> [WordListLoader.Item] {        
         let response = try await APIRequest(
             list.url,
             queryItems: [
