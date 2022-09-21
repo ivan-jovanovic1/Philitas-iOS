@@ -41,7 +41,6 @@ extension WordListStore {
         service.shouldShowNextPage(isLastWord: word.id == allWords.value?.last?.id)
     }
     
-    @MainActor
     func processStateAfterWordDetailsDisappear(id: String) {
         Task {
             await loadItems(refreshing: true)
