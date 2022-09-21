@@ -93,13 +93,14 @@ private extension WordDetailsView {
                 favoriteButton()
             }
             
-            ToolbarItem(placement: .status) {
-                Button {
-                    store.presented = .translate
-                } label: {
-                    Text("Prevedi")
-                }
-            }
+// TODO: Add support for word translation in different languages.
+//            ToolbarItem(placement: .status) {
+//                Button {
+//                    store.presented = .translate
+//                } label: {
+//                    Text("Prevedi")
+//                }
+//            }
         }
     }
     
