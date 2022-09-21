@@ -7,17 +7,28 @@
 
 import Foundation
 
+@MainActor
 class ProfileStore: ObservableObject {
     weak var session: Session?
     @Published var fullName: String?
     @Published var isRegistrationPresented = false
     @Published var isLoginPresented = false
     var presentedSubview: Subview = .none
+    var evidenceSection: [(Int, String)]? {
+        guard
+            let favorites = session?.user?.favoritesCount,
+            let history = session?.user?.historyCount
+        else {
+            return .none
+        }
+        
+        return [(favorites, "Priljubljeno"), (history, "Pregledano")]
+    }
+    
     private let formatter = PersonNameComponentsFormatter()
 }
 
 extension ProfileStore {
-    @MainActor
     func checkForFullName() {
         guard
             let firstName = session?.user?.firstName,
@@ -31,7 +42,6 @@ extension ProfileStore {
         fullName = formatter.string(from: components)
     }
     
-    @MainActor
     func checkForUpdate(tabItem: TabItem) {
         guard tabItem == .profile else { return }
         Task {

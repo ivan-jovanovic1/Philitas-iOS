@@ -84,10 +84,11 @@ private extension ProfileView {
             Form {
                 section(username: user.username, fullName: store.fullName)
                 section(email: user.email)
-                if let favoriteWords  = user.favoritesCount {
-                                    section(favorites: favoriteWords)
-
+                                
+                if let evidence = store.evidenceSection {
+                    section(elements: evidence)
                 }
+                
                 logout {
                     await session.logout()
                 }
@@ -117,21 +118,23 @@ private extension ProfileView {
     
     func section(email: String) -> some View {
         Section {
-            Text(email)
+            Text(email.lowercased())
         } header: {
             header(imageName: "envelope", description: "E-naslov")
         }
     }
     
-    func section(favorites: Int) -> some View {
+    func section(elements: [(count: Int, title: String)]) -> some View {
         Section {
-            HStack {
-                Text("Število")
-                Spacer()
-                Text("\(favorites)")
+            ForEach(elements, id: \.title) { element in
+                HStack {
+                    Text(element.title)
+                    Spacer()
+                    Text("\(element.count)")
+                }
             }
         } header: {
-            header(imageName: "star", description: "Priljubljene besede")
+            header(imageName: "star", description: "Evidenca")
         }
     }
     

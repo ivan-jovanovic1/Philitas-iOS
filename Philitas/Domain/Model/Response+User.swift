@@ -15,7 +15,8 @@ public extension Response {
         private(set) var jwsToken: String
         private(set) var firstName: String?
         private(set) var lastName: String?
-        private(set) var favoritesCount: Int?        
+        private(set) var favoritesCount: Int?
+        private(set) var historyCount: Int?
     }
 }
 
