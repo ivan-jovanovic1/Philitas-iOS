@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct FavoriteView: View {
+struct WordList: View {
     @EnvironmentObject private var session: Session
-    @StateObject private var store: FavoriteStore
+    @StateObject private var store: WordListStore
+    let title: String
     
-    init(service: FavoriteLoader) {
-        _store = StateObject(wrappedValue: FavoriteStore(service: service))
+    init(title: String, service: WordListLoader) {
+        _store = StateObject(wrappedValue: WordListStore(service: service))
+        self.title = title
     }
     
     var body: some View {
@@ -37,7 +39,7 @@ struct FavoriteView: View {
     }
     
     @ViewBuilder
-    func wordList(_ data: [FavoriteLoader.Item]) -> some View {
+    func wordList(_ data: [WordListLoader.Item]) -> some View {
         List(data) { word in
             NavigationLink(destination: wordDetails(id: word.id)) {
                 WordRow(
@@ -53,7 +55,7 @@ struct FavoriteView: View {
         }
         .animation(.spring(), value: store.favorites)
         .refreshable { await store.loadFavorites(refreshing: true) }
-        .navigationTitle("Priljubljeno")
+        .navigationTitle(title)
     }
     
     func wordDetails(id: String) -> some View {

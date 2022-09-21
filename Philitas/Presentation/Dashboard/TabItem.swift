@@ -10,6 +10,7 @@ import SwiftUI
 enum TabItem: Int, Hashable, CaseIterable, Identifiable {
     case dictionary
     case favorites
+    case history
     case profile
 
     var id: Int {
@@ -22,6 +23,8 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
             return "Seznam besed"
         case .favorites:
             return "Priljubljeno"
+        case .history:
+            return "Zgodovina"
         case .profile:
             return "Račun"
         }
@@ -31,6 +34,8 @@ enum TabItem: Int, Hashable, CaseIterable, Identifiable {
         switch self {
         case .dictionary:
             return "character.book.closed"
+        case .history:
+            return "clock"
         case .favorites:
             return "star"
         case .profile:

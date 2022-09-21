@@ -11,7 +11,7 @@ import Networking
 extension FavoriteUpdater {
     func updateFavorites(id: String, shouldBeInFavorites: Bool) async throws -> Bool {
         let response = try await APIRequest(
-            Endpoint.wordIdToFavorites,
+            Endpoint.favoriteWords,
             method: shouldBeInFavorites ? .post : .delete
         )
         .setBody(WordId(id: id))

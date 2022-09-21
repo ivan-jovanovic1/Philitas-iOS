@@ -1,5 +1,5 @@
 //
-//  FavoriteStore.swift
+//  WordListStore.swift
 //  Philitas
 //
 //  Created by Ivan Jovanović on 10/06/2022.
@@ -8,17 +8,17 @@
 import Foundation
 
 @MainActor
-class FavoriteStore: ObservableObject {
+class WordListStore: ObservableObject {
     weak var session: Session?
-    @Published var favorites: DataState<[FavoriteLoader.Item]> = .loading
-    private let service: FavoriteLoader
+    @Published var favorites: DataState<[WordListLoader.Item]> = .loading
+    private let service: WordListLoader
     
-    init(service: FavoriteLoader) {
+    init(service: WordListLoader) {
         self.service = service
     }
 }
 
-extension FavoriteStore {
+extension WordListStore {
     @Sendable
     func loadFavorites(refreshing: Bool = false) async {
         if refreshing {
@@ -32,7 +32,7 @@ extension FavoriteStore {
         }
     }
     
-    func shouldShowNextPage(word: FavoriteLoader.Item) -> Bool {
+    func shouldShowNextPage(word: WordListLoader.Item) -> Bool {
         service.shouldShowNextPage(isLastWord: word.id == favorites.value?.last?.id)
     }
     

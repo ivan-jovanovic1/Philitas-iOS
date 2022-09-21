@@ -11,7 +11,8 @@ enum Endpoint: String {
     case listOfWords = "/words/list/all"
     case wordFromId = "/words/byId/{id}"
     case wordFromQuery = "/words/{word}"
-    case wordIdToFavorites = "/words/favorites"
+    case favoriteWords = "/words/favorites"
+    case historyWords = "/words/history"
     case searchWord = "/words/search/{query}"
 
     case login = "/users/login"
