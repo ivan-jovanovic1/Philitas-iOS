@@ -27,21 +27,21 @@ extension DashboardView {
         Group {
             switch item {
             case .dictionary:
-                DictionaryView(service: DictionaryService(pageSize: 25))
+                DictionaryView(service: DictionaryService(pageSize: Constants.pageSize))
                     .tag(item)
             case .profile:
                 ProfileView()
                     .tag(item)
             case .favorites:
                 if session.user != .none {
-                    WordList(title: item.description, service: WordListService(pageSize: 25, list: .favorites))
+                    WordList(title: item.description, service: WordListService(pageSize: Constants.pageSize, list: .favorites))
                     .tag(item)
                 } else {
                     EmptyView()
                 }
             case .history:
                 if session.user != .none {
-                    WordList(title: item.description, service: WordListService(pageSize: 25, list: .history))
+                    WordList(title: item.description, service: WordListService(pageSize: Constants.pageSize, list: .history))
                     .tag(item)
                 } else {
                     EmptyView()

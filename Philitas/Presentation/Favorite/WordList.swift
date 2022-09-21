@@ -48,9 +48,9 @@ struct WordList: View {
         List(data) { word in
             NavigationLink(destination: wordDetails(id: word.id)) {
                 WordRow(
-                    word: word.name,
+                    word: word.name.capitalized,
                     language: word.language,
-                    translated: ""
+                    translated: word.translation?.word.capitalized ?? ""
                 )
             }
             if store.shouldShowNextPage(word: word) {

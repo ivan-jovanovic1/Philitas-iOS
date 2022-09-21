@@ -18,7 +18,7 @@ class DictionaryStore: ObservableObject {
         }
     }
     private let service: DictionaryLoader & FavoriteUpdater
-
+    
     init(service: DictionaryLoader & FavoriteUpdater) {
         self.service = service
     }
@@ -31,16 +31,16 @@ extension DictionaryStore {
         if refreshing {
             service.resetPagination()
         }
-
+        
         do {
             let result = try await service.load()
             if refreshing {
                 allWords = .loading
             }
             guard let values = allWords.value else {
-                return allWords = .data(result.sorted(by: { $0.name < $1.name }))
+                return allWords = .data(result)
             }
-            allWords = .data( Array(Set(values + result)) .sorted(by: { $0.name < $1.name }))
+            allWords = .data(Array(Set(values + result).sorted(by: {$0.name.lowercased() < $1.name.lowercased() })))
         }
         catch {
             allWords = .error(error)
@@ -53,7 +53,7 @@ extension DictionaryStore {
         
         do {
             let words = try await service.loadFromSearch(query: searchString)
-            searchWords = .data(Array(Set(words)).sorted(by: {$0.name < $1.name }))
+            searchWords = .data(Array(Set(words)).sorted(by: {$0.name.lowercased() < $1.name.lowercased() }))
         } catch {
             searchWords = .error(error)
         }
@@ -70,5 +70,5 @@ extension DictionaryStore {
         service.shouldShowNextPage(isLastWord: word.id == allWords.value?.last?.id) && searchWords == .none
     }
     
-
+    
 }

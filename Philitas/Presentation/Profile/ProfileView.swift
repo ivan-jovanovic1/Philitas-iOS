@@ -96,10 +96,10 @@ private extension ProfileView {
             }
         }
         .sheet(isPresented: store.isPresented(view: .favorites)) {
-            WordList(title: "Priljubljeno", service: WordListService(pageSize: 25, list: .favorites))
+            WordList(title: "Priljubljeno", service: WordListService(pageSize: Constants.pageSize, list: .favorites))
         }
         .sheet(isPresented: store.isPresented(view: .history)) {
-            WordList(title: "Zgodovina", service: WordListService(pageSize: 25, list: .history))
+            WordList(title: "Zgodovina", service: WordListService(pageSize: Constants.pageSize, list: .history))
         }
     }
     

@@ -38,7 +38,9 @@ struct DictionaryView: View {
             guard $0.isEmpty else { return }
             store.searchWords = .none
         }
-        .task { await store.loadWords() }
+        .task {
+            guard store.allWords == .loading else { return }
+            await store.loadWords() }
     }
     
     @ViewBuilder

@@ -28,9 +28,9 @@ extension WordListStore {
         do {
             let result = try await service.load()
             guard let values = allWords.value else {
-                return allWords = .data(result.sorted(by: { $0.name < $1.name }))
+                return allWords = .data(result.sorted(by: { $0.name.lowercased() < $1.name.lowercased() }))
             }
-            allWords = .data( Array(Set(values + result)) .sorted(by: { $0.name < $1.name }))
+            allWords = .data( Array(Set(values + result)) .sorted(by: { $0.name.lowercased() < $1.name.lowercased() }))
             
         } catch {
             allWords = .error(error)
