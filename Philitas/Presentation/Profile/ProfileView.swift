@@ -77,7 +77,7 @@ private extension ProfileView {
     }
 }
 
-// MARK: - Main viewx
+// MARK: - Main view
 private extension ProfileView {
     func mainView(user: SessionLoader.User) -> some View {
         VStack {
@@ -87,13 +87,9 @@ private extension ProfileView {
                 .frame(width: 80, height: 80)
             
             Form {
-                section(username: user.username, fullName: store.fullName)
+                section(user: user)
                 section(email: user.email)
-                
-                if let evidence = store.evidenceSection {
-                    section(elements: evidence)
-                }
-                
+                evidenceSection(user: user)
                 logout {
                     await session.logout()
                 }
@@ -107,23 +103,33 @@ private extension ProfileView {
         }
     }
     
-    func section(username: String, fullName: String?) -> some View {
+    func section(user: SessionLoader.User) -> some View {
         Section {
             HStack {
                 Text("Uporabniško ime")
                 Spacer()
-                Text(username)
+                Text(user.username)
             }
-            
-            if let fullName = fullName {
-                HStack {
-                    Text("Ime in priimek")
-                    Spacer()
-                    Text(fullName)
-                }
-            }
+            nameRow(user: user)
         } header: {
             header(imageName: "person", description: "Ime")
+        }
+    }
+    
+    @ViewBuilder
+    func nameRow(user: SessionLoader.User) -> some View {
+        if
+            let firstName = user.firstName,
+            let lastName = user.lastName {
+            
+            HStack {
+                Text("Ime in priimek")
+                Spacer()
+                Text(store.fullName(firstName: firstName, lastName: lastName))
+            }
+        }
+        else {
+            EmptyView()
         }
     }
     
@@ -135,21 +141,34 @@ private extension ProfileView {
         }
     }
     
-    func section(elements: [(count: Int, title: String, list: WordLists)]) -> some View {
-        Section {
-            ForEach(elements, id: \.title) { element in
-                HStack {
-                    Text(element.title)
-                    Spacer()
-                    Text("\(element.count)")
+    @ViewBuilder
+    func evidenceSection(user: SessionLoader.User) -> some View {
+        if
+            let favorites = user.favoritesCount,
+            let history = user.historyCount {
+            let elements = [
+                Evidence(count: favorites, title: "Priljubljene besede", list: .favorites),
+                Evidence(count: history, title: "Ogledane besede", list: .history),
+            ]
+            
+            Section {
+                ForEach(elements, id: \.title) { element in
+                    HStack {
+                        Text(element.title)
+                        Spacer()
+                        Text("\(element.count)")
+                    }
+                    .background(Color.white.opacity(0.000001))
+                    .onTapGesture {
+                        store.presented = element.list
+                    }
                 }
-                .background(Color.white.opacity(0.000001))
-                .onTapGesture {
-                    store.presented = element.list
-                }
+            } header: {
+                header(imageName: "note.text", description: "Evidenca")
             }
-        } header: {
-            header(imageName: "star", description: "Evidenca")
+        }
+        else {
+            EmptyView()
         }
     }
     
@@ -176,6 +195,13 @@ private extension ProfileView {
                 .font(.body)
         }
     }
+    
+    struct Evidence {
+        let count: Int
+        let title: String
+        let list: WordLists
+    }
+    
 }
 
 // MARK: - Previews

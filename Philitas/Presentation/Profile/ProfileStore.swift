@@ -7,49 +7,27 @@
 
 import Foundation
 
-@MainActor
 class ProfileStore: ObservableObject, ViewPresentable {
-         
-    
     weak var session: Session?
     @Published var fullName: String?
     @Published var isRegistrationPresented = false
     @Published var isLoginPresented = false
-    @Published var presented: WordLists? = .none
-   
-  var evidenceSection: [(Int, String, WordLists)]? {
-        guard
-            let favorites = session?.user?.favoritesCount,
-            let history = session?.user?.historyCount
-        else {
-            return .none
-        }
-        
-        return [(favorites, "Priljubljeno", .favorites), (history, "Pregledano", .history)]
-    }
-    
-    private let formatter = PersonNameComponentsFormatter()
+    @Published var presented: WordLists? = .none    
 }
 
 extension ProfileStore {
-    func checkForFullName() {
-        guard
-            let firstName = session?.user?.firstName,
-            let lastName = session?.user?.lastName
-        else { return }
-        
-        var components = PersonNameComponents()
-        components.givenName = firstName
-        components.familyName = lastName
-
-        fullName = formatter.string(from: components)
-    }
-    
     func checkForUpdate(tabItem: TabItem) {
         guard tabItem == .profile else { return }
         Task {
             await session?.verifyJWSToken()
-            checkForFullName()
         }
+    }
+    
+    func fullName(firstName: String, lastName: String) -> String {
+        let formatter = PersonNameComponentsFormatter()
+        var components = PersonNameComponents()
+        components.givenName = firstName
+        components.familyName = lastName
+        return formatter.string(from: components)
     }
 }
