@@ -19,7 +19,7 @@ struct WordList: View {
     
     var body: some View {
         NavigationView {
-            switch store.favorites {
+            switch store.allWords {
             case .loading:
                 ProgressView()
             case let .error(error):
@@ -30,10 +30,10 @@ struct WordList: View {
         }
         .navigationViewStyle(.stack)
         .background(.red)
-        .task { await store.loadFavorites() }
+        .task { await store.loadItems() }
         .onReceive(session.$user) { user in
             Task {
-                await store.loadFavorites(refreshing: true)
+                await store.loadItems(refreshing: true)
             }
         }
     }
@@ -50,11 +50,11 @@ struct WordList: View {
             }
             if store.shouldShowNextPage(word: word) {
                 ProgressView()
-                    .task { await store.loadFavorites() }
+                    .task { await store.loadItems() }
             }
         }
-        .animation(.spring(), value: store.favorites)
-        .refreshable { await store.loadFavorites(refreshing: true) }
+        .animation(.spring(), value: store.allWords)
+        .refreshable { await store.loadItems(refreshing: true) }
         .navigationTitle(title)
     }
     
