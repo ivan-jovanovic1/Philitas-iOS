@@ -8,13 +8,16 @@
 import Foundation
 
 @MainActor
-class ProfileStore: ObservableObject {
+class ProfileStore: ObservableObject, ViewPresentable {
+         
+    
     weak var session: Session?
     @Published var fullName: String?
     @Published var isRegistrationPresented = false
     @Published var isLoginPresented = false
-    var presentedSubview: Subview = .none
-    var evidenceSection: [(Int, String)]? {
+    @Published var presented: WordLists? = .none
+   
+  var evidenceSection: [(Int, String, WordLists)]? {
         guard
             let favorites = session?.user?.favoritesCount,
             let history = session?.user?.historyCount
@@ -22,7 +25,7 @@ class ProfileStore: ObservableObject {
             return .none
         }
         
-        return [(favorites, "Priljubljeno"), (history, "Pregledano")]
+        return [(favorites, "Priljubljeno", .favorites), (history, "Pregledano", .history)]
     }
     
     private let formatter = PersonNameComponentsFormatter()
@@ -48,12 +51,5 @@ extension ProfileStore {
             await session?.verifyJWSToken()
             checkForFullName()
         }
-    }
-}
-
-extension ProfileStore {
-    enum Subview: Int {
-        case login
-        case none
     }
 }

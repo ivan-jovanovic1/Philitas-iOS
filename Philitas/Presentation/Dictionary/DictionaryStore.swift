@@ -38,9 +38,9 @@ extension DictionaryStore {
                 allWords = .loading
             }
             guard let values = allWords.value else {
-                return allWords = .data(result)
+                return allWords = .data(result.sorted(by: { $0.name < $1.name }))
             }
-            allWords = .data(values + result)
+            allWords = .data( Array(Set(values + result)) .sorted(by: { $0.name < $1.name }))
         }
         catch {
             allWords = .error(error)
@@ -52,8 +52,8 @@ extension DictionaryStore {
         guard !searchString.isEmpty else { return searchWords = .none }
         
         do {
-            let wordsss = try await service.loadFromSearch(query: searchString)
-            searchWords = .data(wordsss)
+            let words = try await service.loadFromSearch(query: searchString)
+            searchWords = .data(Array(Set(words)).sorted(by: {$0.name < $1.name }))
         } catch {
             searchWords = .error(error)
         }

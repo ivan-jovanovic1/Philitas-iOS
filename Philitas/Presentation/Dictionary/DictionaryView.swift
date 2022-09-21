@@ -46,7 +46,7 @@ struct DictionaryView: View {
         List(data) { item in
             NavigationLink(destination: wordDetails(id: item.id)) {
                 WordRow(
-                    word: item.name,
+                    word: item.name.capitalized,
                     language: item.language,
                     translated: item.translation?.word ?? ""
                 )

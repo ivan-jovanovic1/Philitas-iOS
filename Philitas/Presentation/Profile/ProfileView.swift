@@ -23,6 +23,8 @@ struct ProfileView: View {
             }
             .animation(.easeInOut, value: session.user)
             .navigationBarHidden(session.user != nil)
+            .background(Color(uiColor: .systemGray6))
+            
         }
         .navigationViewStyle(.stack)
         .onAppear {
@@ -38,37 +40,40 @@ struct ProfileView: View {
 private extension ProfileView {
     @ViewBuilder
     var loginOrRegister: some View {
-        Text("""
+        VStack {
+            Text("""
         \(Image(systemName: "info.circle")) Za ogled profila se morate prijaviti.
         V primeru da še nimate računa, Vam je na voljo registracija.
         Račun Vam omogoča dodajanje priljubljenih besed ter pregled zgodovine iskanja besed.
         """
-        )
-        .font(.title3)
-        .padding(.horizontal, 16)
-        .padding(.bottom, 40)
-        
-        NavigationLink(isActive: $store.isLoginPresented) {
-            LoginView(service: SessionService())
-        } label: {
-            Button("Prijava") { store.isLoginPresented.toggle() }
-                .buttonStyle(.bordered)
-        }
-        .padding(.horizontal, 16)
-        
-        LineDivider("ALI")
+            )
+            .font(.title3)
             .padding(.horizontal, 16)
-            .padding(.vertical, 40)
-        
-        NavigationLink(isActive: $store.isRegistrationPresented) {
-            RegistrationView(service: RegistrationService())
-        } label: {
-            Button("Registracija") { store.isRegistrationPresented.toggle() }
-                .buttonStyle(.bordered)
+            .padding(.bottom, 40)
+            
+            NavigationLink(isActive: $store.isLoginPresented) {
+                LoginView(service: SessionService())
+            } label: {
+                Button("Prijava") { store.isLoginPresented.toggle() }
+                    .buttonStyle(.bordered)
+            }
+            .padding(.horizontal, 16)
+            
+            LineDivider("ALI")
+                .padding(.horizontal, 16)
+                .padding(.vertical, 40)
+            
+            NavigationLink(isActive: $store.isRegistrationPresented) {
+                RegistrationView(service: RegistrationService())
+            } label: {
+                Button("Registracija") { store.isRegistrationPresented.toggle() }
+                    .buttonStyle(.bordered)
+            }
+            .padding(.horizontal, 16)
+            
+            Spacer()
         }
-        .padding(.horizontal, 16)
-        
-        Spacer()
+        .background(Color(uiColor: .systemGray6))
     }
 }
 
@@ -84,7 +89,7 @@ private extension ProfileView {
             Form {
                 section(username: user.username, fullName: store.fullName)
                 section(email: user.email)
-                                
+                
                 if let evidence = store.evidenceSection {
                     section(elements: evidence)
                 }
@@ -93,6 +98,12 @@ private extension ProfileView {
                     await session.logout()
                 }
             }
+        }
+        .sheet(isPresented: store.isPresented(view: .favorites)) {
+            WordList(title: "Priljubljeno", service: WordListService(pageSize: 25, list: .favorites))
+        }
+        .sheet(isPresented: store.isPresented(view: .history)) {
+            WordList(title: "Zgodovina", service: WordListService(pageSize: 25, list: .history))
         }
     }
     
@@ -124,13 +135,17 @@ private extension ProfileView {
         }
     }
     
-    func section(elements: [(count: Int, title: String)]) -> some View {
+    func section(elements: [(count: Int, title: String, list: WordLists)]) -> some View {
         Section {
             ForEach(elements, id: \.title) { element in
                 HStack {
                     Text(element.title)
                     Spacer()
                     Text("\(element.count)")
+                }
+                .background(Color.white.opacity(0.000001))
+                .onTapGesture {
+                    store.presented = element.list
                 }
             }
         } header: {

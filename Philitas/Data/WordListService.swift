@@ -11,24 +11,26 @@ import Networking
 class WordListService {
     var pageSize: Int
     var pagination: Pagination?
-    let endpoint: Endpoint
+    let list: WordLists
     
     init(
         pageSize: Int,
         pagination: Pagination? = .none,
-        endpoint: Endpoint
+        list: WordLists
     ) {
         self.pageSize = pageSize
         self.pagination = pagination
-        self.endpoint = endpoint
+        self.list = list
     }
 }
 
 // MARK: - FavoriteLoader conformation
 extension WordListService: WordListLoader {
     func load() async throws-> [WordListLoader.Item] {
+        print("ivan url \(list.url.rawValue)")
+        
         let response = try await APIRequest(
-            endpoint.url,
+            list.url,
             queryItems: [
                 "page": String(pagination?.nextPage() ?? 1),
                 "pageSize": String(pageSize),
@@ -43,18 +45,3 @@ extension WordListService: WordListLoader {
     }
 }
 
-extension WordListService {
-    enum Endpoint {
-        case favorites
-        case history
-        
-        var url: Philitas.Endpoint {
-            switch self {
-            case .favorites:
-                return Philitas.Endpoint.favoriteWords
-            case .history:
-                return Philitas.Endpoint.historyWords
-            }
-        }
-    }
-}

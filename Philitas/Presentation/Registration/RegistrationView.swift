@@ -22,8 +22,10 @@ struct RegistrationView: View {
             VStack {
                 instructions
                 section
-                Spacer()
             }
+            .frame(maxHeight: .infinity)
+            .background(Color(uiColor: .systemGray6))
+            .ignoresSafeArea()
             .alert("Napaka pri registraciji", isPresented: $store.showErrorAlert) {
                 Button("V redu", role: .cancel) { }
             }
@@ -39,8 +41,9 @@ struct RegistrationView: View {
                     dismiss()
                 }
             }
-            .navigationTitle("Registracija")
         }
+        .navigationTitle("Registracija")
+
     }
     
     private var instructions: some View {
@@ -48,7 +51,6 @@ struct RegistrationView: View {
             .padding(.horizontal, 15)
             .font(.body)
             .foregroundColor(.accentColor)
-            .padding(.vertical, 24)
     }
     
     private var section: some View {
@@ -68,7 +70,6 @@ struct RegistrationView: View {
             }
             .buttonStyle(.bordered)
             .disabled(!store.isCompleteRegistrationEnabled)
-            .padding(.top, 40)
         }
         .textFieldStyle(.roundedBorder)
         .padding(.horizontal, 16)

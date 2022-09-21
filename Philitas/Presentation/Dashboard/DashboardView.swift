@@ -34,14 +34,14 @@ extension DashboardView {
                     .tag(item)
             case .favorites:
                 if session.user != .none {
-                    WordList(title: item.description, service: WordListService(pageSize: 25, endpoint: .favorites))
+                    WordList(title: item.description, service: WordListService(pageSize: 25, list: .favorites))
                     .tag(item)
                 } else {
                     EmptyView()
                 }
             case .history:
                 if session.user != .none {
-                    WordList(title: item.description, service: WordListService(pageSize: 25, endpoint: .history))
+                    WordList(title: item.description, service: WordListService(pageSize: 25, list: .history))
                     .tag(item)
                 } else {
                     EmptyView()

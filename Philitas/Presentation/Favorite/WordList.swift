@@ -23,7 +23,12 @@ struct WordList: View {
             case .loading:
                 ProgressView()
             case let .error(error):
-                Text(error.localizedDescription)
+                List {
+                    Text(error.localizedDescription)
+                }
+                .refreshable {
+                    await store.loadItems(refreshing: true)
+                }
             case let .data(data):
                 wordList(data)
             }

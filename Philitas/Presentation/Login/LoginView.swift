@@ -24,6 +24,7 @@ struct LoginView: View {
                     .padding(.horizontal, 16)
                 Spacer()
             }
+            .background(Color(uiColor: .systemGray6))
             .onReceive(store.$userData) {
                 if let value = $0 {
                     session.user = value
