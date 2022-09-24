@@ -45,29 +45,13 @@ struct DictionaryView: View {
     
     @ViewBuilder
     func wordList(_ data: [DictionaryLoader.Item]) -> some View {
-        List(data) { item in
-            NavigationLink(destination: wordDetails(id: item.id)) {
-                WordRow(
-                    word: item.name.capitalized,
-                    language: item.language,
-                    translated: item.translation?.word ?? ""
-                )
-            }
-            .swipeActions {
-                Button {
-                    Task {
-                        store.addToFavorites(word: item)
-                    }
-                } label: {
-                    Text("Dodaj med priljubljene")
-                }
-            }
-            
-            if store.shouldShowNextPage(word: item) {
-                ProgressView()
-                    .task { await store.loadWords() }
-            }
-        }
+        BaseWordList(
+            items: data.map { BaseWordViewModel(word: $0) },
+            shouldShowNextPage: store.shouldShowNextPage,
+            loadNextPage: {  await store.loadWords() },
+            destination: wordDetails,
+            swipeContent: swipeContent
+        )
         .navigationTitle("Slovar")
         .refreshable { await store.loadWords(refreshing: true) }
         .searchable(
@@ -87,6 +71,19 @@ struct DictionaryView: View {
                     await session.verifyJWSToken()
                 }
             }
+    }
+    
+    @ViewBuilder
+    func swipeContent(wordId: String) -> some View {
+        if session.user != .none {
+            Button {
+                Task {
+                    store.addToFavorites(wordId: wordId)
+                }
+            } label: {
+                Text("Dodaj med priljubljene")
+            }
+        }
     }
 }
 

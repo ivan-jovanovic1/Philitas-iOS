@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 class DictionaryStore: ObservableObject {
     @Published var allWords: DataState<[DictionaryLoader.Item]> = .loading
     @Published var searchWords: DataState<[DictionaryLoader.Item]>?
@@ -26,6 +25,7 @@ class DictionaryStore: ObservableObject {
 
 // MARK: - Actions
 extension DictionaryStore {
+    @MainActor
     @Sendable
     func loadWords(refreshing: Bool = false) async {
         if refreshing {
@@ -47,6 +47,7 @@ extension DictionaryStore {
         }
     }
     
+    @MainActor
     @Sendable
     func performSearch() async {
         guard !searchString.isEmpty else { return searchWords = .none }
@@ -59,16 +60,14 @@ extension DictionaryStore {
         }
     }
     
-    func addToFavorites(word: DictionaryLoader.Item) {
+    func addToFavorites(wordId: String) {
         Task {
-            try await service.updateFavorites(id: word.id, shouldBeInFavorites: true)
+            try await service.updateFavorites(id: wordId, shouldBeInFavorites: true)
         }
     }
     
-    func shouldShowNextPage(word: DictionaryLoader.Item) -> Bool {
-        
-        service.shouldShowNextPage(isLastWord: word.id == allWords.value?.last?.id) && searchWords == .none
+    func shouldShowNextPage(wordId: String) -> Bool {
+        service.shouldShowNextPage(isLastWord: wordId == allWords.value?.last?.id) && searchWords == .none
     }
-    
     
 }

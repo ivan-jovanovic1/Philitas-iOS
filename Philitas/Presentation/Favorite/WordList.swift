@@ -45,19 +45,13 @@ struct WordList: View {
     
     @ViewBuilder
     func wordList(_ data: [WordListLoader.Item]) -> some View {
-        List(data) { word in
-            NavigationLink(destination: wordDetails(id: word.id)) {
-                WordRow(
-                    word: word.name.capitalized,
-                    language: word.language,
-                    translated: word.translation?.word.capitalized ?? ""
-                )
-            }
-            if store.shouldShowNextPage(word: word) {
-                ProgressView()
-                    .task { await store.loadItems() }
-            }
-        }
+        BaseWordList(
+            items: data.map { BaseWordViewModel(word: $0) },
+            shouldShowNextPage: store.shouldShowNextPage,
+            loadNextPage: { await store.loadItems() },
+            destination: wordDetails,
+            swipeContent: { _ in EmptyView() }
+        )
         .animation(.spring(), value: store.allWords)
         .refreshable { await store.loadItems(refreshing: true) }
         .navigationTitle(title)

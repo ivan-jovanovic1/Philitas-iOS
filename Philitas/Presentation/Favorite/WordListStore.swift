@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 class WordListStore: ObservableObject {
     weak var session: Session?
     @Published var allWords: DataState<[WordListLoader.Item]> = .loading
@@ -19,6 +18,7 @@ class WordListStore: ObservableObject {
 }
 
 extension WordListStore {
+    @MainActor
     @Sendable
     func loadItems(refreshing: Bool = false) async {
         if refreshing {
@@ -27,7 +27,7 @@ extension WordListStore {
         
         do {
             let result = try await service.load()
-            guard let values = allWords.value else {
+            guard let values = allWords.value, !refreshing else {
                 return allWords = .data(result.sorted(by: { $0.name.lowercased() < $1.name.lowercased() }))
             }
             allWords = .data( Array(Set(values + result)) .sorted(by: { $0.name.lowercased() < $1.name.lowercased() }))
@@ -37,10 +37,11 @@ extension WordListStore {
         }
     }
     
-    func shouldShowNextPage(word: WordListLoader.Item) -> Bool {
-        service.shouldShowNextPage(isLastWord: word.id == allWords.value?.last?.id)
+    func shouldShowNextPage(wordId: String) -> Bool {
+        service.shouldShowNextPage(isLastWord: wordId == allWords.value?.last?.id)
     }
     
+    @MainActor
     func processStateAfterWordDetailsDisappear(id: String) {
         Task {
             await loadItems(refreshing: true)
