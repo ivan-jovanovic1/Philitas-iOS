@@ -51,6 +51,7 @@ extension DictionaryStore {
     @Sendable
     func performSearch() async {
         guard !searchString.isEmpty else { return searchWords = .none }
+        searchWords = .loading
         
         do {
             let words = try await service.loadFromSearch(query: searchString)
